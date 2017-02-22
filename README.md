@@ -1,4 +1,4 @@
-# [Phenomic](https://github.com/MoOx/phenomic) phenomic-theme-base
+# [Blog](https://colinrcummings.github.io/blog/) built with [Phenomic](https://github.com/MoOx/phenomic)
 
 ## Install dependencies
 
@@ -16,4 +16,9 @@ npm start
 
 ```sh
 npm run build
+```
+
+## Deploy to Github Pages
+```sh
+npm run deploy
 ```
