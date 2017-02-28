@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[blog]]></title><description><![CDATA[blog]]></description><link>https://colinrcummings.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Tue, 28 Feb 2017 14:12:31 GMT</lastBuildDate><atom:link href="https://colinrcummings.github.io/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[A Wedding Website]]></title><description><![CDATA[<p>My sister's getting married. During a discussion about how to handle RSVPs for the big day, I floated the option of doing it online. This was a welcome idea; however, it meant she needed a website. The question, then, was to buy or build.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[blog]]></title><description><![CDATA[blog]]></description><link>https://colinrcummings.github.io/blog</link><generator>RSS for Node</generator><lastBuildDate>Tue, 28 Feb 2017 16:14:42 GMT</lastBuildDate><atom:link href="https://colinrcummings.github.io/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[A Wedding Website]]></title><description><![CDATA[<p>My sister's getting married. During a discussion about how to handle RSVPs for the big day, I floated the option of doing it online. This was a welcome idea; however, it meant she needed a website. The question, then, was to buy or build.</p>
 <p>While exploring available options, my suspicions were confirmed: wedding websites are a cottage industry. There's a hodgepodge of do-it-yourself platforms out there promising a "customized look and feel", but the enter fiancé name <em>here</em>, and upload photo of you and partner <em>there</em>, routine almost invariably results in a ready-made feel (to say nothing of typically poor user experience on smaller devices). Additionally, one-size-fits-all approaches to online RSVPs tend to entail configuration-heavy setups, busy admin interfaces and less-than-seamless form integration on the guest-facing page.</p>
 <p>Ultimately, I opted for build. Below is an overview of what turned out to be a really fun project (see the finished product <a target="_blank" href="https://www.brynneanddon.com">here</a>); I've included links to a few resources that I found particularly helpful along the way.</p>
 <hr>
@@ -34,7 +34,7 @@
 <div class="grid">
   <div class="col-4-12">
     <div class="text-center">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Open</em>
@@ -46,7 +46,7 @@
   </div>
   <div class="col-4-12">
     <div class="text-center">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Closing Soon</em>
@@ -58,7 +58,7 @@
   </div>
   <div class="col-4-12">
     <div class="text-center">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Closed</em>
@@ -74,7 +74,7 @@
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
     <div class="text-center">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Search</em>
@@ -90,7 +90,7 @@
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
     <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Form</em>
@@ -106,7 +106,7 @@
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
     <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Result</em>
@@ -156,7 +156,7 @@
 <div class="grid">
   <div class="col-6-12">
     <div class="text-center">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Timeline</em>
@@ -168,7 +168,7 @@
   </div>
   <div class="col-6-12">
     <div class="text-center">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Directions</em>
@@ -193,7 +193,7 @@
 <div class="grid">
   <div class="col-6-12">
     <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Count Down</em>
@@ -205,7 +205,7 @@
   </div>
   <div class="col-6-12">
     <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Count Up</em>
@@ -224,7 +224,7 @@
 <div class="grid">
   <div class="col-4-12">
     <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Add</em>
@@ -236,7 +236,7 @@
   </div>
   <div class="col-4-12">
     <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Search</em>
@@ -248,7 +248,7 @@
   </div>
   <div class="col-4-12">
     <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Filter</em>
