@@ -63,7 +63,7 @@ As the RSVP date approaches/passes, the RSVP action button renders accordingly.
 <div class="grid">
   <div class="col-4-12">
     <div class="text-center">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Open</em>
@@ -75,7 +75,7 @@ As the RSVP date approaches/passes, the RSVP action button renders accordingly.
   </div>
   <div class="col-4-12">
     <div class="text-center">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Closing Soon</em>
@@ -87,7 +87,7 @@ As the RSVP date approaches/passes, the RSVP action button renders accordingly.
   </div>
   <div class="col-4-12">
     <div class="text-center">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Closed</em>
@@ -105,7 +105,7 @@ RSVPs are submitted through a series of modal screens launched from the RSVP act
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
     <div class="text-center">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Search</em>
@@ -122,7 +122,7 @@ RSVPs are submitted through a series of modal screens launched from the RSVP act
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
     <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Form</em>
@@ -139,7 +139,7 @@ RSVPs are submitted through a series of modal screens launched from the RSVP act
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
     <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Result</em>
@@ -201,7 +201,7 @@ This component is based on a <a href="https://codyhouse.co/gem/vertical-timeline
 <div class="grid">
   <div class="col-6-12">
     <div class="text-center">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Timeline</em>
@@ -213,7 +213,7 @@ This component is based on a <a href="https://codyhouse.co/gem/vertical-timeline
   </div>
   <div class="col-6-12">
     <div class="text-center">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Directions</em>
@@ -244,7 +244,7 @@ Before the wedding date, this component renders a count down over a responsive f
 <div class="grid">
   <div class="col-6-12">
     <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Count Down</em>
@@ -256,7 +256,7 @@ Before the wedding date, this component renders a count down over a responsive f
   </div>
   <div class="col-6-12">
     <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Count Up</em>
@@ -281,7 +281,7 @@ The header has icons for adding a new RSVP (in a modal), searching RSVPs by name
 <div class="grid">
   <div class="col-4-12">
     <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Add</em>
@@ -293,7 +293,7 @@ The header has icons for adding a new RSVP (in a modal), searching RSVPs by name
   </div>
   <div class="col-4-12">
     <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Search</em>
@@ -305,7 +305,7 @@ The header has icons for adding a new RSVP (in a modal), searching RSVPs by name
   </div>
   <div class="col-4-12">
     <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block;">
+      <div style="display: inline-block; max-width: 100%;">
         <div class="text-left">
           <span class="small text-muted">
             <em>Filter</em>
