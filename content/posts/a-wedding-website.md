@@ -20,7 +20,7 @@ Ultimately, I opted for build. Below is an overview of what turned out to be a r
 
 ### Back End
 
-Node with Express is my go-to server setup these days. I've used a couple different build tool combinations in other Node-based projects (Grunt, gulp and/or webpack), but this was the first time I let webpack handle everything—JS(X), (S)CSS, HTML, <a target="_blank" href="https://paradite.com/2016/10/25/font-awesome-angular-2-webpack/">icons</a>, <a target="_blank" href="https://shellmonger.com/2016/01/22/working-with-fonts-with-webpack/">fonts</a> and <a target="_blank" href="https://survivejs.com/webpack/loading-assets/loading-images/">images</a>. It can capably and quickly do it all, and with <a target="_blank" href="https://medium.com/@LopezTech/a-web-application-journey-part-3-webpack-dev-server-and-related-improvements-abd5060bd3fc">a little extra configuration</a> you get hot reloading for React components in development, which is *awesome*. I spun up a Postgres database on Heroku to store RSVPs, which is also where the server runs, and used [pg-promise](http://mherman.org/blog/2016/03/13/designing-a-restful-api-with-node-and-postgres/#.WLHfR1UrLIV) to execute CRUD actions. I also used <a target="_blank" href="http://javascript.tutorialhorizon.com/2015/07/02/send-email-node-js-express/">Nodemailer</a> to send guest confirmation and admin notification emails via Gmail, which required some extra configuration as it requires <a target="_blank" href="http://masashi-k.blogspot.com/2013/06/sending-mail-with-gmail-using-xoauth2.html">XOAuth2</a>. Lastly, the admin RSVP management page and its associated API routes are protected using Passport local authentication.
+Node with Express is my go-to server setup these days. I've used a couple different build tool combinations in other Node-based projects (Grunt, gulp and/or webpack), but this was the first time I let webpack handle everything—JS(X), (S)CSS, HTML, <a target="_blank" href="https://paradite.com/2016/10/25/font-awesome-angular-2-webpack/">icons</a>, <a target="_blank" href="https://shellmonger.com/2016/01/22/working-with-fonts-with-webpack/">fonts</a> and <a target="_blank" href="https://survivejs.com/webpack/loading-assets/loading-images/">images</a>. It can capably and quickly do it all, and with <a target="_blank" href="https://medium.com/@LopezTech/a-web-application-journey-part-3-webpack-dev-server-and-related-improvements-abd5060bd3fc">a little extra configuration</a> you get hot reloading for React components in development, which is *awesome*. I spun up a Postgres database on Heroku to store RSVPs, which is also where the server runs, and used [pg-promise](http://mherman.org/blog/2016/03/13/designing-a-restful-api-with-node-and-postgres/#.WLHfR1UrLIV) to execute CRUD actions. I also used <a target="_blank" href="http://javascript.tutorialhorizon.com/2015/07/02/send-email-node-js-express/">Nodemailer</a> to send guest confirmation and admin notification emails via Gmail, which took some extra configuration as it requires <a target="_blank" href="http://masashi-k.blogspot.com/2013/06/sending-mail-with-gmail-using-xoauth2.html">XOAuth2</a>. Lastly, the admin RSVP management page and its associated API routes are protected using Passport local authentication.
 
 ### Front End
 
@@ -30,7 +30,7 @@ In conjunction with React, I used an alpha release of <a target="_blank" href="h
 
 ## Guest Splash Page
 
-**tl;dr:** The guest-facing splash page is comprised of 6 sections containing React components (including RSVP submission); how some components render depends on the current date.
+**tl;dr:** The guest-facing splash page is comprised of 6 sections containing React components; how some components render depends on the current date.
 
 ### Intro
 
@@ -172,7 +172,7 @@ The admin receives a notification email each time an RSVP is submitted.
   <div class="col-2-12 hide-on-mobile"></div>
 </div>
 
-After the wedding date, this section renders a component with a thank you note so the splash page isn't anachronistic.
+After the wedding date, this section renders a component with a thank you note so the page isn't anachronistic.
 
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>

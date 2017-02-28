@@ -3,7 +3,7 @@ title: Blog | Colin Cummings
 layout: Homepage
 hero: assets/images/index/hero.jpg
 cta:
-  label: Webpage
+  label: Portfolio
   link: "https://colinrcummings.github.io/"
 ---
 
