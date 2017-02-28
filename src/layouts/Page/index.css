@@ -37,6 +37,10 @@
   );
 }
 
+.header a {
+  text-decoration: none;
+}
+
 .heading {
   color: var(--colorNeutralLight);
   text-shadow:
@@ -45,6 +49,7 @@
     0 0 2px var(--colorNeutralDark)
   ;
   letter-spacing: 1px;
+  line-height: 1.3em;
 }
 
 .cta {

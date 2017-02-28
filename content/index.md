@@ -1,8 +1,14 @@
 ---
 title: Blog | Colin Cummings
 layout: Homepage
-hero: assets/images/hero/index.jpg
+hero: assets/images/index/hero.jpg
 cta:
   label: Webpage
-  link: "https://colinrcummings.github.io"
+  link: "https://colinrcummings.github.io/"
+---
+
+<p style="font-size: 18px; text-align: center;">
+  Posts about projects other programing-related things.
+</p>
+
 ---

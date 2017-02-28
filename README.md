@@ -18,7 +18,7 @@ npm start
 npm run build
 ```
 
-## Deploy to Github Pages
+## Deploy to GitHub Pages
 ```sh
 npm run deploy
 ```
