@@ -9,7 +9,7 @@ import styles from "./index.css"
 const PageError = ({ error, errorText }) => (
   <Page
     head={{
-      hero: "../assets/images/404/hero.jpg",
+      hero: "./assets/images/404/hero.jpg",
     }}
   >
     <div className={ styles.container }>
@@ -30,7 +30,6 @@ const PageError = ({ error, errorText }) => (
               { "home" }
             </Link>
             { "." }
-            <br />
           </div>
         }
       </div>
