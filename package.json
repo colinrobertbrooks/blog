@@ -15,9 +15,7 @@
     "predeploy": "npm run build",
     "deploy": "gulp deploy"
   },
-  "phenomic": {
-    "CNAME": false
-  },
+  "phenomic": {},
   "#babel": "webpack-(development|production) are useful for webpack 2, otherwise use development|production",
   "babel": {
     "env": {
@@ -89,10 +87,7 @@
     "extends": "./node_modules/phenomic/lib/eslint-config-recommended/index.js"
   },
   "stylelint": {
-    "extends": "./node_modules/phenomic/lib/stylelint-config-recommended/index.js",
-    "rules": {
-      "declaration-block-no-ignored-properties": null
-    }
+    "extends": "./node_modules/phenomic/lib/stylelint-config-recommended/index.js"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
@@ -107,25 +102,21 @@
     "babel-preset-stage-1": "^6.13.0",
     "classnames": "^2.2.5",
     "css-loader": "^0.25.0",
-    "del": "^2.2.2",
     "eslint": "^3.7.1",
     "eslint-loader": "^1.5.0",
     "eslint-plugin-react": "^6.4.0",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.9.0",
-    "gulp": "^3.9.1",
-    "gulp-gh-pages": "^0.5.4",
     "history": "^2.0.0",
     "json-loader": "^0.5.2",
     "npm-run-all": "^1.7.0",
-    "phenomic": "^0.20.3",
     "postcss-browser-reporter": "^0.4.0",
     "postcss-cssnext": "^2.4.0",
     "postcss-loader": "^0.13.0",
     "postcss-reporter": "^1.3.0",
     "raw-loader": "^0.5.1",
-    "react": "^15.0.0-rc.1",
-    "react-dom": "^15.0.0-rc.1",
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0",
     "react-helmet": "^3.0.0",
     "react-hot-loader": "^3.0.0-beta",
     "react-redux": "^4.0.0",
@@ -136,7 +127,7 @@
     "style-loader": "^0.13.0",
     "stylelint": "^7.2.0",
     "warning": "^3.0.0",
-    "webpack": "^1.11.0",
+    "webpack": "^2.3.0",
     "whatwg-fetch": "^0.11.0"
   }
 }

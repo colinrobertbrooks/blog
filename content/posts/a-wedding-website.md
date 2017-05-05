@@ -10,7 +10,7 @@ My sister's getting married. During a discussion about how to handle RSVPs for t
 
 While exploring available options, my suspicions were confirmed: wedding websites are a cottage industry. There's a hodgepodge of do-it-yourself platforms out there promising a "customized look and feel", but the enter fiancé name *here*, and upload photo of you and partner *there*, routine almost invariably results in a ready-made feel (to say nothing of typically poor user experience on smaller devices). Additionally, one-size-fits-all approaches to online RSVPs tend to entail configuration-heavy setups, busy admin interfaces and less-than-seamless form integration on the guest-facing page.
 
-Ultimately, I opted for build. Below is an overview of what turned out to be a really fun project (see the finished product <a target="_blank" href="https://www.brynneanddon.com">here</a>); I've included links to a few resources that I found particularly helpful along the way.
+Ultimately, I opted for build. Below is an overview of what turned out to be a really fun project. I've included links to a few resources that I found particularly helpful along the way. See the finished product <a target="_blank" href="https://www.brynneanddon.com">here</a>. Now that the wedding has passed, the sites on a free web dyno so it may take a second to spin up.
 
 ---
 
@@ -374,3 +374,11 @@ From Google's <a href="https://testmysite.thinkwithgoogle.com/" target="_blank">
   </div>
   <div class="col-2-12 hide-on-mobile"></div>
 </div>
+
+---
+
+## Feedback
+
+Have questions, comments or suggestions? Reach out to me on Twitter (<a href="https://twitter.com/colinrcummings" target="_blank">@colinrcummings</a>).
+
+— Colin
