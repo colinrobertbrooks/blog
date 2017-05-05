@@ -10,21 +10,25 @@ My sister's getting married. During a discussion about how to handle RSVPs for t
 
 While exploring available options, my suspicions were confirmed: wedding websites are a cottage industry. There's a hodgepodge of do-it-yourself platforms out there promising a "customized look and feel", but the enter fiancé name *here*, and upload photo of you and partner *there*, routine almost invariably results in a ready-made feel (to say nothing of typically poor user experience on smaller devices). Additionally, one-size-fits-all approaches to online RSVPs tend to entail configuration-heavy setups, busy admin interfaces and less-than-seamless form integration on the guest-facing page.
 
-Ultimately, I opted for build. Below is an overview of what turned out to be a really fun project. I've included links to a few resources that I found particularly helpful along the way. See the finished product <a target="_blank" href="https://www.brynneanddon.com">here</a>. Now that the wedding has passed, the sites on a free web dyno so it may take a second to spin up.
+Ultimately, I opted for build. Below is an overview of what turned out to be a really fun project. I've included links to a few resources that I found particularly helpful along the way.
+
+<a role="button" class="btn btn-default" href="https://brynne-and-don.herokuapp.com/" target="_blank" >Visit Website</a>
+
+**Update:** Now that the wedding has passed, the site's on a free dyno, which may take a few seconds to spin up. <span class="small text-muted">(Fri May 5 2017)</span>
 
 ---
 
 ## Technology
 
-**tl;dr:** I used the <a target="_blank" href="https://medium.com/@jkchuynh829/the-nerp-stack-29402b6a4355">NERP stack</a> with a webpack build, including hot reloading in development, as well as Nodemailer and Bootsrap 4.
+**tl;dr:** I used the <a href="https://medium.com/@jkchuynh829/the-nerp-stack-29402b6a4355" target="_blank" >NERP stack</a> with a webpack build, including hot reloading in development, as well as Nodemailer and Bootsrap 4.
 
 ### Back End
 
-Node with Express is my go-to server setup these days. I've used a couple different build tool combinations in other Node-based projects (Grunt, gulp and/or webpack), but this was the first time I let webpack handle everything—JS(X), (S)CSS, HTML, <a target="_blank" href="https://paradite.com/2016/10/25/font-awesome-angular-2-webpack/">icons</a>, <a target="_blank" href="https://shellmonger.com/2016/01/22/working-with-fonts-with-webpack/">fonts</a> and <a target="_blank" href="https://survivejs.com/webpack/loading-assets/loading-images/">images</a>. It can capably and quickly do it all, and with <a target="_blank" href="https://medium.com/@LopezTech/a-web-application-journey-part-3-webpack-dev-server-and-related-improvements-abd5060bd3fc">a little extra configuration</a> you get hot reloading for React components in development, which is *awesome*. I spun up a Postgres database on Heroku to store RSVPs, which is also where the server runs, and used [pg-promise](http://mherman.org/blog/2016/03/13/designing-a-restful-api-with-node-and-postgres/#.WLHfR1UrLIV) to execute CRUD actions. I also used <a target="_blank" href="http://javascript.tutorialhorizon.com/2015/07/02/send-email-node-js-express/">Nodemailer</a> to send guest confirmation and admin notification emails via Gmail, which took some extra configuration as it requires <a target="_blank" href="http://masashi-k.blogspot.com/2013/06/sending-mail-with-gmail-using-xoauth2.html">XOAuth2</a>. Lastly, the admin RSVP management page and its associated API routes are protected using Passport local authentication.
+Node with Express is my go-to server setup these days. I've used a couple different build tool combinations in other Node-based projects (Grunt, gulp and/or webpack), but this was the first time I let webpack handle everything—JS(X), (S)CSS, HTML, <a href="https://paradite.com/2016/10/25/font-awesome-angular-2-webpack/" target="_blank">icons</a>, <a href="https://shellmonger.com/2016/01/22/working-with-fonts-with-webpack/" target="_blank">fonts</a> and <a href="https://survivejs.com/webpack/loading-assets/loading-images/" target="_blank">images</a>. It can capably and quickly do it all, and with <a href="https://medium.com/@LopezTech/a-web-application-journey-part-3-webpack-dev-server-and-related-improvements-abd5060bd3fc" target="_blank">a little extra configuration</a> you get hot reloading for React components in development, which is *awesome*. I spun up a Postgres database on Heroku to store RSVPs, which is also where the server runs, and used <a href="http://mherman.org/blog/2016/03/13/designing-a-restful-api-with-node-and-postgres/#.WLHfR1UrLIV" target="_blank">pg-promise</a> to execute CRUD actions. I also used <a target="_blank" href="http://javascript.tutorialhorizon.com/2015/07/02/send-email-node-js-express/">Nodemailer</a> to send guest confirmation and admin notification emails via Gmail, which took some extra configuration as it requires <a href="http://masashi-k.blogspot.com/2013/06/sending-mail-with-gmail-using-xoauth2.html" target="_blank">XOAuth2</a>. Lastly, the admin RSVP management page and its associated API routes are protected using Passport local authentication.
 
 ### Front End
 
-In conjunction with React, I used an alpha release of <a target="_blank" href="https://www.artembutusov.com/webpack-customizable-bootstrap-4-x-scss/">Bootstrap 4</a> for the framework. I've been using version 3 for a few years now, and the short lifecycle of this project gave me an opportunity to test drive some of the [changes, additions and removals](https://v4-alpha.getbootstrap.com/migration/) coming in version 4. I also made use of Animate, Moment, Underscore, D3 and Crossfilter in different places.
+In conjunction with React, I used an alpha release of <a href="https://www.artembutusov.com/webpack-customizable-bootstrap-4-x-scss/" target="_blank">Bootstrap 4</a> for the framework. I've been using version 3 for a few years now, and the short lifecycle of this project gave me an opportunity to test drive some of the <a href="https://v4-alpha.getbootstrap.com/migration/" target="_blank">changes, additions and removals</a> coming in version 4. I also made use of Animate, Moment, Underscore, D3 and Crossfilter in different places.
 
 ---
 
@@ -379,6 +383,6 @@ From Google's <a href="https://testmysite.thinkwithgoogle.com/" target="_blank">
 
 ## Feedback
 
-Have questions, comments or suggestions? Reach out to me on Twitter (<a href="https://twitter.com/colinrcummings" target="_blank">@colinrcummings</a>).
+Have questions, comments or suggestions? Reach out to me on Twitter (<a href="https://twitter.com/colinrcummings">@colinrcummings</a>).
 
 — Colin

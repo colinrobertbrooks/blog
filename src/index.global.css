@@ -145,3 +145,48 @@ img {
        -o-transition: all .2s ease-in-out;
           transition: all .2s ease-in-out;
 }
+
+/* button styling (a la bootstrap) */
+.btn {
+  background: none;
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-block;
+  font: inherit;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  margin: 0;
+  overflow: visible;
+  padding: 7px 16px;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  -moz-user-select: none;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  -ms-user-select: none;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+  outline: 0;
+  text-decoration: none;
+}
+
+.btn-default {
+  background-color: #fbfcfc;
+  border: 1px solid #555 !important;
+  color: #555 !important;
+}
+
+.btn-default:hover {
+  background-color: #555;
+  color: #fbfcfc !important;
+}

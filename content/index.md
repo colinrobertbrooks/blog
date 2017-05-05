@@ -8,7 +8,7 @@ cta:
 ---
 
 <p style="font-size: 18px; text-align: center;">
-  Posts about projects and other programing-related things.
+  Posts about projects and other programming-related things.
 </p>
 
 ---
