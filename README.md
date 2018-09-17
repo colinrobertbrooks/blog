@@ -1,4 +1,4 @@
-# [Blog](https://colinrcummings.github.io/blog/) built with [Phenomic](https://github.com/MoOx/phenomic) (version 0.21.1)
+# [Blog](https://colinrcummings.github.io/blog/) built with [Phenomic](https://github.com/MoOx/phenomic) (version 1.0.0-beta.3)
 
 ## Install dependencies
 

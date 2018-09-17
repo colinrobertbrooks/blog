@@ -1,9 +1,7 @@
 ---
 title: A Wedding Website
 date: 2017-02-26
-layout: Post
-hero: ../../assets/images/posts/a_wedding_website/hero.jpg
-
+image: "/blog/images/posts/a_wedding_website/hero.jpg"
 ---
 
 My sister's getting married. During a discussion about how to handle RSVPs for the big day, I floated the option of doing it online. This was a welcome idea; however, it meant she needed a website. The question, then, was to buy or build.
@@ -24,11 +22,12 @@ Ultimately, I opted for build. Below is an overview of what turned out to be a r
 
 ### Back End
 
-Node with Express is my go-to server setup these days. I've used a couple different build tool combinations in other Node-based projects (Grunt, gulp and/or webpack), but this was the first time I let webpack handle everything—JS(X), (S)CSS, HTML, <a href="https://paradite.com/2016/10/25/font-awesome-angular-2-webpack/" target="_blank">icons</a>, <a href="https://shellmonger.com/2016/01/22/working-with-fonts-with-webpack/" target="_blank">fonts</a> and <a href="https://survivejs.com/webpack/loading-assets/loading-images/" target="_blank">images</a>. It can capably and quickly do it all, and with <a href="https://medium.com/@LopezTech/a-web-application-journey-part-3-webpack-dev-server-and-related-improvements-abd5060bd3fc" target="_blank">a little extra configuration</a> you get hot reloading for React components in development, which is *awesome*. I spun up a Postgres database on Heroku to store RSVPs, which is also where the server runs, and used <a href="http://mherman.org/blog/2016/03/13/designing-a-restful-api-with-node-and-postgres/#.WLHfR1UrLIV" target="_blank">pg-promise</a> to execute CRUD actions. I also used <a target="_blank" href="http://javascript.tutorialhorizon.com/2015/07/02/send-email-node-js-express/">Nodemailer</a> to send guest confirmation and admin notification emails via Gmail, which took some extra configuration as it requires <a href="http://masashi-k.blogspot.com/2013/06/sending-mail-with-gmail-using-xoauth2.html" target="_blank">XOAuth2</a>. Lastly, the admin RSVP management page and its associated API routes are protected using Passport local authentication.
+Node with Express is my go-to server setup these days. I've used a couple different build tool combinations in other Node-based projects (Grunt, gulp and/or webpack), but this was the first time I let webpack handle everything—JS(X), (S)CSS, HTML, <a href="https://paradite.com/2016/10/25/font-awesome-angular-2-webpack/" target="_blank">icons</a>, <a href="https://shellmonger.com/2016/01/22/working-with-fonts-with-webpack/" target="_blank">fonts</a> and <a href="https://survivejs.com/webpack/loading-assets/loading-/images/" target="_blank">images</a>. It can capably and quickly do it all, and with <a href="https://medium.com/@LopezTech/a-web-application-journey-part-3-webpack-dev-server-and-related-improvements-abd5060bd3fc" target="_blank">a little extra configuration</a> you get hot reloading for React components in development, which is *awesome*. I spun up a Postgres database on Heroku to store RSVPs, which is also where the server runs, and used <a href="http://mherman.org/blog/2016/03/13/designing-a-restful-api-with-node-and-postgres/#.WLHfR1UrLIV" target="_blank">pg-promise</a> to execute CRUD actions. I also used <a target="_blank" href="http://javascript.tutorialhorizon.com/2015/07/02/send-email-node-js-express/">Nodemailer</a> to send guest confirmation and admin notification emails via Gmail, which took some extra configuration as it requires <a href="http://masashi-k.blogspot.com/2013/06/sending-mail-with-gmail-using-xoauth2.html" target="_blank">XOAuth2</a>. Lastly, the admin RSVP management page and its associated API routes are protected using Passport local authentication.
 
 ### Front End
 
 In conjunction with React, I used an alpha release of <a href="https://www.artembutusov.com/webpack-customizable-bootstrap-4-x-scss/" target="_blank">Bootstrap 4</a> for the framework. I've been using version 3 for a few years now, and the short lifecycle of this project gave me an opportunity to test drive some of the <a href="https://v4-alpha.getbootstrap.com/migration/" target="_blank">changes, additions and removals</a> coming in version 4. I also made use of Animate, Moment, Underscore, D3 and Crossfilter in different places.
+
 
 ---
 
@@ -38,12 +37,12 @@ In conjunction with React, I used an alpha release of <a href="https://www.artem
 
 ### Intro
 
-This component renders a responsive full screen background image with animated <a href="https://css-tricks.com/design-considerations-text-images/" target="_blank">overlay text</a>, a bouncing chevron icon that triggers some <a href="https://gist.github.com/joshcanhelp/a3a669df80898d4097a1e2c01dea52c1" target="_blank">jQuery-free scroll animation</a> and parallax scrolling on larger devices.
+This component renders a responsive full screen background image with animated <a href="https://css-tricks.com/design-considerations-text-/images/" target="_blank">overlay text</a>, a bouncing chevron icon that triggers some <a href="https://gist.github.com/joshcanhelp/a3a669df80898d4097a1e2c01dea52c1" target="_blank">jQuery-free scroll animation</a> and parallax scrolling on larger devices.
 
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-     <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/sections/intro.jpg" alt="Intro component"/>
+     <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/sections/intro.jpg" alt="Intro component"/>
   </div>
   <div class="col-2-12 hide-on-mobile"></div>
 </div>
@@ -57,7 +56,7 @@ Before the wedding date, this section renders a component with two action button
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-    <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/sections/actions.jpg" alt="Actions component"/>
+    <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/sections/actions.jpg" alt="Actions component"/>
   </div>
    <div class="col-2-12 hide-on-mobile"></div>
 </div>
@@ -67,37 +66,37 @@ As the RSVP date approaches/passes, the RSVP action button renders accordingly.
 <div class="grid">
   <div class="col-4-12">
     <div class="text-center">
-      <div style="display: inline-block; max-width: 100%;">
+      <div>
         <div class="text-left">
           <span class="small text-muted">
             <em>Open</em>
           </span>
         </div>
-        <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/rsvps/actions/rsvps_open.jpg" alt="RSVPs open"/>
+        <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/rsvps/actions/rsvps_open.jpg" alt="RSVPs open"/>
       </div>
     </div>
   </div>
   <div class="col-4-12">
     <div class="text-center">
-      <div style="display: inline-block; max-width: 100%;">
+      <div>
         <div class="text-left">
           <span class="small text-muted">
             <em>Closing Soon</em>
           </span>
         </div>
-        <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/rsvps/actions/rsvps_closing.jpg" alt="RSVPs closing soon"/>
+        <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/rsvps/actions/rsvps_closing.jpg" alt="RSVPs closing soon"/>
       </div>
     </div>
   </div>
   <div class="col-4-12">
     <div class="text-center">
-      <div style="display: inline-block; max-width: 100%;">
+      <div>
         <div class="text-left">
           <span class="small text-muted">
             <em>Closed</em>
           </span>
         </div>
-        <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/rsvps/actions/rsvps_closed.jpg" alt="RSVPs closed"/>
+        <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/rsvps/actions/rsvps_closed.jpg" alt="RSVPs closed"/>
       </div>
     </div>
   </div>
@@ -109,13 +108,13 @@ RSVPs are submitted through a series of modal screens launched from the RSVP act
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
     <div class="text-center">
-      <div style="display: inline-block; max-width: 100%;">
+      <div>
         <div class="text-left">
           <span class="small text-muted">
             <em>Search</em>
           </span>
         </div>
-        <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/rsvps/modal/search.jpg" alt="RSVP search"/>
+        <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/rsvps/modal/search.jpg" alt="RSVP search"/>
       </div>
     </div>
   </div>
@@ -125,14 +124,14 @@ RSVPs are submitted through a series of modal screens launched from the RSVP act
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-    <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block; max-width: 100%;">
+    <div class="text-center margin-top-5">
+      <div>
         <div class="text-left">
           <span class="small text-muted">
             <em>Form</em>
           </span>
         </div>
-        <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/rsvps/modal/form.jpg" alt="RSVP form"/>
+        <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/rsvps/modal/form.jpg" alt="RSVP form"/>
       </div>
     </div>
   </div>
@@ -142,14 +141,14 @@ RSVPs are submitted through a series of modal screens launched from the RSVP act
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-    <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block; max-width: 100%;">
+    <div class="text-center margin-top-5">
+      <div>
         <div class="text-left">
           <span class="small text-muted">
             <em>Result</em>
           </span>
         </div>
-        <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/rsvps/modal/result.jpg" alt="RSVP result"/>
+        <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/rsvps/modal/result.jpg" alt="RSVP result"/>
       </div>
     </div>
   </div>
@@ -161,7 +160,7 @@ If the guest provides an email address in the RSVP form, then they receive a con
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-    <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/rsvps/emails/guest_confirmation.jpg" alt="RSVPs open"/>
+    <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/rsvps/emails/guest_confirmation.jpg" alt="RSVPs open"/>
   </div>
   <div class="col-2-12 hide-on-mobile"></div>
 </div>
@@ -171,7 +170,7 @@ The admin receives a notification email each time an RSVP is submitted.
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-    <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/rsvps/emails/admin_notification.jpg" alt="RSVPs closing soon"/>
+    <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/rsvps/emails/admin_notification.jpg" alt="RSVPs closing soon"/>
   </div>
   <div class="col-2-12 hide-on-mobile"></div>
 </div>
@@ -181,7 +180,7 @@ After the wedding date, this section renders a component with a thank you note s
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-    <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/sections/thank_you.jpg" alt="Thank You component"/>
+    <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/sections/thank_you.jpg" alt="Thank You component"/>
   </div>
   <div class="col-2-12 hide-on-mobile"></div>
 </div>
@@ -193,7 +192,7 @@ This component renders bride and groom bios using Bootstrap 4's new <a href="htt
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-     <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/sections/bios.jpg" alt="Bios component"/>
+     <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/sections/bios.jpg" alt="Bios component"/>
   </div>
   <div class="col-2-12 hide-on-mobile"></div>
 </div>
@@ -205,25 +204,25 @@ This component is based on a <a href="https://codyhouse.co/gem/vertical-timeline
 <div class="grid">
   <div class="col-6-12">
     <div class="text-center">
-      <div style="display: inline-block; max-width: 100%;">
+      <div>
         <div class="text-left">
           <span class="small text-muted">
             <em>Timeline</em>
           </span>
         </div>
-        <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/sections/events.jpg" alt="Events component"/>
+        <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/sections/events.jpg" alt="Events component"/>
       </div>
     </div>
   </div>
   <div class="col-6-12">
     <div class="text-center">
-      <div style="display: inline-block; max-width: 100%;">
+      <div>
         <div class="text-left">
           <span class="small text-muted">
             <em>Directions</em>
           </span>
         </div>
-        <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/directions.jpg" alt="Directions modal"/>
+        <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/directions.jpg" alt="Directions modal"/>
       </div>
     </div>
   </div>
@@ -236,7 +235,7 @@ This component renders a Bootstrap 4 <a href="https://v4-alpha.getbootstrap.com/
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-     <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/sections/photos.jpg" alt="Photos component"/>
+     <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/sections/photos.jpg" alt="Photos component"/>
   </div>
   <div class="col-2-12 hide-on-mobile"></div>
 </div>
@@ -247,26 +246,26 @@ Before the wedding date, this component renders a count down over a responsive f
 
 <div class="grid">
   <div class="col-6-12">
-    <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block; max-width: 100%;">
+    <div class="text-center margin-top-5">
+      <div>
         <div class="text-left">
           <span class="small text-muted">
             <em>Count Down</em>
           </span>
         </div>
-        <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/sections/outro_count_down.jpg" alt="Outro count down"/>
+        <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/sections/outro_count_down.jpg" alt="Outro count down"/>
       </div>
     </div>
   </div>
   <div class="col-6-12">
-    <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block; max-width: 100%;">
+    <div class="text-center margin-top-5">
+      <div>
         <div class="text-left">
           <span class="small text-muted">
             <em>Count Up</em>
           </span>
         </div>
-        <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/index/sections/outro_count_up.jpg" alt="Outro count up"/>
+        <img class="img-rounded" src="/blog/images/posts/a_wedding_website/index/sections/outro_count_up.jpg" alt="Outro count up"/>
       </div>
     </div>
   </div>
@@ -284,38 +283,38 @@ The header has icons for adding a new RSVP (in a modal), searching RSVPs by name
 
 <div class="grid">
   <div class="col-4-12">
-    <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block; max-width: 100%;">
+    <div class="text-center margin-top-5">
+      <div>
         <div class="text-left">
           <span class="small text-muted">
             <em>Add</em>
           </span>
         </div>
-        <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/rsvps/actions/add.jpg" alt="Add RSVP"/>
+        <img class="img-rounded" src="/blog/images/posts/a_wedding_website/rsvps/actions/add.jpg" alt="Add RSVP"/>
       </div>
     </div>
   </div>
   <div class="col-4-12">
-    <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block; max-width: 100%;">
+    <div class="text-center margin-top-5">
+      <div>
         <div class="text-left">
           <span class="small text-muted">
             <em>Search</em>
           </span>
         </div>
-        <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/rsvps/actions/search.jpg" alt="Search RSVPs"/>
+        <img class="img-rounded" src="/blog/images/posts/a_wedding_website/rsvps/actions/search.jpg" alt="Search RSVPs"/>
       </div>
     </div>
   </div>
   <div class="col-4-12">
-    <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block; max-width: 100%;">
+    <div class="text-center margin-top-5">
+      <div>
         <div class="text-left">
           <span class="small text-muted">
             <em>Filter</em>
           </span>
         </div>
-        <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/rsvps/actions/filter.jpg" alt="Filter RSVPs"/>
+        <img class="img-rounded" src="/blog/images/posts/a_wedding_website/rsvps/actions/filter.jpg" alt="Filter RSVPs"/>
       </div>
     </div>
   </div>
@@ -328,7 +327,7 @@ The summary tab renders two donut charts: one summarizing RSVPs and another summ
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-     <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/rsvps/tabs/summary.jpg" alt="RSVP summary"/>
+     <img class="img-rounded" src="/blog/images/posts/a_wedding_website/rsvps/tabs/summary.jpg" alt="RSVP summary"/>
   </div>
   <div class="col-2-12 hide-on-mobile"></div>
 </div>
@@ -340,7 +339,7 @@ The details tab renders a sortable table with a sticky header and export to Exce
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-     <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/rsvps/tabs/details.jpg" alt="RSVP details"/>
+     <img class="img-rounded" src="/blog/images/posts/a_wedding_website/rsvps/tabs/details.jpg" alt="RSVP details"/>
   </div>
   <div class="col-2-12 hide-on-mobile"></div>
 </div>
@@ -350,7 +349,7 @@ RSVPs are edited inline with validations for each attribute.
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-     <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/rsvps/actions/edit.jpg" alt="RSVP edit"/>
+     <img class="img-rounded" src="/blog/images/posts/a_wedding_website/rsvps/actions/edit.jpg" alt="RSVP edit"/>
   </div>
   <div class="col-2-12 hide-on-mobile"></div>
 </div>
@@ -360,7 +359,7 @@ RSVPs are deleted by way of modal confirmation.
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-     <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/rsvps/actions/delete.jpg" alt="RSVP delete"/>
+     <img class="img-rounded" src="/blog/images/posts/a_wedding_website/rsvps/actions/delete.jpg" alt="RSVP delete"/>
   </div>
   <div class="col-2-12 hide-on-mobile"></div>
 </div>
@@ -374,7 +373,7 @@ From Google's <a href="https://testmysite.thinkwithgoogle.com/" target="_blank">
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-     <img class="img-rounded" src="../../assets/images/posts/a_wedding_website/page_speed.jpg" alt="PageSpeed Insights"/>
+     <img class="img-rounded" src="/blog/images/posts/a_wedding_website/page_speed.jpg" alt="PageSpeed Insights"/>
   </div>
   <div class="col-2-12 hide-on-mobile"></div>
 </div>

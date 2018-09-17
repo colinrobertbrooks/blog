@@ -1,9 +1,7 @@
 ---
 title: Managing environment workflows with gulp.js
-date: 2017-10-3
-layout: Post
-hero: ../../assets/images/posts/managing_environment_workflows_with_gulp/hero.jpg
-
+date: 2017-10-03
+image: "/blog/images/posts/managing_environment_workflows_with_gulp/hero.jpg"
 ---
 
 Over the years, I've used a few different combinations of frameworks, libraries and tools, some of which come with environment workflows out-of-the-box and others that do not. With the <a href="https://trends.google.com/trends/explore?date=all&q=%2Fm%2F0505cl,%2Fm%2F06y_qx,%2Fm%2F0bbxf89" target="_blank">rising popularity of Node.js</a>, the need to roll one's own environment workflows is also on the rise, as is the number of resources with which to do so. I recently give a presentation about this topic at one of the software development Meetups I attend; below is an overview of the presentation, the lion's share of which was a live demo.
@@ -21,37 +19,37 @@ When I was getting started with development, I used <a href="http://rubyonrails.
 <div class="grid">
   <div class="col-4-12">
     <div class="text-center">
-      <div style="display: inline-block; max-width: 100%;">
+      <div>
         <div class="text-left">
           <span class="small text-muted">
             <em>The good</em>
           </span>
         </div>
-        <img class="img-rounded" src="../../assets/images/posts/managing_environment_workflows_with_gulp/asset_pipeline_good.jpg" alt="Welcome aboard. You're riding Ruby on Rails! (meme)"/>
+        <img class="img-rounded" src="/blog/images/posts/managing_environment_workflows_with_gulp/asset_pipeline_good.jpg" alt="Welcome aboard. You're riding Ruby on Rails! (meme)"/>
       </div>
     </div>
   </div>
   <div class="col-4-12">
     <div class="text-center">
-      <div style="display: inline-block; max-width: 100%;">
+      <div>
         <div class="text-left">
           <span class="small text-muted">
             <em>The bad</em>
           </span>
         </div>
-        <img class="img-rounded" src="../../assets/images/posts/managing_environment_workflows_with_gulp/asset_pipeline_bad.jpg" alt="I don't always deploy Rails to Heroku, but when I do, I break the Asset Pipeline. (meme)"/>
+        <img class="img-rounded" src="/blog/images/posts/managing_environment_workflows_with_gulp/asset_pipeline_bad.jpg" alt="I don't always deploy Rails to Heroku, but when I do, I break the Asset Pipeline. (meme)"/>
       </div>
     </div>
   </div>
   <div class="col-4-12">
     <div class="text-center">
-      <div style="display: inline-block; max-width: 100%;">
+      <div>
         <div class="text-left">
           <span class="small text-muted">
             <em>The ugly</em>
           </span>
         </div>
-        <img class="img-rounded" src="../../assets/images/posts/managing_environment_workflows_with_gulp/asset_pipeline_ugly.jpg" alt="Asset Pipeline! (meme)"/>
+        <img class="img-rounded" src="/blog/images/posts/managing_environment_workflows_with_gulp/asset_pipeline_ugly.jpg" alt="Asset Pipeline! (meme)"/>
       </div>
     </div>
   </div>
@@ -75,9 +73,9 @@ Optimized for developer experience, the develop workflow is tuned to minimize wa
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-    <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block; max-width: 100%;">
-        <img class="img-rounded" src="../../assets/images/posts/managing_environment_workflows_with_gulp/dev.jpg" alt="Develop workflow (console screenshot)"/>
+    <div class="text-center margin-top-5">
+      <div>
+        <img class="img-rounded" src="/blog/images/posts/managing_environment_workflows_with_gulp/dev.jpg" alt="Develop workflow (console screenshot)"/>
       </div>
     </div>
   </div>
@@ -91,9 +89,9 @@ One of 12 items on <a href="https://www.joelonsoftware.com/2000/08/09/the-joel-t
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-    <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block; max-width: 100%;">
-        <img class="img-rounded" src="../../assets/images/posts/managing_environment_workflows_with_gulp/build.jpg" alt="Build workflow (console screenshot)"/>
+    <div class="text-center margin-top-5">
+      <div>
+        <img class="img-rounded" src="/blog/images/posts/managing_environment_workflows_with_gulp/build.jpg" alt="Build workflow (console screenshot)"/>
       </div>
     </div>
   </div>
@@ -109,9 +107,9 @@ Locally, the deploy workflow runs the build workflow, zips the build directory a
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-    <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block; max-width: 100%;">
-        <img class="img-rounded" src="../../assets/images/posts/managing_environment_workflows_with_gulp/deploy-local.jpg" alt="Deploy workflow locally (console screenshot)"/>
+    <div class="text-center margin-top-5">
+      <div>
+        <img class="img-rounded" src="/blog/images/posts/managing_environment_workflows_with_gulp/deploy-local.jpg" alt="Deploy workflow locally (console screenshot)"/>
       </div>
     </div>
   </div>
@@ -125,9 +123,9 @@ In the test environment, the deploy workflow on the server unzips the zipped bui
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-    <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block; max-width: 100%;">
-        <img class="img-rounded" src="../../assets/images/posts/managing_environment_workflows_with_gulp/deploy-server-test.jpg" alt="Test deploy workflow on the server (console screenshot)"/>
+    <div class="text-center margin-top-5">
+      <div>
+        <img class="img-rounded" src="/blog/images/posts/managing_environment_workflows_with_gulp/deploy-server-test.jpg" alt="Test deploy workflow on the server (console screenshot)"/>
       </div>
     </div>
   </div>
@@ -139,9 +137,9 @@ In the production environment, the deploy workflow on the server unzips the zipp
 <div class="grid">
   <div class="col-2-12 hide-on-mobile"></div>
   <div class="col-8-12">
-    <div class="text-center" style="margin-top: 5px;">
-      <div style="display: inline-block; max-width: 100%;">
-        <img class="img-rounded" src="../../assets/images/posts/managing_environment_workflows_with_gulp/deploy-server-prod.jpg" alt="Production deploy workflow on the server (console screenshot)"/>
+    <div class="text-center margin-top-5">
+      <div>
+        <img class="img-rounded" src="/blog/images/posts/managing_environment_workflows_with_gulp/deploy-server-prod.jpg" alt="Production deploy workflow on the server (console screenshot)"/>
       </div>
     </div>
   </div>

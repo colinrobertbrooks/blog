@@ -1,9 +1,7 @@
 ---
 title: Buttercup Password Manager
 date: 2018-01-06
-layout: Post
-hero: ../../assets/images/posts/buttercup_password_manager/hero.jpg
-
+image: "/blog/images/posts/buttercup_password_manager/hero.jpg"
 ---
 
 My New Year's resolution was to start using a <a href="https://www.youtube.com/watch?v=xHSnHj-zKF4" target="_blank">password manager</a>. There are a lot of password managers out there, but I ultimately decided on <a href="https://buttercup.pw/" target="_blank">Buttercup</a>.
@@ -19,21 +17,21 @@ Buttercup is a free, secure, cross-platform credentials manager. Your credential
     <em>Desktop</em>
   </span>
 </div>
-<img class="img-rounded" src="../../assets/images/posts/buttercup_password_manager/desktop.jpg" alt="Buttercup desktop"/>
+<img class="img-rounded" src="/blog/images/posts/buttercup_password_manager/desktop.jpg" alt="Buttercup desktop"/>
 
-<div class="text-left" style="margin-top: 10px;">
+<div class="text-left margin-top-10">
   <span class="small text-muted">
     <em>Browser</em>
   </span>
 </div>
-<img class="img-rounded" src="../../assets/images/posts/buttercup_password_manager/browser.jpg" alt="Buttercup browser"/>
+<img class="img-rounded" src="/blog/images/posts/buttercup_password_manager/browser.jpg" alt="Buttercup browser"/>
 
-<div class="text-left" style="margin-top: 10px;">
+<div class="text-left margin-top-10">
   <span class="small text-muted">
     <em>Mobile</em>
   </span>
 </div>
-<img class="img-rounded" src="../../assets/images/posts/buttercup_password_manager/mobile.jpg" alt="Buttercup mobile"/>
+<img class="img-rounded" src="/blog/images/posts/buttercup_password_manager/mobile.jpg" alt="Buttercup mobile"/>
 
 
 ---
