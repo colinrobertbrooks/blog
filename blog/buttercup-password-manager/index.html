@@ -1,0 +1,234 @@
+<!DOCTYPE html><html lang="en"><head><meta data-react-helmet="true" charSet="utf-8"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" name="description" content="My New Year&#x27;s resolution was to start using a password manager. There are a lot of password managers out there, but I ultimately decided on Buttercup.…"/><title data-react-helmet="true">Buttercup Password Manager</title><link rel="stylesheet" href="/phenomic/phenomic.main.79104c64.css"/></head><body><div id="PhenomicRoot"><div class="Layout" data-reactroot=""><style>
+        html { box-sizing: border-box; }
+        *, *::before, *::after { box-sizing: inherit; }
+
+        html, body {
+          margin: 0;
+          padding: 0;
+
+          /* system font https://medium.com/designing-medium/system-shock-6b1dc6d6596f */
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+          color: #212529;
+        }
+
+        .Layout {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          min-height: 100vh;
+        }
+
+        .Layout-body {
+          flex: 1 0;
+        }
+
+        .Layout-children {
+          position: relative;
+          max-width: 1000px;
+          margin: auto;
+          margin-top: -40px;
+          padding: 20px 40px;
+          background: #fff;
+          border-radius: 3px;
+          font-size: 18px;
+          line-height: 2;
+        }
+
+        .Layout-children a {
+          color: #69BF55;
+        }
+
+        .Layout-children p,
+        .Layout-children ul,
+        .Layout-children ol {
+          margin-bottom: 40px;
+        }
+
+        .Layout hr {
+          border: 0;
+          height: 0;
+          border-top: 1px solid rgba(0, 0, 0, 0.1);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+          margin: 40px;
+        }
+      </style><style>
+        .Header {
+          position: relative;
+        }
+
+        .Header-nav {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin: 0 auto;
+          padding: 0;
+          line-height: 3rem;
+          background: #fff;
+          border-top: 4px solid  #444444;
+        }
+
+        .Header-navPart1,
+        .Header-navPart2 {
+          display: flex;
+          flex-direction: row;
+        }
+
+        .Header-link {
+          display: flex;
+          align-items: center;
+          padding: 0 1rem;
+          color: inherit;
+          text-decoration: none !important;
+          transition: 0.25s all;
+          border-bottom: 4px solid transparent;
+        }
+
+        .Header-link:hover,
+        .Header-link:focus {
+          color: inherit;
+          border-bottom-color: #3E85D2;
+        }
+
+        .Header-hero {
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          min-height: 400px;
+          padding: 3rem;
+          color: #fff;
+          background: #323232;
+        }
+
+        .Header-hero-background {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-size: cover;
+          background-position: 50% 50%;
+          filter: blur(1px);
+        }
+
+        .Header-hero-title {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          margin: 0;
+          padding-bottom: 40px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          font-size: 52px;
+          font-weight: 300;
+          color: #fff;
+          text-shadow: 0 3px 4px rgba(0,0,0,0.6);
+          text-align: center;
+          box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        .Header-light {
+          position: relative;
+          padding: 3rem;
+          text-align: center;
+        }
+
+        .Header-light-title {
+          font-size: 48px;
+          font-weight: 800;
+          margin: 40px 0;
+        }
+      </style><header class="Header"><nav class="Header-nav"><div class="Header-navPart1"><a href="https://colinrcummings.github.io" class="Header-link">Portfolio</a><a href="/blog" class="Header-link">Blog</a></div><div class="Header-navPart2"><a href="https://twitter.com/colinrcummings" class="Header-link">Twitter</a><a href="http://github.com/colinrcummings" class="Header-link">GitHub</a></div></nav><div class="Header-hero"><div class="Header-hero-background" style="background-image:url(/images/posts/buttercup_password_manager/hero.jpg)"></div><h1 class="Header-hero-title">Buttercup Password Manager</h1></div></header><div class="Layout-body"><div class="Layout-children"><p class="small text-muted text-center">Fri Jan 05 2018</p><div><p>My New Year&#x27;s resolution was to start using a <a href="https://www.youtube.com/watch?v=xHSnHj-zKF4" target="_blank">password manager</a>. There are a lot of password managers out there, but I ultimately decided on <a href="https://buttercup.pw/" target="_blank">Buttercup</a>.</p>
+<hr/>
+<h2 id="buttercup"><a aria-hidden="true" href="#buttercup"><span class="icon icon-link"></span></a>Buttercup</h2>
+<p>Buttercup is a free, secure, cross-platform credentials manager. Your credentials are stored in an encrypted archive that resides on a file hosting service of your choice, which you can access from a desktop, browser and/or mobile device.</p>
+<div class="text-left">
+  <span class="small text-muted">
+    <em>Desktop</em>
+  </span>
+</div>
+<img class="img-rounded" src="/images/posts/buttercup_password_manager/desktop.jpg" alt="Buttercup desktop"/>
+<div class="text-left margin-top-10">
+  <span class="small text-muted">
+    <em>Browser</em>
+  </span>
+</div>
+<img class="img-rounded" src="/images/posts/buttercup_password_manager/browser.jpg" alt="Buttercup browser"/>
+<div class="text-left margin-top-10">
+  <span class="small text-muted">
+    <em>Mobile</em>
+  </span>
+</div>
+<img class="img-rounded" src="/images/posts/buttercup_password_manager/mobile.jpg" alt="Buttercup mobile"/>
+<hr/>
+<h2 id="setup"><a aria-hidden="true" href="#setup"><span class="icon icon-link"></span></a>Setup</h2>
+<p>Setting up Buttercup was easy. In just a few minutes, I downloaded Buttercup for desktop, create a <code>.bcup</code> archive on Dropbox, connected Buttercup to Dropbox and created a master password for the archive. The hard part was updating my existing accounts with secure passwords (i.e. changing <code>myP@ssw0rd_1</code> to something like <code>w7bsN5jcBdknz[&lt;!VS:+mv.5t+Vrtt</code>) and adding them to Buttercup. The Buttercup desktop application has a built-in password generator, which was very helpful. When I was done, I downloaded Buttercup for mobile, connected it to Dropbox, entered my archive master password and there were all of my credentials.</p>
+<hr/>
+<h2 id="usage"><a aria-hidden="true" href="#usage"><span class="icon icon-link"></span></a>Usage</h2>
+<p>I&#x27;ve been using Buttercup for a few weeks now, and I really like it. Having a password manager significantly decreases the cognitive load of remembering different credentials for dozens of accounts. Logging into an account is now as easy as opening Buttercup, copying my account credentials and pasting them into the login form (it&#x27;s even easier with the browser extension). Using Buttercup is also a real treat—it seamlessly keeps my credentials in synch and the UI/UX is really impeccable accross platforms. The thing I like most about using Buttercup, however, is that it&#x27;s <a href="https://opensource.org/faq#osd" target="_blank">open source</a>. A couple things that I&#x27;m keeping an eye on:</p>
+<div class="text-left">
+  <span class="small text-muted">
+    <em>Desktop</em>
+  </span>
+</div>
+<ul>
+  <li>
+    <a href="https://github.com/buttercup/buttercup-desktop/issues/78" target="_blank">Change archive&#x27;s password</a>
+  </li>
+</ul>
+<div class="text-left">
+  <span class="small text-muted">
+    <em>Browser</em>
+  </span>
+</div>
+<ul>
+  <li>
+    <a href="https://github.com/buttercup/buttercup-browser-extension/issues/94" target="_blank">Make auto-submit optional</a>
+  </li>
+</ul>
+<div class="text-left">
+  <span class="small text-muted">
+    <em>Mobile</em>
+  </span>
+</div>
+<ul>
+  <li>
+    <a href="https://github.com/buttercup/buttercup-mobile/issues/22" target="_blank">Touch to unlock</a>
+  </li>
+  <li>
+    <a href="https://github.com/buttercup/buttercup-mobile/issues/23" target="_blank">Password generator</a>
+  </li>
+</ul>
+<p>Check out the <a href="https://github.com/buttercup/roadmap" target="_blank">roadmap</a> for more information.</p>
+<hr/>
+<h2 id="feedback"><a aria-hidden="true" href="#feedback"><span class="icon icon-link"></span></a>Feedback</h2>
+<p>Have questions, comments or suggestions? Reach out to me on Twitter (<a href="https://twitter.com/colinrcummings">@colinrcummings</a>).</p>
+<p>— Colin</p></div></div></div><style>
+        .Footer {
+          padding: 40px;
+          color: #fff;
+          background: #2c2c2c;
+          font-size: 12px;
+        }
+        .Footer-content {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          max-width: 1000px;
+          margin: auto;
+        }
+
+        .Footer-link {
+          color: #fff;
+          padding: 10px;
+        }
+
+        .Footer-link:hover,
+        .Footer-link:focus {
+          color: inherit;
+        }
+        </style><footer class="Footer"><div class="Footer-content"><div class="Footer-part">Built with<!-- --> <a href="https://phenomic.io/" target="_blank" rel="noopener noreferrer">&lt;Phenomic /&gt;</a></div><div class="Footer-part">© <!-- -->2018<!-- --> <!-- -->Colin Cummings</div></div></footer></div></div><script id="PhenomicHydration" type="text/json">{"path=content%2Fposts&id=buttercup-password-manager":{"status":"idle","node":{"filename":"buttercup-password-manager.md","title":"Buttercup Password Manager","headings":[{"level":2,"text":"Buttercup","id":"buttercup"},{"level":2,"text":"Setup","id":"setup"},{"level":2,"text":"Usage","id":"usage"},{"level":2,"text":"Feedback","id":"feedback"}],"date":"2018-01-06T00:00:00.000Z","image":"/images/posts/buttercup_password_manager/hero.jpg","body":{"t":"div","c":[{"t":"p","c":["My New Year's resolution was to start using a ",{"t":"a","p":{"href":"https://www.youtube.com/watch?v=xHSnHj-zKF4","target":"_blank"},"c":["password manager"]},". There are a lot of password managers out there, but I ultimately decided on ",{"t":"a","p":{"href":"https://buttercup.pw/","target":"_blank"},"c":["Buttercup"]},"."]},"\n",{"t":"hr"},"\n",{"t":"h2","p":{"id":"buttercup"},"c":[{"t":"a","p":{"aria-hidden":"true","href":"#buttercup"},"c":[{"t":"span","p":{"class":"icon icon-link"}}]},"Buttercup"]},"\n",{"t":"p","c":["Buttercup is a free, secure, cross-platform credentials manager. Your credentials are stored in an encrypted archive that resides on a file hosting service of your choice, which you can access from a desktop, browser and/or mobile device."]},"\n",{"t":"div","p":{"class":"text-left"},"c":["\n  ",{"t":"span","p":{"class":"small text-muted"},"c":["\n    ",{"t":"em","c":["Desktop"]},"\n  "]},"\n"]},"\n",{"t":"img","p":{"class":"img-rounded","src":"/images/posts/buttercup_password_manager/desktop.jpg","alt":"Buttercup desktop"}},"\n",{"t":"div","p":{"class":"text-left margin-top-10"},"c":["\n  ",{"t":"span","p":{"class":"small text-muted"},"c":["\n    ",{"t":"em","c":["Browser"]},"\n  "]},"\n"]},"\n",{"t":"img","p":{"class":"img-rounded","src":"/images/posts/buttercup_password_manager/browser.jpg","alt":"Buttercup browser"}},"\n",{"t":"div","p":{"class":"text-left margin-top-10"},"c":["\n  ",{"t":"span","p":{"class":"small text-muted"},"c":["\n    ",{"t":"em","c":["Mobile"]},"\n  "]},"\n"]},"\n",{"t":"img","p":{"class":"img-rounded","src":"/images/posts/buttercup_password_manager/mobile.jpg","alt":"Buttercup mobile"}},"\n",{"t":"hr"},"\n",{"t":"h2","p":{"id":"setup"},"c":[{"t":"a","p":{"aria-hidden":"true","href":"#setup"},"c":[{"t":"span","p":{"class":"icon icon-link"}}]},"Setup"]},"\n",{"t":"p","c":["Setting up Buttercup was easy. In just a few minutes, I downloaded Buttercup for desktop, create a ",{"t":"code","c":[".bcup"]}," archive on Dropbox, connected Buttercup to Dropbox and created a master password for the archive. The hard part was updating my existing accounts with secure passwords (i.e. changing ",{"t":"code","c":["myP@ssw0rd_1"]}," to something like ",{"t":"code","c":["w7bsN5jcBdknz[<!VS:+mv.5t+Vrtt"]},") and adding them to Buttercup. The Buttercup desktop application has a built-in password generator, which was very helpful. When I was done, I downloaded Buttercup for mobile, connected it to Dropbox, entered my archive master password and there were all of my credentials."]},"\n",{"t":"hr"},"\n",{"t":"h2","p":{"id":"usage"},"c":[{"t":"a","p":{"aria-hidden":"true","href":"#usage"},"c":[{"t":"span","p":{"class":"icon icon-link"}}]},"Usage"]},"\n",{"t":"p","c":["I've been using Buttercup for a few weeks now, and I really like it. Having a password manager significantly decreases the cognitive load of remembering different credentials for dozens of accounts. Logging into an account is now as easy as opening Buttercup, copying my account credentials and pasting them into the login form (it's even easier with the browser extension). Using Buttercup is also a real treat—it seamlessly keeps my credentials in synch and the UI/UX is really impeccable accross platforms. The thing I like most about using Buttercup, however, is that it's ",{"t":"a","p":{"href":"https://opensource.org/faq#osd","target":"_blank"},"c":["open source"]},". A couple things that I'm keeping an eye on:"]},"\n",{"t":"div","p":{"class":"text-left"},"c":["\n  ",{"t":"span","p":{"class":"small text-muted"},"c":["\n    ",{"t":"em","c":["Desktop"]},"\n  "]},"\n"]},"\n",{"t":"ul","c":["\n  ",{"t":"li","c":["\n    ",{"t":"a","p":{"href":"https://github.com/buttercup/buttercup-desktop/issues/78","target":"_blank"},"c":["Change archive's password"]},"\n  "]},"\n"]},"\n",{"t":"div","p":{"class":"text-left"},"c":["\n  ",{"t":"span","p":{"class":"small text-muted"},"c":["\n    ",{"t":"em","c":["Browser"]},"\n  "]},"\n"]},"\n",{"t":"ul","c":["\n  ",{"t":"li","c":["\n    ",{"t":"a","p":{"href":"https://github.com/buttercup/buttercup-browser-extension/issues/94","target":"_blank"},"c":["Make auto-submit optional"]},"\n  "]},"\n"]},"\n",{"t":"div","p":{"class":"text-left"},"c":["\n  ",{"t":"span","p":{"class":"small text-muted"},"c":["\n    ",{"t":"em","c":["Mobile"]},"\n  "]},"\n"]},"\n",{"t":"ul","c":["\n  ",{"t":"li","c":["\n    ",{"t":"a","p":{"href":"https://github.com/buttercup/buttercup-mobile/issues/22","target":"_blank"},"c":["Touch to unlock"]},"\n  "]},"\n  ",{"t":"li","c":["\n    ",{"t":"a","p":{"href":"https://github.com/buttercup/buttercup-mobile/issues/23","target":"_blank"},"c":["Password generator"]},"\n  "]},"\n"]},"\n",{"t":"p","c":["Check out the ",{"t":"a","p":{"href":"https://github.com/buttercup/roadmap","target":"_blank"},"c":["roadmap"]}," for more information."]},"\n",{"t":"hr"},"\n",{"t":"h2","p":{"id":"feedback"},"c":[{"t":"a","p":{"aria-hidden":"true","href":"#feedback"},"c":[{"t":"span","p":{"class":"icon icon-link"}}]},"Feedback"]},"\n",{"t":"p","c":["Have questions, comments or suggestions? Reach out to me on Twitter (",{"t":"a","p":{"href":"https://twitter.com/colinrcummings"},"c":["@colinrcummings"]},")."]},"\n",{"t":"p","c":["— Colin"]}]}}}}</script><script src="/phenomic/phenomic.main.3bd1c99e.js" async=""></script></body></html>
