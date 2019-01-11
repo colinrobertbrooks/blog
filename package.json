@@ -12,8 +12,8 @@
   },
   "devDependencies": {
     "@phenomic/cli": "^1.0.0-beta.3",
-    "@phenomic/core": "^1.0.0-beta.3",
-    "@phenomic/preset-react-app": "^1.0.0-beta.3",
+    "@phenomic/core": "^1.0.0-beta.8",
+    "@phenomic/preset-react-app": "^1.0.0-beta.8",
     "gh-pages": "^2.0.0",
     "history": "^3.0.0",
     "react": "^16.5.1",
