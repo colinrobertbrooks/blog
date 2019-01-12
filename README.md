@@ -1,25 +1,33 @@
-# [Blog](https://colinrcummings.github.io/blog/) built with [Phenomic](https://github.com/MoOx/phenomic) (version 1.0.0-beta.3)
+# [`<Blog />`](https://colinrcummings.github.io/blog/)
+
+My personal blog. Forked from [Gatsby blog starter](https://github.com/gatsbyjs/gatsby-starter-blog).
 
 ## Install dependencies
 
 ```sh
-npm install
+yarn install
 ```
 
 ## Run development server
 
 ```sh
-npm start
+yarn start
 ```
 
 ## Build for production
 
 ```sh
-npm run build
+yarn run build
+```
+
+## Serve production build locally
+
+```sh
+serve -s public
 ```
 
 ## Deploy to GitHub Pages
 
 ```sh
-npm run deploy
+yarn run deploy
 ```
