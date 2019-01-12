@@ -26,7 +26,7 @@ yarn run build
 serve -s public
 ```
 
-## Deploy to GitHub Pages (TODO)
+## Deploy to GitHub Pages
 
 ```sh
 yarn run deploy
