@@ -5,7 +5,7 @@ My personal blog. Forked from [Gatsby blog starter](https://github.com/gatsbyjs/
 ## Install dependencies
 
 ```sh
-yarn install
+yarn
 ```
 
 ## Run development server

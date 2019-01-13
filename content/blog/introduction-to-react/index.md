@@ -1,6 +1,6 @@
 ---
 title: Introduction to React.js
-date: '2017-05-18T23:46:37.121Z'
+date: '2017-05-18'
 ---
 
 I've been using [React](https://facebook.github.io/react/) for a few years now. If you read my [previous post](/a-wedding-website/), then you know that it's my go-to library for creating user interfaces (including [this blog](https://github.com/colinrcummings/blog)). I was recently asked to give a presentation on React at one of the software development Meetups I attend. I opted to introduce the library, walk through a couple of core concepts (with examples), do a few ad hoc demos and then leave the audience with some additional concepts, resources and tools. Below is an overview of [Spectacle](http://formidable.com/open-source/spectacle/), the library I used to create the presentation.

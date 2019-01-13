@@ -5,6 +5,7 @@
   "repository": "https://github.com/colinrcummings/blog",
   "private": true,
   "scripts": {
+    "clean": "rm -rf ./.cache/*",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md'",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",

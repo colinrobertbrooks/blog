@@ -1,6 +1,6 @@
 ---
 title: A Wedding Website
-date: '2017-02-26T23:46:37.121Z'
+date: '2017-02-26'
 ---
 
 My sister's getting married. During a discussion about how to handle RSVPs for the big day, I floated the option of doing it online. This was a welcome idea; however, it meant she needed a website. The question, then, was to buy or build.
