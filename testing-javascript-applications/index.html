@@ -1,0 +1,374 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/blog/app.54face356ad0c6ff01f3.css">@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:100;src:local("Montserrat Thin "),local("Montserrat-Thin"),url(/blog/static/montserrat-latin-100-50d279861fb3cbfed809eae6ed8b9ac9.woff2) format("woff2"),url(/blog/static/montserrat-latin-100-5e334eff013f12fbb8ed72c2a253f119.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:100;src:local("Montserrat Thin italic"),local("Montserrat-Thinitalic"),url(/blog/static/montserrat-latin-100italic-8c0705336558194799a8729840d7ed9d.woff2) format("woff2"),url(/blog/static/montserrat-latin-100italic-03e19243272affe738654a157625ec26.woff) format("woff")}@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:200;src:local("Montserrat Extra Light "),local("Montserrat-Extra Light"),url(/blog/static/montserrat-latin-200-4343d3d91a9446226e7a8bbb024111ad.woff2) format("woff2"),url(/blog/static/montserrat-latin-200-f2022ecd65a0703ec3edcb7641709a75.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:200;src:local("Montserrat Extra Light italic"),local("Montserrat-Extra Lightitalic"),url(/blog/static/montserrat-latin-200italic-116c4c4b14ef76b0555da09854512022.woff2) format("woff2"),url(/blog/static/montserrat-latin-200italic-89614a6008fc5c60739012463d0ee7e6.woff) format("woff")}@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:300;src:local("Montserrat Light "),local("Montserrat-Light"),url(/blog/static/montserrat-latin-300-d2ad295b60682a6537c358e06ea80c61.woff2) format("woff2"),url(/blog/static/montserrat-latin-300-3a371ee0d175f5c2b15ce1d6b981dc4e.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:300;src:local("Montserrat Light italic"),local("Montserrat-Lightitalic"),url(/blog/static/montserrat-latin-300italic-f6b6bf2431003f8142e800f9df157989.woff2) format("woff2"),url(/blog/static/montserrat-latin-300italic-16521668f5f238098329cdd7d27c391e.woff) format("woff")}@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:400;src:local("Montserrat Regular "),local("Montserrat-Regular"),url(/blog/static/montserrat-latin-400-240a84447b78da0920fcb07e378f2c5f.woff2) format("woff2"),url(/blog/static/montserrat-latin-400-b20cc131034316b1c85d0498fb9ed5c5.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:400;src:local("Montserrat Regular italic"),local("Montserrat-Regularitalic"),url(/blog/static/montserrat-latin-400italic-86172bb829de6be08b92512096b6aca6.woff2) format("woff2"),url(/blog/static/montserrat-latin-400italic-9405e78785a55cf0e4ea7669d4616ea9.woff) format("woff")}@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:500;src:local("Montserrat Medium "),local("Montserrat-Medium"),url(/blog/static/montserrat-latin-500-fb8d6b71dbe8d9294be43082936f649e.woff2) format("woff2"),url(/blog/static/montserrat-latin-500-50825d47af7ae47e055018eb689c6c99.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:500;src:local("Montserrat Medium italic"),local("Montserrat-Mediumitalic"),url(/blog/static/montserrat-latin-500italic-c0a555a4f8e997385a3eebbd4da0b9ee.woff2) format("woff2"),url(/blog/static/montserrat-latin-500italic-635de59c4be86285b1f70068c95b9816.woff) format("woff")}@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:600;src:local("Montserrat SemiBold "),local("Montserrat-SemiBold"),url(/blog/static/montserrat-latin-600-d5615136a08cfee70deb4be1ee1651df.woff2) format("woff2"),url(/blog/static/montserrat-latin-600-f300da4fb4fe00e23915f62b2c643681.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:600;src:local("Montserrat SemiBold italic"),local("Montserrat-SemiBolditalic"),url(/blog/static/montserrat-latin-600italic-10f29d139edacde92df63374c5672568.woff2) format("woff2"),url(/blog/static/montserrat-latin-600italic-2bc37d86a4ba12ce526c4af904a9946e.woff) format("woff")}@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:700;src:local("Montserrat Bold "),local("Montserrat-Bold"),url(/blog/static/montserrat-latin-700-7d77e1f03eefc452dab14d7f89080083.woff2) format("woff2"),url(/blog/static/montserrat-latin-700-81826529772e52f0f14a4c73c2f2c7f1.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:700;src:local("Montserrat Bold italic"),local("Montserrat-Bolditalic"),url(/blog/static/montserrat-latin-700italic-1dd2b53f1567a29e0505de9b27c4352c.woff2) format("woff2"),url(/blog/static/montserrat-latin-700italic-c162d257f5e9f9b108a96a604cfb2132.woff) format("woff")}@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:800;src:local("Montserrat ExtraBold "),local("Montserrat-ExtraBold"),url(/blog/static/montserrat-latin-800-d4e7bf86bbd8e5f43ca73fa831218648.woff2) format("woff2"),url(/blog/static/montserrat-latin-800-895aadbff357be35ac8dd107c7975ee7.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:800;src:local("Montserrat ExtraBold italic"),local("Montserrat-ExtraBolditalic"),url(/blog/static/montserrat-latin-800italic-fc0cbe442f7b3733c91e982e825c4daa.woff2) format("woff2"),url(/blog/static/montserrat-latin-800italic-b3362875067300abedb7a8fb97903258.woff) format("woff")}@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:900;src:local("Montserrat Black "),local("Montserrat-Black"),url(/blog/static/montserrat-latin-900-c8bdd772c0d1347720ff7e3fb72719f3.woff2) format("woff2"),url(/blog/static/montserrat-latin-900-1b99ef78e627dd9bbd0ca4b5c0789547.woff) format("woff")}@font-face{font-family:Montserrat;font-style:italic;font-display:swap;font-weight:900;src:local("Montserrat Black italic"),local("Montserrat-Blackitalic"),url(/blog/static/montserrat-latin-900italic-cb72c1f90f66c124fb897a75bec64c78.woff2) format("woff2"),url(/blog/static/montserrat-latin-900italic-b78bb9f8ecec6c5a924c873f1818095f.woff) format("woff")}@font-face{font-family:Merriweather;font-style:normal;font-display:swap;font-weight:300;src:local("Merriweather Light "),local("Merriweather-Light"),url(/blog/static/merriweather-latin-300-f015f1e9a46a3b9db4fd64564dacece4.woff2) format("woff2"),url(/blog/static/merriweather-latin-300-92dfe81b725c342d31d962da975c07a6.woff) format("woff")}@font-face{font-family:Merriweather;font-style:italic;font-display:swap;font-weight:300;src:local("Merriweather Light italic"),local("Merriweather-Lightitalic"),url(/blog/static/merriweather-latin-300italic-7fd86b32accf2df4403d1d4fa3a81502.woff2) format("woff2"),url(/blog/static/merriweather-latin-300italic-878b76f59d5ba58dd1652dc8d2a0f4f9.woff) format("woff")}@font-face{font-family:Merriweather;font-style:normal;font-display:swap;font-weight:400;src:local("Merriweather Regular "),local("Merriweather-Regular"),url(/blog/static/merriweather-latin-400-12dbf4c00ae43698f278b099e4b0ec9e.woff2) format("woff2"),url(/blog/static/merriweather-latin-400-1fffad22b085a877995812dbf1d9ac08.woff) format("woff")}@font-face{font-family:Merriweather;font-style:italic;font-display:swap;font-weight:400;src:local("Merriweather Regular italic"),local("Merriweather-Regularitalic"),url(/blog/static/merriweather-latin-400italic-1e0d3e8121d88969bfb153c8f174b758.woff2) format("woff2"),url(/blog/static/merriweather-latin-400italic-de18d4c4e8e808a7248a185f866ff094.woff) format("woff")}@font-face{font-family:Merriweather;font-style:normal;font-display:swap;font-weight:700;src:local("Merriweather Bold "),local("Merriweather-Bold"),url(/blog/static/merriweather-latin-700-dc8fec81a125fc63856587e6683da73b.woff2) format("woff2"),url(/blog/static/merriweather-latin-700-d7d2ed8e58f303392cc3fc00ba3a9186.woff) format("woff")}@font-face{font-family:Merriweather;font-style:italic;font-display:swap;font-weight:700;src:local("Merriweather Bold italic"),local("Merriweather-Bolditalic"),url(/blog/static/merriweather-latin-700italic-b7b7e5da4d7be8c12bd5a6c809edc8fc.woff2) format("woff2"),url(/blog/static/merriweather-latin-700italic-6210a5fc1c54ca85a5d82aa85d7a9b5c.woff) format("woff")}@font-face{font-family:Merriweather;font-style:normal;font-display:swap;font-weight:900;src:local("Merriweather Black "),local("Merriweather-Black"),url(/blog/static/merriweather-latin-900-43f870d543dd89fbeb66d417c0d97276.woff2) format("woff2"),url(/blog/static/merriweather-latin-900-8f3806df74937c7b8b53f24ae1e725d1.woff) format("woff")}@font-face{font-family:Merriweather;font-style:italic;font-display:swap;font-weight:900;src:local("Merriweather Black italic"),local("Merriweather-Blackitalic"),url(/blog/static/merriweather-latin-900italic-168c1ab28ed0e4e7d654334def288bc1.woff2) format("woff2"),url(/blog/static/merriweather-latin-900italic-ae7778f01871e35ee142ef207b313b34.woff) format("woff")}</style><meta name="generator" content="Gatsby 2.0.76"/><style type="text/css">
+        .gatsbyRemarkImagesGrid {
+          ;
+        }
+
+        .gatsbyRemarkImagesGrid-grid {
+          display: grid;
+          min-height: 0;
+          min-width: 0;
+          grid-gap: 10px;
+        }
+
+        .gatsbyRemarkImagesGrid-figcaption {
+          text-align: center;
+        }
+      </style><title data-react-helmet="true">Testing JavaScript Applications | &lt;Blog /&gt;</title><meta data-react-helmet="true" name="description" content="In 2018, I doubled down on my testing game. Going into the year, I was primarily writing  unit tests , with  Jasmine  as my go-to test runner. In backend tests…"/><meta data-react-helmet="true" property="og:title" content="Testing JavaScript Applications"/><meta data-react-helmet="true" property="og:description" content="In 2018, I doubled down on my testing game. Going into the year, I was primarily writing  unit tests , with  Jasmine  as my go-to test runner. In backend tests…"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="Colin Cummings"/><meta data-react-helmet="true" name="twitter:title" content="Testing JavaScript Applications"/><meta data-react-helmet="true" name="twitter:description" content="In 2018, I doubled down on my testing game. Going into the year, I was primarily writing  unit tests , with  Jasmine  as my go-to test runner. In backend tests…"/><style id="typography.js">html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html{font:100%/1.75 'Merriweather','Georgia',serif;box-sizing:border-box;overflow-y:scroll;}*{box-sizing:inherit;}*:before{box-sizing:inherit;}*:after{box-sizing:inherit;}body{color:hsla(0,0%,0%,0.9);font-family:'Merriweather','Georgia',serif;font-weight:400;word-wrap:break-word;font-kerning:normal;-moz-font-feature-settings:"kern", "liga", "clig", "calt";-ms-font-feature-settings:"kern", "liga", "clig", "calt";-webkit-font-feature-settings:"kern", "liga", "clig", "calt";font-feature-settings:"kern", "liga", "clig", "calt";}img{max-width:100%;margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}h1{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;color:inherit;font-family:Montserrat,sans-serif;font-weight:900;text-rendering:optimizeLegibility;font-size:2.5rem;line-height:1.1;}h2{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;color:inherit;font-family:'Merriweather','Georgia',serif;font-weight:900;text-rendering:optimizeLegibility;font-size:1.73286rem;line-height:1.1;}h3{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;color:inherit;font-family:'Merriweather','Georgia',serif;font-weight:900;text-rendering:optimizeLegibility;font-size:1.4427rem;line-height:1.1;}h4{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;color:inherit;font-family:'Merriweather','Georgia',serif;font-weight:900;text-rendering:optimizeLegibility;font-size:1.2rem;line-height:1.1;letter-spacing:normal;text-transform:none;}h5{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;color:inherit;font-family:'Merriweather','Georgia',serif;font-weight:900;text-rendering:optimizeLegibility;font-size:0.83255rem;line-height:1.1;}h6{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;color:inherit;font-family:'Merriweather','Georgia',serif;font-weight:900;text-rendering:optimizeLegibility;font-size:0.75966rem;line-height:1.1;font-style:italic;}hgroup{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}ul{margin-left:1.75rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;list-style-position:outside;list-style-image:none;list-style:disc;}ol{margin-left:1.75rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;list-style-position:outside;list-style-image:none;}dl{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}dd{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}p{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}figure{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}pre{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;font-size:0.85rem;line-height:1.75rem;}table{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;font-size:1rem;line-height:1.75rem;border-collapse:collapse;width:100%;}fieldset{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}blockquote{margin-left:-1.75rem;margin-right:1.75rem;margin-top:0;padding-bottom:0;padding-left:1.42188rem;padding-right:0;padding-top:0;margin-bottom:1.75rem;font-size:1.20112rem;line-height:1.75rem;color:hsla(0,0%,0%,0.59);font-style:italic;border-left:0.32813rem solid hsla(0,0%,0%,0.9);}form{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}noscript{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}iframe{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}hr{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:calc(1.75rem - 1px);background:hsla(0,0%,0%,0.2);border:none;height:1px;}address{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.75rem;}b{font-weight:700;}strong{font-weight:700;}dt{font-weight:700;}th{font-weight:700;}li{margin-bottom:calc(1.75rem / 2);}ol li{padding-left:0;}ul li{padding-left:0;}li > ol{margin-left:1.75rem;margin-bottom:calc(1.75rem / 2);margin-top:calc(1.75rem / 2);}li > ul{margin-left:1.75rem;margin-bottom:calc(1.75rem / 2);margin-top:calc(1.75rem / 2);}blockquote *:last-child{margin-bottom:0;}li *:last-child{margin-bottom:0;}p *:last-child{margin-bottom:0;}li > p{margin-bottom:calc(1.75rem / 2);}code{font-size:0.85rem;line-height:1.75rem;}kbd{font-size:0.85rem;line-height:1.75rem;}samp{font-size:0.85rem;line-height:1.75rem;}abbr{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}acronym{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}abbr[title]{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;text-decoration:none;}thead{text-align:left;}td,th{text-align:left;border-bottom:1px solid hsla(0,0%,0%,0.12);font-feature-settings:"tnum";-moz-font-feature-settings:"tnum";-ms-font-feature-settings:"tnum";-webkit-font-feature-settings:"tnum";padding-left:1.16667rem;padding-right:1.16667rem;padding-top:0.875rem;padding-bottom:calc(0.875rem - 1px);}th:first-child,td:first-child{padding-left:0;}th:last-child,td:last-child{padding-right:0;}blockquote > :last-child{margin-bottom:0;}blockquote cite{font-size:1rem;line-height:1.75rem;color:hsla(0,0%,0%,0.9);font-weight:400;}blockquote cite:before{content:"— ";}ul,ol{margin-left:0;}@media only screen and (max-width:480px){ul,ol{margin-left:1.75rem;}blockquote{margin-left:-1.3125rem;margin-right:0;padding-left:0.98438rem;}}h1,h2,h3,h4,h5,h6{margin-top:3.5rem;}a{box-shadow:0 1px 0 0 currentColor;color:#007acc;text-decoration:none;}a:hover,a:active{box-shadow:none;}mark,ins{background:#007acc;color:white;padding:0.10938rem 0.21875rem;text-decoration:none;}a.gatsby-resp-image-link{box-shadow:none;}</style><link as="script" rel="preload" href="/blog/component---src-templates-blog-post-js-fa63c682034c8fed1931.js"/><link as="script" rel="preload" href="/blog/0-48e443a7c71e9658f75d.js"/><link as="script" rel="preload" href="/blog/app-ff4280bf089389dfa310.js"/><link as="script" rel="preload" href="/blog/webpack-runtime-08e0b10e58aced0d8b8e.js"/><link as="fetch" rel="preload" href="/blog/static/d/473/path---testing-javascript-applications-25-f-6aa-3brV65i2Y1QsjBMy3kMaTMRj8Kc.json" crossOrigin="use-credentials"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" role="group"><div style="margin-left:auto;margin-right:auto;max-width:42rem;padding:2.625rem 1.3125rem"><h3 style="font-family:Montserrat, sans-serif;margin-top:0"><a style="box-shadow:none;text-decoration:none;color:inherit" href="/blog/">&lt;Blog /&gt;</a></h3><h1>Testing JavaScript Applications</h1><p style="font-size:0.83255rem;line-height:1.75rem;display:block;margin-bottom:1.75rem;margin-top:-1.75rem">March 09, 2019</p><div><p>In 2018, I doubled down on my testing game. Going into the year, I was primarily writing <a href="https://en.wikipedia.org/wiki/Unit_testing">unit tests</a>, with <a href="https://jasmine.github.io/">Jasmine</a> as my go-to test runner. In backend tests I was using <a href="https://sinonjs.org/">Sinon</a> for spies, stubs and mocks; in frontend tests I was using Sinon in addition to <a href="https://airbnb.io/enzyme/">Enzyme</a> for testing <a href="https://reactjs.org/">React</a> components. I was also using an <a href="https://eslint.org/">ESLint</a> editor plugin with a rigorous set of rules. While this was all—in theory—“good” (the 2018 Frontend Tooling Survey showed that 75% of respondents were <a href="https://ashleynolan.co.uk/blog/frontend-tooling-survey-2018-results#js-linters">using a linter</a>, but only 54% were <a href="https://ashleynolan.co.uk/blog/frontend-tooling-survey-2018-results#js-testing">writing tests</a>), it ultimately ranked about halfway up both the canonical testing pyramid and <a href="https://twitter.com/kentcdodds">Kent C. Dodds’</a> revamped testing trophy:</p>
+<figure class="gatsbyRemarkImagesGrid"><div class="gatsbyRemarkImagesGrid-grid" style="
+            grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
+          ">
+
+  <a
+    class="gatsby-resp-image-link"
+    href="/blog/static/84923c5ca3548c0ee4887eef93e05654/bf27b/testing_pyramid.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 101.32547864506627%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAECBAMF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAffrXkmpAc0FRcD/AP/EABkQAAIDAQAAAAAAAAAAAAAAAAABAhAREv/aAAgBAQABBQIUtqTFqZtdH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABQQAQAAAAAAAAAAAAAAAAAAADD/2gAIAQEABj8CH//EABsQAQEBAAIDAAAAAAAAAAAAAAEAERAxIUGB/9oACAEBAAE/IYt5648WHc9GHyHSUt1CC//aAAwDAQACAAMAAAAQoM/D/8QAFxEBAAMAAAAAAAAAAAAAAAAAAQAQIf/aAAgBAwEBPxBdsZ//xAAXEQEAAwAAAAAAAAAAAAAAAAABABAR/9oACAECAQE/EA0tJ//EABwQAQADAAIDAAAAAAAAAAAAAAEAESExQRBhof/aAAgBAQABPxDiNBDbp8Md4QwjPZ35ABOGIFq1g6q291WVYqp//9k='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;"
+        alt="Testing pyramid"
+        title=""
+        src="/blog/static/84923c5ca3548c0ee4887eef93e05654/f8fb9/testing_pyramid.jpg"
+        srcset="/blog/static/84923c5ca3548c0ee4887eef93e05654/e8976/testing_pyramid.jpg 148w,
+/blog/static/84923c5ca3548c0ee4887eef93e05654/63df2/testing_pyramid.jpg 295w,
+/blog/static/84923c5ca3548c0ee4887eef93e05654/f8fb9/testing_pyramid.jpg 590w,
+/blog/static/84923c5ca3548c0ee4887eef93e05654/bf27b/testing_pyramid.jpg 679w"
+        sizes="(max-width: 590px) 100vw, 590px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    
+
+  <a
+    class="gatsby-resp-image-link"
+    href="/blog/static/180315b765f1b8180bcc5625e930032b/bf27b/testing_trophy.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 101.32547864506627%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAMEAgX/xAAWAQEBAQAAAAAAAAAAAAAAAAACAwD/2gAMAwEAAhADEAAAAdkPSkz00jkiFLix/8QAGxAAAwEAAwEAAAAAAAAAAAAAAQIDAAQQESH/2gAIAQEAAQUCpyD6tyMlwVaKsRFTlUKGw+df/8QAGREAAQUAAAAAAAAAAAAAAAAAAAEQISIx/9oACAEDAQE/AbkiY3//xAAZEQACAwEAAAAAAAAAAAAAAAAAAhARITL/2gAIAQIBAT8BtDBuo//EABkQAAIDAQAAAAAAAAAAAAAAAAARASExIP/aAAgBAQAGPwKVhRejRgo4/8QAGxABAAMBAAMAAAAAAAAAAAAAAQARIUEQYaH/2gAIAQEAAT8hpBod7EtS7FPQjR6Y9v1K+0RUTTPH/9oADAMBAAIAAwAAABAoN3z/xAAbEQACAQUAAAAAAAAAAAAAAAABEQAQIUGR8P/aAAgBAwEBPxDJHtQBLmp//8QAGREBAAMBAQAAAAAAAAAAAAAAAQARIRAx/9oACAECAQE/EPCzYtsI3j//xAAdEAEAAgICAwAAAAAAAAAAAAABABEhMRBBYXHR/9oACAEBAAE/ECllVtb5LXYuxtGUhJpESFAMy2gxQAHhQEcc+2MIdsxVOXtXj//Z'); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;"
+        alt="Testing trophy"
+        title=""
+        src="/blog/static/180315b765f1b8180bcc5625e930032b/f8fb9/testing_trophy.jpg"
+        srcset="/blog/static/180315b765f1b8180bcc5625e930032b/e8976/testing_trophy.jpg 148w,
+/blog/static/180315b765f1b8180bcc5625e930032b/63df2/testing_trophy.jpg 295w,
+/blog/static/180315b765f1b8180bcc5625e930032b/f8fb9/testing_trophy.jpg 590w,
+/blog/static/180315b765f1b8180bcc5625e930032b/bf27b/testing_trophy.jpg 679w"
+        sizes="(max-width: 590px) 100vw, 590px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    
+</div></figure>
+<p>Code was being tested, but not necessarily <em>well</em> tested. <a href="https://en.wikipedia.org/wiki/Integration_testing">Integration tests</a> were minimal; <a href="https://en.wikipedia.org/wiki/Software_testing#System_testing">end-to-end tests</a> were missing. Code was being <a href="https://en.wikipedia.org/wiki/Lint_(software)">linted</a> as it was written, but not on commit or deployment. <a href="https://en.wikipedia.org/wiki/Code_coverage">Code coverage</a> wasn’t being reviewed. I tended to have more confidence in backend tests than in frontend ones, due in part to following some common Enzyme testing practices: shallow rendering, manipulating component instances (props and state) and using <a href="https://blog.kentcdodds.com/testing-implementation-details-ccb8d269586">implementation details</a> to make assertions (DOM elements, class names, component display names, <em>etc.</em>). Ultimately, too many of my test suites were potential meme fodder:</p>
+<figure class="gatsbyRemarkImagesGrid"><div class="gatsbyRemarkImagesGrid-grid" style="
+            grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
+          ">
+
+  <a
+    class="gatsby-resp-image-link"
+    href="/blog/static/994e80f37f28f88260c09f3736497369/db559/unit_tests_passing_meme_1.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 72.8125%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUE/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAclSOiqzIH//xAAaEAACAwEBAAAAAAAAAAAAAAABAgADERMi/9oACAEBAAEFAqLHL7gUhwvmVEqemT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAgBAgEBPwFH/8QAGxAAAgIDAQAAAAAAAAAAAAAAAAERIQIxQXH/2gAIAQEABj8CjmySUZeUW2Uj/8QAGxABAAIDAQEAAAAAAAAAAAAAAQARITFBYaH/2gAIAQEAAT8hQ/NMtaC9Tn+JxXWPjMQLFHs40E//2gAMAwEAAgADAAAAELsP/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oACAEDAQE/EI1//8QAFhEBAQEAAAAAAAAAAAAAAAAAARBR/9oACAECAQE/EEyP/8QAHRABAAICAwEBAAAAAAAAAAAAAQARIUExUWGRwf/aAAgBAQABPxBUoMQV7ozLj1UgC4NQRl4N6eokq7GKFKT5c8Gnzh99mdtNIGsB+T//2Q=='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;"
+        alt="Unit Tests Passing (meme)"
+        title=""
+        src="/blog/static/994e80f37f28f88260c09f3736497369/f8fb9/unit_tests_passing_meme_1.jpg"
+        srcset="/blog/static/994e80f37f28f88260c09f3736497369/e8976/unit_tests_passing_meme_1.jpg 148w,
+/blog/static/994e80f37f28f88260c09f3736497369/63df2/unit_tests_passing_meme_1.jpg 295w,
+/blog/static/994e80f37f28f88260c09f3736497369/f8fb9/unit_tests_passing_meme_1.jpg 590w,
+/blog/static/994e80f37f28f88260c09f3736497369/db559/unit_tests_passing_meme_1.jpg 640w"
+        sizes="(max-width: 590px) 100vw, 590px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    
+
+  <a
+    class="gatsby-resp-image-link"
+    href="/blog/static/a85e14602119402464b27c62449bb610/db559/unit_tests_passing_meme_2.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 72.8125%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAMBBAX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAABxbMrRYsP/8QAGRABAQEAAwAAAAAAAAAAAAAAAgERAAMQ/9oACAEBAAEFAi0ZF3bc0jONXz//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAdEAABAwUBAAAAAAAAAAAAAAAAAREhAhASMWGh/9oACAEBAAY/AmQ34hFLi5Sct//EABkQAQEBAQEBAAAAAAAAAAAAAAERADEhcf/aAAgBAQABPyFesLeGokAduJR9DhABWR5Ji7//2gAMAwEAAgADAAAAEFQ//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQIBAT8QR//EAB4QAQACAgIDAQAAAAAAAAAAAAEAESExQWFRcYGx/9oACAEBAAE/EDYoKLZ9pBYyFaVcYzNUnOxfkw4AnSP4xiyAoLM+L66gLatz/9k='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;"
+        alt="Unit Tests Passing (meme)"
+        title=""
+        src="/blog/static/a85e14602119402464b27c62449bb610/f8fb9/unit_tests_passing_meme_2.jpg"
+        srcset="/blog/static/a85e14602119402464b27c62449bb610/e8976/unit_tests_passing_meme_2.jpg 148w,
+/blog/static/a85e14602119402464b27c62449bb610/63df2/unit_tests_passing_meme_2.jpg 295w,
+/blog/static/a85e14602119402464b27c62449bb610/f8fb9/unit_tests_passing_meme_2.jpg 590w,
+/blog/static/a85e14602119402464b27c62449bb610/db559/unit_tests_passing_meme_2.jpg 640w"
+        sizes="(max-width: 590px) 100vw, 590px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    
+</div></figure>
+<p>Below is an overview of my evolved approach to testing JavaScript applications. Also take a look at the <a href="https://github.com/colinrcummings/testing-javascript-applications-demo">demo app</a> on GitHub, which puts it into practice.</p>
+<p><em>nota bene</em>: Testing is an immense topic; what follows is intended to be a modest contribution. It’s written standing on the shoulders of giants (see references below). It contains opinions and suggestions; testing lacks hard and fast rules. The JavaScript ecosystem also marches on; tools come and go, and testing is no exception.</p>
+<hr>
+<h2>Motivation</h2>
+<p>There are many reasons to write tests, but—for me—the biggest ones are:</p>
+<ul>
+<li>
+<p>Quality</p>
+<p><em>Code must work. Tests help ensure that good programing practices are followed and project requirements are met.</em></p>
+</li>
+<li>
+<p>Maintainability</p>
+<p><em>Code changes over time. Tests will save you effort over the life of a project.</em></p>
+</li>
+</ul>
+<p>Together, the combination of quality and maintainability enforced by a self-testing codebase provides considerable confidence when adding a feature, updating dependencies, refactoring, debugging, deploying and more.</p>
+<hr>
+<h2>Types of Tests</h2>
+<p>Not all tests are created equal. The type of test used in a given case is typically a tradeoff between cost (<em>i.e.</em>, how much effort they take to configure, write and maintain) and speed (<em>i.e.</em>, how long they take to run).</p>
+<h3>Static</h3>
+<p><em>Cost:</em> 💵<br>
+<em>Speed:</em> 🏎🏎🏎🏎</p>
+<p>Not tests <em>per se</em>, <a href="https://en.wikipedia.org/wiki/Static_program_analysis">static analysis</a> includes <a href="https://en.wikipedia.org/wiki/Lint_(software)">linting</a> and <a href="https://en.wikipedia.org/wiki/Type_system">type checking</a>. Linters check code for problematic patterns or syntax that doesn’t adhere to certain style guidelines. Type checkers add syntax for specifying data types, which are then used to verify correct usage throughout the codebase.</p>
+<h3>Unit</h3>
+<p><em>Cost:</em> 💵💵<br>
+<em>Speed:</em> 🏎🏎🏎</p>
+<p>Unit tests are small in scope, validating an isolated functionality (<em>e.g.</em>, a controller method). All dependencies are <a href="https://blog.kentcdodds.com/but-really-what-is-a-javascript-mock-10d060966f7d">mocked</a>, which makes unit tests capable of being run in parallel, thereby increasing their speed. Unit tests are useful for covering things like branching logic and error handling in one piece of an application.</p>
+<h3>Integration</h3>
+<p><em>Cost:</em> 💵💵💵<br>
+<em>Speed:</em> 🏎🏎</p>
+<p>Integration tests are medium in scope, validating a subset of functionalities (<em>e.g.</em>, a view UI or an API endpoint). Less dependencies are mocked than in unit tests; the amount of mocking dictates if an integration test suite can be run in parallel or serially. Integration tests are useful for covering the interaction between adjacent pieces of an application.</p>
+<h3>End-to-end</h3>
+<p><em>Cost:</em> 💵💵💵💵<br>
+<em>Speed:</em> 🏎</p>
+<p>End-to-end tests are large in scope, validating a superset of functionalities (<em>e.g.</em>, simulating a pattern of user behavior in the browser). No dependencies are mocked, which requires end-to-end tests to be run serially against a running server, thereby decreasing their speed. End-to-end tests are useful for covering an application holistically.</p>
+<hr>
+<h2>Testing Tools</h2>
+<p>There is an abundance of <a href="https://2018.stateofjs.com/testing/conclusion/">testing tools</a> in the JavaScript ecosystem these days. The ones mentioned below have provided me with robust solutions for each type of test.</p>
+<h3>Static</h3>
+<p>ESLint is the preeminent <a href="https://www.npmtrends.com/eslint-vs-standard-vs-jshint">JavaScript linting utility</a>; pluggability is its biggest advantage. <a href="https://prettier.io/">Prettier</a> is an excellent companion for formatting. <a href="https://www.npmjs.com/package/eslint-config-airbnb">eslint-config-airbnb</a> and <a href="https://www.npmjs.com/package/eslint-config-prettier">eslint-config-prettier</a> are two popular configs, both of which I’ve rolled into <a href="https://www.npmjs.com/package/eslint-config-colinrcummings">my own config</a>. <a href="https://www.npmjs.com/package/lint-staged">lint-staged</a> is also a handy tool for adding linting and format checking to a pre-commit hook.</p>
+<p><a href="https://www.typescriptlang.org/">TypeScript</a> and <a href="https://flow.org/">Flow</a> are the most popular <a href="https://www.npmtrends.com/typescript-vs-flow-bin">JavaScript typecheckers</a>, with TypeScript really taking off in the back half of 2018.</p>
+<p><em>nota bene</em>: At the time of writing this post, adding typechecking to a JavaScript application entails a bit more complexity than a linter (read more about some of the tradeoffs <a href="https://medium.com/javascript-scene/the-typescript-tax-132ff4cb175b">here</a>); for simplicity, I didn’t include it in the demo app. I have used Flow in a few applications, but haven’t worked meaningfully with TypeScript. That being said, the <a href="https://github.com/Microsoft/TypeScript/issues/29288">January - June 2019 TypeScript Roadmap</a> and projects like <a href="https://github.com/denoland/deno">deno</a> are all very exciting; I plan on doing more with TypeScript this year.</p>
+<h3>Unit &#x26; Integration</h3>
+<p><a href="https://jestjs.io/">Jest</a> is a batteries-included <a href="https://www.npmtrends.com/jest-vs-mocha-vs-jasmine-vs-karma">test runner</a>, and it’s replaced Jasmine in my testing toolbox. Some of its best features include an easily extensible configuration, watch mode, powerful mocking capabilities and built-in <a href="https://istanbul.js.org/">Istanbul</a> code coverage reporting. It’s also complemented by a number of <a href="https://github.com/jest-community/awesome-jest">awesome packages and resources</a>, <a href="jest-dom">jest-dom</a> being one of my favorites for frontend tests.</p>
+<p><a href="https://testing-library.com/react">react-testing-library</a>, which is a React-specific wrapper around <a href="https://testing-library.com/">dom-testing-library</a>, has really changed how I write frontend tests. It provides utilities that facilitate <a href="https://testing-library.com/docs/guide-which-query">querying the DOM</a> in the same way a user would, thereby encouraging both accessibility and good testing practices.</p>
+<h3>End-to-end</h3>
+<p><a href="https://www.cypress.io/">Cypress</a> is an exceptional browser testing tool. It’s simple to install. Writing, reading and debugging tests is easy. Its documentation is best-in-class. Tests run reliably in both a Chromium-based GUI (with time travel) and a headless CLI. <a href="https://testing-library.com/cypress">cypress-testing-library</a> is a good companion, adding dom-testing-library’s methods as custom commands.</p>
+<hr>
+<h2>Guiding Principles</h2>
+<p>When performing any systematic process, it’s instructive to have a set of ideas that inform your actions throughout. Here are my guiding principles for writing tests:</p>
+<ul>
+<li><a href="https://twitter.com/rauchg/status/807626710350839808">“Write tests. Not too many. Mostly integration.”</a></li>
+</ul>
+<p><em>Writing tests isn’t optional; it’s a prerequisite for professional software. Quality is more important than quantity. Integration tests often give you the most bang for your buck.</em></p>
+<ul>
+<li><a href="https://www.richardlord.net/blog/tdd/why-write-the-unittest-first.html">“Test the interface, not the implementation.”</a></li>
+</ul>
+<p><em>The code you’re testing has a contract; validate what it should do, not how it does that thing.</em></p>
+<ul>
+<li><a href="https://twitter.com/kentcdodds/status/977018512689455106">“The more your tests resemble the way your software is used, the more confidence they can give you.”</a></li>
+</ul>
+<p><em>Testing is about building confidence in your codebase; maximize this confidence by making actions and assertions that approximate a consumer of your code.</em></p>
+<hr>
+<h2>Mental Models</h2>
+<p>I find <a href="https://medium.com/@yegg/mental-models-i-find-repeatedly-useful-936f1cc405d">mental models</a> useful for framing tasks. Here are a few that I routinely apply when writing tests:</p>
+<h3>Atoms, Elements &#x26; Organisms</h3>
+<p><a href="https://en.wikipedia.org/wiki/Atomic_theory">Atomic theory</a> posits that matter is made up of indivisible particles called atoms. A collection of atoms forms a molecule. A collection of molecules forms an organism.</p>
+<p><em>Unit test atoms. Integration test molecules. End-to-end test organisms.</em></p>
+<h3>Use Cases</h3>
+<p>A <a href="https://en.wikipedia.org/wiki/Use_case">use case</a> outlines an interaction between a user and an application. Each use case typically has a <a href="https://en.wikipedia.org/wiki/Happy_path">happy path</a> and one or more <a href="https://en.wikipedia.org/wiki/Edge_case">edge cases</a>.</p>
+<p><em>Cover the happy path in end-to-end tests. Cover likely edge cases in integration tests. Cover unlikely edge cases in unit tests.</em></p>
+<h3>Critical Control Points</h3>
+<p>A <a href="https://en.wikipedia.org/wiki/Critical_control_point">critical control point</a> is a step in a process where the consequences of a failure could be catastrophic.</p>
+<p><em>Thoroughly test critical control points.</em></p>
+<h3>Diminishing Returns</h3>
+<p>The law of <a href="https://en.wikipedia.org/wiki/Diminishing_returns">diminishing returns</a> states that, after a certain point, adding more input actually yields less output.</p>
+<p><em>Write tests for the sake of added confidence, not added coverage.</em></p>
+<hr>
+<h2>Writing Tests</h2>
+<p>My approach to writing tests for an application depends on the portion being tested, which in turn directs the type of test that’s used.</p>
+<p><em>nota bene</em>: This section references the demo app. Scripts can be found in the <a href="https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/package.json#L7"><code class="language-text">package.json</code></a> file. Organizing and naming tests is largely a matter of preference. For organizational purposes, I’ve co-located everything related to testing in a top-level <a href="https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test">test</a> directory. For nomenclature purposes, I’ve included the type of test in each test’s file name (<em>i.e.</em>, <code class="language-text">*.unit.spec.js</code>, <code class="language-text">*.integration.spec.js</code> and <code class="language-text">*.e2e.spec.js</code>).</p>
+<h3>Static</h3>
+<p>I consider tests to be a part of the codebase. Therefore, all source and test code is statically analyzed. I like to develop with Eslint and Prettier editor plugins, which give me instant feedback and auto-formatting on save. Additionally, <code class="language-text">lint</code>, <code class="language-text">format:check</code> and <code class="language-text">format:fix</code> scripts ensure consistency after development.</p>
+<h3>Unit &#x26; Integration</h3>
+<p>A collection of unit and integration tests that can be run in parallel comprise the majority of my tests. They can be run with the <code class="language-text">test</code> script, which runs each test once, or the <code class="language-text">test:watch</code> script, which runs tests related to changed files each time a change is made. Additionally, a <code class="language-text">coverage</code> script can be run to ensure that my tests are thorough and sifting. How I go about writing these tests differs from backend to frontend code.</p>
+<h4>Backend</h4>
+<p>For backend code, I primarily write unit tests. My goal in these tests is to validate discrete input/output relationships resulting from conditional logic, typically in controller and helper methods.</p>
+<p>For example:</p>
+<ul>
+<li>
+<p>A <a href="https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/controllers/views/feature_1.unit.spec.js">unit test</a> for a view controller (<a href="https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/app/controllers/views/feature_1.js">source</a>) covering all likely user authentication/authorization scenarios.</p>
+</li>
+<li>
+<p>A <a href="https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/controllers/api/access.unit.spec.js">unit test</a> for an API endpoint controller (<a href="https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/app/controllers/api/access.js">source</a>) covering all likely user authentication/authorization scenarios and an unlikely model error scenario.</p>
+</li>
+<li>
+<p>A <a href="https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/helpers/authentication/password.unit.spec.js">unit test</a> for a password helper (<a href="https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/app/helpers/authentication/password.js">source</a>) covering all likely validation scenarios.</p>
+</li>
+</ul>
+<p>I find <code class="language-text">describe</code> blocks useful for organizing logical branches, and the arrange/act/assert pattern useful for structuring individual test blocks.</p>
+<p><em>nota bene</em>: Both controller unit tests utilize helpers to reduce repetition across similar tests, which can be found in the <a href="https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test/jest/helpers/controller-test-helpers">controller-test-helpers</a> directory.</p>
+<h4>Frontend</h4>
+<p>For frontend code, I primarily write integration tests. My goal in these tests is to validate DOM output resulting from a combination of likely API response and user interaction scenarios.</p>
+<p>Take the Manage Users view (<a href="https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/app/assets/javascripts/client/manage_users/manage_users.js">source</a>) as an example, which renders a list of users in addition to providing a means of creating, updating and deleting users. To test the UI for this view, I start with an <a href="https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/assets/javascripts/client/manage_users/components/Root.integration.spec.js">integration test</a> that mounts the <code class="language-text">&lt;Root/&gt;</code> component via a custom renderer exposing react-testing-library’s utilities as well as some additional helpers for common actions and assertions. The test cases, which are written in the same way a manual tester would perform them, cover the following scenarios:</p>
+<ul>
+<li>
+<p>Initial list of users</p>
+<ul>
+<li>
+<p>With successful fetch</p>
+<ul>
+<li>Returning user data</li>
+<li>Returning no user data</li>
+</ul>
+</li>
+<li>
+<p>With unsuccessful fetch (500 Internal Server Error)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Creating a user</p>
+<ul>
+<li>Resulting in success</li>
+<li>Resulting in error (409 Conflict)</li>
+</ul>
+</li>
+<li>
+<p>Updating a user</p>
+<ul>
+<li>Resulting in success</li>
+<li>Resulting in error (422 Unprocessable Entity)</li>
+</ul>
+</li>
+<li>
+<p>Deleting a user</p>
+<ul>
+<li>Resulting in success</li>
+<li>Resulting in error (404 Not Found)</li>
+</ul>
+</li>
+</ul>
+<p>Collectively, these scenarios exercise the majority of the UI’s functionality, in addition to simulating all of the errors that the API can return. Integration testing the entire component tree in this way not only covers a lot of code, it also gives me more confidence that everything is working together properly than testing each component in isolation would. That being said, it doesn’t cover everything, so I augment the integration test with a few unit tests covering:</p>
+<ul>
+<li>Validation on the create user form (<a href="https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/assets/javascripts/client/manage_users/components/container/UserCreateFormContainer.unit.spec.js">unit test</a>)</li>
+<li>Validation and optional password on the update user form (<a href="https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/assets/javascripts/client/manage_users/components/container/UserUpdateFormContainer.unit.spec.js">unit test</a>)</li>
+<li>Admin users cannot be deleted (<a href="https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/assets/javascripts/client/manage_users/components/presentational/UserDeleteModalToggle.unit.spec.js">unit test</a>)</li>
+</ul>
+<h3>End-to-end</h3>
+<p>While end-to-end tests are the slowest type of test because they must be run serially against a running server, they also provide the highest level of confidence. End-to-end tests cover the entire application, including gaps left by other types of tests, such as the interactions between controllers and models, which are mocked out in unit tests, and the interactions between UIs and APIs, which are mocked out in integration tests. Additionally, because end-to-end tests run in a browser environment, they’re a good place to cover routers, which are tightly coupled to HTTP requests.</p>
+<p>End-to-end tests can be run in headless mode with the <code class="language-text">test:e2e</code> command or in interactive mode with the <code class="language-text">test:e2e:interactive</code> command. Organizationally, I like to structure them as follows:</p>
+<ul>
+<li>
+<p><a href="https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test/cypress/specs/authentication">Authentication</a>, which cover the entire login and logout flows as well as access to views requiring user authentication.</p>
+</li>
+<li>
+<p><a href="https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test/cypress/specs/authorization">Authorization</a>, which cover access to views requiring user authorization.</p>
+</li>
+<li>
+<p><a href="https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test/cypress/specs/shared">Shared</a>, which cover elements that are present on all of the views (<em>e.g.</em>, the navbar and footer).</p>
+</li>
+<li>
+<p><a href="https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test/cypress/specs/views">Views</a>, which cover the happy paths for each view.</p>
+</li>
+</ul>
+<p>Structuring end-to-end tests in this way is inspired by <a href="https://youtu.be/5XQOK0v_YRE">this talk</a> by <a href="https://twitter.com/be_mann">Brian Mann</a> (the creator of Cypress), which covers organization as well as some other <a href="https://docs.cypress.io/guides/references/best-practices.html">best practices</a> for testing with Cypress.</p>
+<hr>
+<h2>Test Suites</h2>
+<p>Tests can only provide confidence if they’re run regularly. Therefore, it’s a good practice to build test execution into your workflows.</p>
+<p><em>nota bene</em>: This section also references scripts from the demo app.</p>
+<h3>Precommit</h3>
+<p>The <code class="language-text">precommit</code> script is run at the end of the development workflow (<em>i.e.</em>, upon running <code class="language-text">git commit</code>). It lints and format checks staged files in addition to running the unit and integration tests.</p>
+<h3>Validate</h3>
+<p>The <code class="language-text">validate</code> script is run at the beginning of the build workflow (<em>i.e.</em>, as part of a CI pipeline). It lints and format checks the entire codebase in addition to running the unit, integration and headless end-to-end tests.</p>
+<hr>
+<h2>References</h2>
+<p>The following people have helped shape my thinking about software testing.</p>
+<h3>Kent Beck</h3>
+<ul>
+<li><a href="https://twitter.com/KentBeck">Twitter</a></li>
+<li><a href="https://medium.com/@kentbeck_7670">Blog</a></li>
+</ul>
+<h3>Martin Fowler</h3>
+<ul>
+<li><a href="https://twitter.com/martinfowler">Twitter</a></li>
+<li><a href="https://martinfowler.com/tags/testing.html">Blog</a></li>
+<li><a href="https://youtu.be/z9quxZsLcfo">This</a> <a href="https://youtu.be/JoTB2mcjU7w">five</a> <a href="https://youtu.be/YNw4baDz6WA">part</a> <a href="https://youtu.be/dGtasFJnUxI">video</a> <a href="https://youtu.be/gWD6REVeKW4">series</a>, which is an ongoing conversation about testing with Kent Beck and David Heinemeier Hansson</li>
+</ul>
+<h3>David Heinemeier Hansson</h3>
+<ul>
+<li><a href="https://twitter.com/dhh">Twitter</a></li>
+<li><a href="https://m.signalvnoise.com/">Blog</a> (<a href="https://dhh.dk//2012/dependency-injection-is-not-a-virtue.html">especially</a> <a href="https://dhh.dk//2014/tdd-is-dead-long-live-testing.html">these</a> <a href="https://dhh.dk//2014/test-induced-design-damage.html">four</a> <a href="https://dhh.dk//2014/slow-database-test-fallacy.html">posts</a>)</li>
+<li><a href="https://www.youtube.com/channel/UCUkM9uMpWatT7gVWShgtKFw">Videos</a></li>
+</ul>
+<h3>Mattias Petter Johansson</h3>
+<ul>
+<li><a href="https://twitter.com/mpjme">Twitter</a></li>
+<li><a href="https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q/search?query=test">Videos</a></li>
+</ul>
+<h3>Kent C. Dodds</h3>
+<ul>
+<li><a href="https://twitter.com/kentcdodds">Twitter</a></li>
+<li><a href="https://blog.kentcdodds.com/search?q=test">Blog</a></li>
+<li><a href="https://www.youtube.com/user/kentdoddsfamily/search?query=test">Videos</a></li>
+<li><a href="https://testingjavascript.com/">testingjavascript.com</a></li>
+</ul>
+<hr>
+<h2>Feedback</h2>
+<p>Have questions, comments or suggestions? Reach out to me on Twitter (<a href="https://twitter.com/colinrcummings">@colinrcummings</a>).</p>
+<p>— Colin</p></div><hr style="margin-bottom:1.75rem"/><div style="display:flex;margin-bottom:4.375rem"><div class=" gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:50px;height:50px;margin-right:0.875rem;margin-bottom:0;min-width:50px;border-radius:100%"><img src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUD/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQIA/9oADAMBAAIQAxAAAAGnlJS3kRiVoJoJf//EAB0QAAIBBAMAAAAAAAAAAAAAAAECAAMEESEQEhP/2gAIAQEAAQUC9ElOozDsI1xoOrwvjhTvM//EABURAQEAAAAAAAAAAAAAAAAAAAEg/9oACAEDAQE/ASP/xAAWEQADAAAAAAAAAAAAAAAAAAAAEBH/2gAIAQIBAT8BK//EABkQAAIDAQAAAAAAAAAAAAAAAAABEBExIf/aAAgBAQAGPwJ9wTdUzUc0uVH/xAAdEAEBAQACAgMAAAAAAAAAAAABEQAhMRBxUYHx/9oACAEBAAE/IUjhUWY1pLDs362Agj6cZKpevjjCoT68S9mVd//aAAwDAQACAAMAAAAQHxDB/8QAGBEAAgMAAAAAAAAAAAAAAAAAAREAECH/2gAIAQMBAT8QAa4r/8QAFhEBAQEAAAAAAAAAAAAAAAAAARAx/9oACAECAQE/EFdlyf/EAB8QAQABBAIDAQAAAAAAAAAAAAERACExQWFxEFGhwf/aAAgBAQABPxC6GCDmCYKGOzhDrv5TL+Ol81WWXKmAiFsqRzIeqgwTWnzwhAG7JinaHRX/2Q==" alt="Colin Cummings" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition:opacity 0.5s;transition-delay:0.25s;border-radius:50%"/><noscript><picture><source srcSet="/blog/static/c64a025deda2ec8545cf8f49adfa188e/d2d31/profile-pic.jpg 1x,
+/blog/static/c64a025deda2ec8545cf8f49adfa188e/0b804/profile-pic.jpg 1.5x,
+/blog/static/c64a025deda2ec8545cf8f49adfa188e/753c3/profile-pic.jpg 2x,
+/blog/static/c64a025deda2ec8545cf8f49adfa188e/31ca8/profile-pic.jpg 3x" /><img width="50" height="50" src="/blog/static/c64a025deda2ec8545cf8f49adfa188e/d2d31/profile-pic.jpg" alt="Colin Cummings" style="position:absolute;top:0;left:0;transition:opacity 0.5s;transition-delay:0.5s;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><p>Written by <strong>Colin Cummings</strong>.<br/><a href="https://github.com/colinrcummings">github</a> •<!-- --> <a href="https://twitter.com/colinrcummings">twitter</a> <!-- -->•<!-- --> <a href="https://www.instagram.com/colinrcummings">instagram</a></p></div><ul style="display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0"><li><a rel="prev" href="/blog/buttercup-password-manager/">← <!-- -->Buttercup Password Manager</a></li><li></li></ul><footer>© <!-- -->2019<!-- -->, Built with<!-- --> <a href="https://www.gatsbyjs.org">Gatsby</a></footer></div></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.page={"componentChunkName":"component---src-templates-blog-post-js","jsonName":"testing-javascript-applications-25f","path":"/testing-javascript-applications/"};window.dataPath="473/path---testing-javascript-applications-25-f-6aa-3brV65i2Y1QsjBMy3kMaTMRj8Kc";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app.54face356ad0c6ff01f3.css","/app-ff4280bf089389dfa310.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-fa63c682034c8fed1931.js"],"component---src-pages-404-js":["/component---src-pages-404-js-d0a771da304babbcff46.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bad41a75f6f3fe780d42.js"],"pages-manifest":["/pages-manifest-fdea38e6618d5707d07a.js"]};/*]]>*/</script><script src="/blog/webpack-runtime-08e0b10e58aced0d8b8e.js" async=""></script><script src="/blog/app-ff4280bf089389dfa310.js" async=""></script><script src="/blog/0-48e443a7c71e9658f75d.js" async=""></script><script src="/blog/component---src-templates-blog-post-js-fa63c682034c8fed1931.js" async=""></script></body></html>
