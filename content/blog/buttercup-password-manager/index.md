@@ -1,6 +1,6 @@
 ---
 title: Buttercup Password Manager
-date: '2018-01-06T23:46:37.121Z'
+date: '2018-01-06'
 ---
 
 My New Year's resolution was to start using a [password manager](https://www.youtube.com/watch?v=xHSnHj-zKF4). There are a lot of password managers out there, but I ultimately decided on [Buttercup](https://buttercup.pw/).
@@ -13,15 +13,15 @@ Buttercup is a free, secure, cross-platform credentials manager. Your credential
 
 _Desktop:_
 
-![Buttercup desktop](./images//desktop.jpg)
+![Buttercup desktop](./images/desktop.jpg)
 
 _Browser:_
 
-![Buttercup browser](./images//browser.jpg)
+![Buttercup browser](./images/browser.jpg)
 
 _Mobile:_
 
-![Buttercup mobile](./images//mobile.jpg)
+![Buttercup mobile](./images/mobile.jpg)
 
 ---
 
