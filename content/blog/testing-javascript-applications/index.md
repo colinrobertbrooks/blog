@@ -23,6 +23,26 @@ _nota bene_: Testing is an immense topic; what follows is intended to be a modes
 
 ---
 
+## Table of Contents
+
+- [Motivation](#motivation)
+
+- [Types of Tests](#types-of-tests)
+
+- [Testing Tools](#testing-tools)
+
+- [Guiding Principles](#guiding-principles)
+
+- [Mental Models](#mental-models)
+
+- [Writing Tests](#writing-tests)
+
+- [Test Suites](#test-suites)
+
+- [References](#references)
+
+---
+
 ## Motivation
 
 There are many reasons to write tests, but--for me--the biggest ones are:
