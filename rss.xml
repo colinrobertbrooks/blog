@@ -1,0 +1,1742 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[<Blog />]]></title><description><![CDATA[Posts about projects and other programing-related things.]]></description><link>https://colinrcummings.github.io/blog/</link><generator>RSS for Node</generator><lastBuildDate>Wed, 27 Mar 2019 00:15:13 GMT</lastBuildDate><item><title><![CDATA[Testing JavaScript Applications]]></title><description><![CDATA[In 2018, I doubled down on my testing game. Going into the year, I was primarily writing  unit tests , with  Jasmine  as my go-to test…]]></description><link>https://colinrcummings.github.io/blog//testing-javascript-applications/</link><guid isPermaLink="false">https://colinrcummings.github.io/blog//testing-javascript-applications/</guid><pubDate>Sat, 09 Mar 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In 2018, I doubled down on my testing game. Going into the year, I was primarily writing &lt;a href=&quot;https://en.wikipedia.org/wiki/Unit_testing&quot;&gt;unit tests&lt;/a&gt;, with &lt;a href=&quot;https://jasmine.github.io/&quot;&gt;Jasmine&lt;/a&gt; as my go-to test runner. In backend tests I was using &lt;a href=&quot;https://sinonjs.org/&quot;&gt;Sinon&lt;/a&gt; for spies, stubs and mocks; in frontend tests I was using Sinon in addition to &lt;a href=&quot;https://airbnb.io/enzyme/&quot;&gt;Enzyme&lt;/a&gt; for testing &lt;a href=&quot;https://reactjs.org/&quot;&gt;React&lt;/a&gt; components. I was also using an &lt;a href=&quot;https://eslint.org/&quot;&gt;ESLint&lt;/a&gt; editor plugin with a rigorous set of rules. While this was all—in theory—“good” (the 2018 Frontend Tooling Survey showed that 75% of respondents were &lt;a href=&quot;https://ashleynolan.co.uk/blog/frontend-tooling-survey-2018-results#js-linters&quot;&gt;using a linter&lt;/a&gt;, but only 54% were &lt;a href=&quot;https://ashleynolan.co.uk/blog/frontend-tooling-survey-2018-results#js-testing&quot;&gt;writing tests&lt;/a&gt;), it ultimately ranked about halfway up both the canonical testing pyramid and &lt;a href=&quot;https://twitter.com/kentcdodds&quot;&gt;Kent C. Dodds’&lt;/a&gt; revamped testing trophy:&lt;/p&gt;
+&lt;figure class=&quot;gatsbyRemarkImagesGrid&quot;&gt;&lt;div class=&quot;gatsbyRemarkImagesGrid-grid&quot; style=&quot;
+            grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
+          &quot;&gt;
+
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/84923c5ca3548c0ee4887eef93e05654/bf27b/testing_pyramid.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 101.32547864506627%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAECBAMF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAffrXkmpAc0FRcD/AP/EABkQAAIDAQAAAAAAAAAAAAAAAAABAhAREv/aAAgBAQABBQIUtqTFqZtdH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABQQAQAAAAAAAAAAAAAAAAAAADD/2gAIAQEABj8CH//EABsQAQEBAAIDAAAAAAAAAAAAAAEAERAxIUGB/9oACAEBAAE/IYt5648WHc9GHyHSUt1CC//aAAwDAQACAAMAAAAQoM/D/8QAFxEBAAMAAAAAAAAAAAAAAAAAAQAQIf/aAAgBAwEBPxBdsZ//xAAXEQEAAwAAAAAAAAAAAAAAAAABABAR/9oACAECAQE/EA0tJ//EABwQAQADAAIDAAAAAAAAAAAAAAEAESExQRBhof/aAAgBAQABPxDiNBDbp8Md4QwjPZ35ABOGIFq1g6q291WVYqp//9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Testing pyramid&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/84923c5ca3548c0ee4887eef93e05654/f8fb9/testing_pyramid.jpg&quot;
+        srcset=&quot;/blog/static/84923c5ca3548c0ee4887eef93e05654/e8976/testing_pyramid.jpg 148w,
+/blog/static/84923c5ca3548c0ee4887eef93e05654/63df2/testing_pyramid.jpg 295w,
+/blog/static/84923c5ca3548c0ee4887eef93e05654/f8fb9/testing_pyramid.jpg 590w,
+/blog/static/84923c5ca3548c0ee4887eef93e05654/bf27b/testing_pyramid.jpg 679w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/180315b765f1b8180bcc5625e930032b/bf27b/testing_trophy.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 101.32547864506627%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAMEAgX/xAAWAQEBAQAAAAAAAAAAAAAAAAACAwD/2gAMAwEAAhADEAAAAdkPSkz00jkiFLix/8QAGxAAAwEAAwEAAAAAAAAAAAAAAQIDAAQQESH/2gAIAQEAAQUCpyD6tyMlwVaKsRFTlUKGw+df/8QAGREAAQUAAAAAAAAAAAAAAAAAAAEQISIx/9oACAEDAQE/AbkiY3//xAAZEQACAwEAAAAAAAAAAAAAAAAAAhARITL/2gAIAQIBAT8BtDBuo//EABkQAAIDAQAAAAAAAAAAAAAAAAARASExIP/aAAgBAQAGPwKVhRejRgo4/8QAGxABAAMBAAMAAAAAAAAAAAAAAQARIUEQYaH/2gAIAQEAAT8hpBod7EtS7FPQjR6Y9v1K+0RUTTPH/9oADAMBAAIAAwAAABAoN3z/xAAbEQACAQUAAAAAAAAAAAAAAAABEQAQIUGR8P/aAAgBAwEBPxDJHtQBLmp//8QAGREBAAMBAQAAAAAAAAAAAAAAAQARIRAx/9oACAECAQE/EPCzYtsI3j//xAAdEAEAAgICAwAAAAAAAAAAAAABABEhMRBBYXHR/9oACAEBAAE/ECllVtb5LXYuxtGUhJpESFAMy2gxQAHhQEcc+2MIdsxVOXtXj//Z&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Testing trophy&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/180315b765f1b8180bcc5625e930032b/f8fb9/testing_trophy.jpg&quot;
+        srcset=&quot;/blog/static/180315b765f1b8180bcc5625e930032b/e8976/testing_trophy.jpg 148w,
+/blog/static/180315b765f1b8180bcc5625e930032b/63df2/testing_trophy.jpg 295w,
+/blog/static/180315b765f1b8180bcc5625e930032b/f8fb9/testing_trophy.jpg 590w,
+/blog/static/180315b765f1b8180bcc5625e930032b/bf27b/testing_trophy.jpg 679w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+&lt;/div&gt;&lt;/figure&gt;
+&lt;p&gt;Code was being tested, but not necessarily &lt;em&gt;well&lt;/em&gt; tested. &lt;a href=&quot;https://en.wikipedia.org/wiki/Integration_testing&quot;&gt;Integration tests&lt;/a&gt; were minimal; &lt;a href=&quot;https://en.wikipedia.org/wiki/Software_testing#System_testing&quot;&gt;end-to-end tests&lt;/a&gt; were missing. Code was being &lt;a href=&quot;https://en.wikipedia.org/wiki/Lint_(software)&quot;&gt;linted&lt;/a&gt; as it was written, but not on commit or deployment. &lt;a href=&quot;https://en.wikipedia.org/wiki/Code_coverage&quot;&gt;Code coverage&lt;/a&gt; wasn’t being reviewed. I tended to have more confidence in backend tests than in frontend ones, due in part to following some common Enzyme testing practices: shallow rendering, manipulating component instances (props and state) and using &lt;a href=&quot;https://blog.kentcdodds.com/testing-implementation-details-ccb8d269586&quot;&gt;implementation details&lt;/a&gt; to make assertions (DOM elements, class names, component display names, &lt;em&gt;etc.&lt;/em&gt;). Ultimately, too many of my test suites were potential meme fodder:&lt;/p&gt;
+&lt;figure class=&quot;gatsbyRemarkImagesGrid&quot;&gt;&lt;div class=&quot;gatsbyRemarkImagesGrid-grid&quot; style=&quot;
+            grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
+          &quot;&gt;
+
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/994e80f37f28f88260c09f3736497369/db559/unit_tests_passing_meme_1.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 72.8125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUE/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAclSOiqzIH//xAAaEAACAwEBAAAAAAAAAAAAAAABAgADERMi/9oACAEBAAEFAqLHL7gUhwvmVEqemT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAgBAgEBPwFH/8QAGxAAAgIDAQAAAAAAAAAAAAAAAAERIQIxQXH/2gAIAQEABj8CjmySUZeUW2Uj/8QAGxABAAIDAQEAAAAAAAAAAAAAAQARITFBYaH/2gAIAQEAAT8hQ/NMtaC9Tn+JxXWPjMQLFHs40E//2gAMAwEAAgADAAAAELsP/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oACAEDAQE/EI1//8QAFhEBAQEAAAAAAAAAAAAAAAAAARBR/9oACAECAQE/EEyP/8QAHRABAAICAwEBAAAAAAAAAAAAAQARIUExUWGRwf/aAAgBAQABPxBUoMQV7ozLj1UgC4NQRl4N6eokq7GKFKT5c8Gnzh99mdtNIGsB+T//2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Unit Tests Passing (meme)&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/994e80f37f28f88260c09f3736497369/f8fb9/unit_tests_passing_meme_1.jpg&quot;
+        srcset=&quot;/blog/static/994e80f37f28f88260c09f3736497369/e8976/unit_tests_passing_meme_1.jpg 148w,
+/blog/static/994e80f37f28f88260c09f3736497369/63df2/unit_tests_passing_meme_1.jpg 295w,
+/blog/static/994e80f37f28f88260c09f3736497369/f8fb9/unit_tests_passing_meme_1.jpg 590w,
+/blog/static/994e80f37f28f88260c09f3736497369/db559/unit_tests_passing_meme_1.jpg 640w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/a85e14602119402464b27c62449bb610/db559/unit_tests_passing_meme_2.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 72.8125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAMBBAX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAABxbMrRYsP/8QAGRABAQEAAwAAAAAAAAAAAAAAAgERAAMQ/9oACAEBAAEFAi0ZF3bc0jONXz//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAdEAABAwUBAAAAAAAAAAAAAAAAAREhAhASMWGh/9oACAEBAAY/AmQ34hFLi5Sct//EABkQAQEBAQEBAAAAAAAAAAAAAAERADEhcf/aAAgBAQABPyFesLeGokAduJR9DhABWR5Ji7//2gAMAwEAAgADAAAAEFQ//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQIBAT8QR//EAB4QAQACAgIDAQAAAAAAAAAAAAEAESExQWFRcYGx/9oACAEBAAE/EDYoKLZ9pBYyFaVcYzNUnOxfkw4AnSP4xiyAoLM+L66gLatz/9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Unit Tests Passing (meme)&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/a85e14602119402464b27c62449bb610/f8fb9/unit_tests_passing_meme_2.jpg&quot;
+        srcset=&quot;/blog/static/a85e14602119402464b27c62449bb610/e8976/unit_tests_passing_meme_2.jpg 148w,
+/blog/static/a85e14602119402464b27c62449bb610/63df2/unit_tests_passing_meme_2.jpg 295w,
+/blog/static/a85e14602119402464b27c62449bb610/f8fb9/unit_tests_passing_meme_2.jpg 590w,
+/blog/static/a85e14602119402464b27c62449bb610/db559/unit_tests_passing_meme_2.jpg 640w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+&lt;/div&gt;&lt;/figure&gt;
+&lt;p&gt;Below is an overview of my evolved approach to testing JavaScript applications. Also take a look at the &lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo&quot;&gt;demo app&lt;/a&gt; on GitHub, which puts it into practice.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;nota bene&lt;/em&gt;: Testing is an immense topic; what follows is intended to be a modest contribution. It’s written standing on the shoulders of giants (see references below). It contains opinions and suggestions; testing lacks hard and fast rules. The JavaScript ecosystem also marches on; tools come and go, and testing is no exception.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;table-of-contents&quot;&gt;&lt;a href=&quot;#table-of-contents&quot; aria-label=&quot;table of contents permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Table of Contents&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#motivation&quot;&gt;Motivation&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#types-of-tests&quot;&gt;Types of Tests&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#testing-tools&quot;&gt;Testing Tools&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#guiding-principles&quot;&gt;Guiding Principles&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#mental-models&quot;&gt;Mental Models&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#writing-tests&quot;&gt;Writing Tests&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#test-suites&quot;&gt;Test Suites&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#references&quot;&gt;References&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;motivation&quot;&gt;&lt;a href=&quot;#motivation&quot; aria-label=&quot;motivation permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;There are many reasons to write tests, but—for me—the biggest ones are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Quality&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Code must work. Tests help ensure that good programing practices are followed and project requirements are met.&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Maintainability&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Code changes over time. Tests will save you effort over the life of a project.&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Together, the combination of quality and maintainability enforced by a self-testing codebase provides considerable confidence when adding a feature, updating dependencies, refactoring, debugging, deploying and more.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;types-of-tests&quot;&gt;&lt;a href=&quot;#types-of-tests&quot; aria-label=&quot;types of tests permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Types of Tests&lt;/h2&gt;
+&lt;p&gt;Not all tests are created equal. The type of test used in a given case is typically a tradeoff between cost (&lt;em&gt;i.e.&lt;/em&gt;, how much effort they take to configure, write and maintain) and speed (&lt;em&gt;i.e.&lt;/em&gt;, how long they take to run).&lt;/p&gt;
+&lt;h3 id=&quot;static&quot;&gt;&lt;a href=&quot;#static&quot; aria-label=&quot;static permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Static&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Cost:&lt;/em&gt; 💵&lt;br&gt;
+&lt;em&gt;Speed:&lt;/em&gt; 🏎🏎🏎🏎&lt;/p&gt;
+&lt;p&gt;Not tests &lt;em&gt;per se&lt;/em&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/Static_program_analysis&quot;&gt;static analysis&lt;/a&gt; includes &lt;a href=&quot;https://en.wikipedia.org/wiki/Lint_(software)&quot;&gt;linting&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Type_system&quot;&gt;type checking&lt;/a&gt;. Linters check code for problematic patterns or syntax that doesn’t adhere to certain style guidelines. Type checkers add syntax for specifying data types, which are then used to verify correct usage throughout the codebase.&lt;/p&gt;
+&lt;h3 id=&quot;unit&quot;&gt;&lt;a href=&quot;#unit&quot; aria-label=&quot;unit permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Unit&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Cost:&lt;/em&gt; 💵💵&lt;br&gt;
+&lt;em&gt;Speed:&lt;/em&gt; 🏎🏎🏎&lt;/p&gt;
+&lt;p&gt;Unit tests are small in scope, validating an isolated functionality (&lt;em&gt;e.g.&lt;/em&gt;, a controller method). All dependencies are &lt;a href=&quot;https://blog.kentcdodds.com/but-really-what-is-a-javascript-mock-10d060966f7d&quot;&gt;mocked&lt;/a&gt;, which makes unit tests capable of being run in parallel, thereby increasing their speed. Unit tests are useful for covering things like branching logic and error handling in one piece of an application.&lt;/p&gt;
+&lt;h3 id=&quot;integration&quot;&gt;&lt;a href=&quot;#integration&quot; aria-label=&quot;integration permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Integration&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Cost:&lt;/em&gt; 💵💵💵&lt;br&gt;
+&lt;em&gt;Speed:&lt;/em&gt; 🏎🏎&lt;/p&gt;
+&lt;p&gt;Integration tests are medium in scope, validating a subset of functionalities (&lt;em&gt;e.g.&lt;/em&gt;, a view UI or an API endpoint). Less dependencies are mocked than in unit tests; the amount of mocking dictates if an integration test suite can be run in parallel or serially. Integration tests are useful for covering the interaction between adjacent pieces of an application.&lt;/p&gt;
+&lt;h3 id=&quot;end-to-end&quot;&gt;&lt;a href=&quot;#end-to-end&quot; aria-label=&quot;end to end permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;End-to-end&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Cost:&lt;/em&gt; 💵💵💵💵&lt;br&gt;
+&lt;em&gt;Speed:&lt;/em&gt; 🏎&lt;/p&gt;
+&lt;p&gt;End-to-end tests are large in scope, validating a superset of functionalities (&lt;em&gt;e.g.&lt;/em&gt;, simulating a pattern of user behavior in the browser). No dependencies are mocked, which requires end-to-end tests to be run serially against a running server, thereby decreasing their speed. End-to-end tests are useful for covering an application holistically.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;testing-tools&quot;&gt;&lt;a href=&quot;#testing-tools&quot; aria-label=&quot;testing tools permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Testing Tools&lt;/h2&gt;
+&lt;p&gt;There is an abundance of &lt;a href=&quot;https://2018.stateofjs.com/testing/conclusion/&quot;&gt;testing tools&lt;/a&gt; in the JavaScript ecosystem these days. The ones mentioned below have provided me with robust solutions for each type of test.&lt;/p&gt;
+&lt;h3 id=&quot;static-1&quot;&gt;&lt;a href=&quot;#static-1&quot; aria-label=&quot;static 1 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Static&lt;/h3&gt;
+&lt;p&gt;ESLint is the preeminent &lt;a href=&quot;https://www.npmtrends.com/eslint-vs-standard-vs-jshint&quot;&gt;JavaScript linting utility&lt;/a&gt;; pluggability is its biggest advantage. &lt;a href=&quot;https://prettier.io/&quot;&gt;Prettier&lt;/a&gt; is an excellent companion for formatting. &lt;a href=&quot;https://www.npmjs.com/package/eslint-config-airbnb&quot;&gt;eslint-config-airbnb&lt;/a&gt; and &lt;a href=&quot;https://www.npmjs.com/package/eslint-config-prettier&quot;&gt;eslint-config-prettier&lt;/a&gt; are two popular configs, both of which I’ve rolled into &lt;a href=&quot;https://www.npmjs.com/package/eslint-config-colinrcummings&quot;&gt;my own config&lt;/a&gt;. &lt;a href=&quot;https://www.npmjs.com/package/lint-staged&quot;&gt;lint-staged&lt;/a&gt; is also a handy tool for adding linting and format checking to a pre-commit hook.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.typescriptlang.org/&quot;&gt;TypeScript&lt;/a&gt; and &lt;a href=&quot;https://flow.org/&quot;&gt;Flow&lt;/a&gt; are the most popular &lt;a href=&quot;https://www.npmtrends.com/typescript-vs-flow-bin&quot;&gt;JavaScript typecheckers&lt;/a&gt;, with TypeScript really taking off in the back half of 2018.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;nota bene&lt;/em&gt;: At the time of writing this post, adding typechecking to a JavaScript application entails a bit more complexity than a linter (read more about some of the tradeoffs &lt;a href=&quot;https://medium.com/javascript-scene/the-typescript-tax-132ff4cb175b&quot;&gt;here&lt;/a&gt;); for simplicity, I didn’t include it in the demo app. I have used Flow in a few applications, but haven’t worked meaningfully with TypeScript. That being said, the &lt;a href=&quot;https://github.com/Microsoft/TypeScript/issues/29288&quot;&gt;January - June 2019 TypeScript Roadmap&lt;/a&gt; and projects like &lt;a href=&quot;https://github.com/denoland/deno&quot;&gt;deno&lt;/a&gt; are all very exciting; I plan on doing more with TypeScript this year.&lt;/p&gt;
+&lt;h3 id=&quot;unit--integration&quot;&gt;&lt;a href=&quot;#unit--integration&quot; aria-label=&quot;unit  integration permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Unit &amp;#x26; Integration&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://jestjs.io/&quot;&gt;Jest&lt;/a&gt; is a batteries-included &lt;a href=&quot;https://www.npmtrends.com/jest-vs-mocha-vs-jasmine-vs-karma&quot;&gt;test runner&lt;/a&gt;, and it’s replaced Jasmine in my testing toolbox. Some of its best features include an easily extensible configuration, watch mode, powerful mocking capabilities and built-in &lt;a href=&quot;https://istanbul.js.org/&quot;&gt;Istanbul&lt;/a&gt; code coverage reporting. It’s also complemented by a number of &lt;a href=&quot;https://github.com/jest-community/awesome-jest&quot;&gt;awesome packages and resources&lt;/a&gt;, &lt;a href=&quot;jest-dom&quot;&gt;jest-dom&lt;/a&gt; being one of my favorites for frontend tests.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://testing-library.com/react&quot;&gt;react-testing-library&lt;/a&gt;, which is a React-specific wrapper around &lt;a href=&quot;https://testing-library.com/&quot;&gt;dom-testing-library&lt;/a&gt;, has really changed how I write frontend tests. It provides utilities that facilitate &lt;a href=&quot;https://testing-library.com/docs/guide-which-query&quot;&gt;querying the DOM&lt;/a&gt; in the same way a user would, thereby encouraging both accessibility and good testing practices.&lt;/p&gt;
+&lt;h3 id=&quot;end-to-end-1&quot;&gt;&lt;a href=&quot;#end-to-end-1&quot; aria-label=&quot;end to end 1 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;End-to-end&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.cypress.io/&quot;&gt;Cypress&lt;/a&gt; is an exceptional browser testing tool. It’s simple to install. Writing, reading and debugging tests is easy. Its documentation is best-in-class. Tests run reliably in both a Chromium-based GUI (with time travel) and a headless CLI. &lt;a href=&quot;https://testing-library.com/cypress&quot;&gt;cypress-testing-library&lt;/a&gt; is a good companion, adding dom-testing-library’s methods as custom commands.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;guiding-principles&quot;&gt;&lt;a href=&quot;#guiding-principles&quot; aria-label=&quot;guiding principles permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Guiding Principles&lt;/h2&gt;
+&lt;p&gt;When performing any systematic process, it’s instructive to have a set of ideas that inform your actions throughout. Here are my guiding principles for writing tests:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/rauchg/status/807626710350839808&quot;&gt;“Write tests. Not too many. Mostly integration.”&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Writing tests isn’t optional; it’s a prerequisite for professional software. Quality is more important than quantity. Integration tests often give you the most bang for your buck.&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.richardlord.net/blog/tdd/why-write-the-unittest-first.html&quot;&gt;“Test the interface, not the implementation.”&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;The code you’re testing has a contract; validate what it should do, not how it does that thing.&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/kentcdodds/status/977018512689455106&quot;&gt;“The more your tests resemble the way your software is used, the more confidence they can give you.”&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Testing is about building confidence in your codebase; maximize this confidence by making actions and assertions that approximate a consumer of your code.&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;mental-models&quot;&gt;&lt;a href=&quot;#mental-models&quot; aria-label=&quot;mental models permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Mental Models&lt;/h2&gt;
+&lt;p&gt;I find &lt;a href=&quot;https://medium.com/@yegg/mental-models-i-find-repeatedly-useful-936f1cc405d&quot;&gt;mental models&lt;/a&gt; useful for framing tasks. Here are a few that I routinely apply when writing tests:&lt;/p&gt;
+&lt;h3 id=&quot;atoms-elements--organisms&quot;&gt;&lt;a href=&quot;#atoms-elements--organisms&quot; aria-label=&quot;atoms elements  organisms permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Atoms, Elements &amp;#x26; Organisms&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Atomic_theory&quot;&gt;Atomic theory&lt;/a&gt; posits that matter is made up of indivisible particles called atoms. A collection of atoms forms a molecule. A collection of molecules forms an organism.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Unit test atoms. Integration test molecules. End-to-end test organisms.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;use-cases&quot;&gt;&lt;a href=&quot;#use-cases&quot; aria-label=&quot;use cases permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Use Cases&lt;/h3&gt;
+&lt;p&gt;A &lt;a href=&quot;https://en.wikipedia.org/wiki/Use_case&quot;&gt;use case&lt;/a&gt; outlines an interaction between a user and an application. Each use case typically has a &lt;a href=&quot;https://en.wikipedia.org/wiki/Happy_path&quot;&gt;happy path&lt;/a&gt; and one or more &lt;a href=&quot;https://en.wikipedia.org/wiki/Edge_case&quot;&gt;edge cases&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Cover the happy path in end-to-end tests. Cover likely edge cases in integration tests. Cover unlikely edge cases in unit tests.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;critical-control-points&quot;&gt;&lt;a href=&quot;#critical-control-points&quot; aria-label=&quot;critical control points permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Critical Control Points&lt;/h3&gt;
+&lt;p&gt;A &lt;a href=&quot;https://en.wikipedia.org/wiki/Critical_control_point&quot;&gt;critical control point&lt;/a&gt; is a step in a process where the consequences of a failure could be catastrophic.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Thoroughly test critical control points.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;diminishing-returns&quot;&gt;&lt;a href=&quot;#diminishing-returns&quot; aria-label=&quot;diminishing returns permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Diminishing Returns&lt;/h3&gt;
+&lt;p&gt;The law of &lt;a href=&quot;https://en.wikipedia.org/wiki/Diminishing_returns&quot;&gt;diminishing returns&lt;/a&gt; states that, after a certain point, adding more input actually yields less output.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Write tests for the sake of added confidence, not added coverage.&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;writing-tests&quot;&gt;&lt;a href=&quot;#writing-tests&quot; aria-label=&quot;writing tests permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Writing Tests&lt;/h2&gt;
+&lt;p&gt;My approach to writing tests for an application depends on the portion being tested, which in turn directs the type of test that’s used.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;nota bene&lt;/em&gt;: This section references the demo app. Scripts can be found in the &lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/package.json#L7&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt;&lt;/a&gt; file. Organizing and naming tests is largely a matter of preference. For organizational purposes, I’ve co-located everything related to testing in a top-level &lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test&quot;&gt;test&lt;/a&gt; directory. For nomenclature purposes, I’ve included the type of test in each test’s file name (&lt;em&gt;i.e.&lt;/em&gt;, &lt;code class=&quot;language-text&quot;&gt;*.unit.spec.js&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;*.integration.spec.js&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;*.e2e.spec.js&lt;/code&gt;).&lt;/p&gt;
+&lt;h3 id=&quot;static-2&quot;&gt;&lt;a href=&quot;#static-2&quot; aria-label=&quot;static 2 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Static&lt;/h3&gt;
+&lt;p&gt;I consider tests to be a part of the codebase. Therefore, all source and test code is statically analyzed. I like to develop with Eslint and Prettier editor plugins, which give me instant feedback and auto-formatting on save. Additionally, &lt;code class=&quot;language-text&quot;&gt;lint&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;format:check&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;format:fix&lt;/code&gt; scripts ensure consistency after development.&lt;/p&gt;
+&lt;h3 id=&quot;unit--integration-1&quot;&gt;&lt;a href=&quot;#unit--integration-1&quot; aria-label=&quot;unit  integration 1 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Unit &amp;#x26; Integration&lt;/h3&gt;
+&lt;p&gt;A collection of unit and integration tests that can be run in parallel comprise the majority of my tests. They can be run with the &lt;code class=&quot;language-text&quot;&gt;test&lt;/code&gt; script, which runs each test once, or the &lt;code class=&quot;language-text&quot;&gt;test:watch&lt;/code&gt; script, which runs tests related to changed files each time a change is made. Additionally, a &lt;code class=&quot;language-text&quot;&gt;coverage&lt;/code&gt; script can be run to ensure that my tests are thorough and sifting. How I go about writing these tests differs from backend to frontend code.&lt;/p&gt;
+&lt;h4 id=&quot;backend&quot;&gt;&lt;a href=&quot;#backend&quot; aria-label=&quot;backend permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Backend&lt;/h4&gt;
+&lt;p&gt;For backend code, I primarily write unit tests. My goal in these tests is to validate discrete input/output relationships resulting from conditional logic, typically in controller and helper methods.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A &lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/controllers/views/feature_1.unit.spec.js&quot;&gt;unit test&lt;/a&gt; for a view controller (&lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/app/controllers/views/feature_1.js&quot;&gt;source&lt;/a&gt;) covering all likely user authentication/authorization scenarios.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A &lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/controllers/api/access.unit.spec.js&quot;&gt;unit test&lt;/a&gt; for an API endpoint controller (&lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/app/controllers/api/access.js&quot;&gt;source&lt;/a&gt;) covering all likely user authentication/authorization scenarios and an unlikely model error scenario.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A &lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/helpers/authentication/password.unit.spec.js&quot;&gt;unit test&lt;/a&gt; for a password helper (&lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/app/helpers/authentication/password.js&quot;&gt;source&lt;/a&gt;) covering all likely validation scenarios.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I find &lt;code class=&quot;language-text&quot;&gt;describe&lt;/code&gt; blocks useful for organizing logical branches, and the arrange/act/assert pattern useful for structuring individual test blocks.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;nota bene&lt;/em&gt;: Both controller unit tests utilize helpers to reduce repetition across similar tests, which can be found in the &lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test/jest/helpers/controller-test-helpers&quot;&gt;controller-test-helpers&lt;/a&gt; directory.&lt;/p&gt;
+&lt;h4 id=&quot;frontend&quot;&gt;&lt;a href=&quot;#frontend&quot; aria-label=&quot;frontend permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Frontend&lt;/h4&gt;
+&lt;p&gt;For frontend code, I primarily write integration tests. My goal in these tests is to validate DOM output resulting from a combination of likely API response and user interaction scenarios.&lt;/p&gt;
+&lt;p&gt;Take the Manage Users view (&lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/app/assets/javascripts/client/manage_users/manage_users.js&quot;&gt;source&lt;/a&gt;) as an example, which renders a list of users in addition to providing a means of creating, updating and deleting users. To test the UI for this view, I start with an &lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/assets/javascripts/client/manage_users/components/Root.integration.spec.js&quot;&gt;integration test&lt;/a&gt; that mounts the &lt;code class=&quot;language-text&quot;&gt;&amp;lt;Root/&amp;gt;&lt;/code&gt; component via a custom renderer exposing react-testing-library’s utilities as well as some additional helpers for common actions and assertions. The test cases, which are written in the same way a manual tester would perform them, cover the following scenarios:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Initial list of users&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;With successful fetch&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Returning user data&lt;/li&gt;
+&lt;li&gt;Returning no user data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;With unsuccessful fetch (500 Internal Server Error)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Creating a user&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Resulting in success&lt;/li&gt;
+&lt;li&gt;Resulting in error (409 Conflict)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Updating a user&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Resulting in success&lt;/li&gt;
+&lt;li&gt;Resulting in error (422 Unprocessable Entity)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Deleting a user&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Resulting in success&lt;/li&gt;
+&lt;li&gt;Resulting in error (404 Not Found)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Collectively, these scenarios exercise the majority of the UI’s functionality, in addition to simulating all of the errors that the API can return. Integration testing the entire component tree in this way not only covers a lot of code, it also gives me more confidence that everything is working together properly than testing each component in isolation would. That being said, it doesn’t cover everything, so I augment the integration test with a few unit tests covering:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Validation on the create user form (&lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/assets/javascripts/client/manage_users/components/container/UserCreateFormContainer.unit.spec.js&quot;&gt;unit test&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Validation and optional password on the update user form (&lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/assets/javascripts/client/manage_users/components/container/UserUpdateFormContainer.unit.spec.js&quot;&gt;unit test&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Admin users cannot be deleted (&lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/assets/javascripts/client/manage_users/components/presentational/UserDeleteModalToggle.unit.spec.js&quot;&gt;unit test&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;end-to-end-2&quot;&gt;&lt;a href=&quot;#end-to-end-2&quot; aria-label=&quot;end to end 2 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;End-to-end&lt;/h3&gt;
+&lt;p&gt;While end-to-end tests are the slowest type of test because they must be run serially against a running server, they also provide the highest level of confidence. End-to-end tests cover the entire application, including gaps left by other types of tests, such as the interactions between controllers and models, which are mocked out in unit tests, and the interactions between UIs and APIs, which are mocked out in integration tests. Additionally, because end-to-end tests run in a browser environment, they’re a good place to cover routers, which are tightly coupled to HTTP requests.&lt;/p&gt;
+&lt;p&gt;End-to-end tests can be run in headless mode with the &lt;code class=&quot;language-text&quot;&gt;test:e2e&lt;/code&gt; command or in interactive mode with the &lt;code class=&quot;language-text&quot;&gt;test:e2e:interactive&lt;/code&gt; command. Organizationally, I like to structure them as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test/cypress/specs/authentication&quot;&gt;Authentication&lt;/a&gt;, which cover the entire login and logout flows as well as access to views requiring user authentication.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test/cypress/specs/authorization&quot;&gt;Authorization&lt;/a&gt;, which cover access to views requiring user authorization.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test/cypress/specs/shared&quot;&gt;Shared&lt;/a&gt;, which cover elements that are present on all of the views (&lt;em&gt;e.g.&lt;/em&gt;, the navbar and footer).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test/cypress/specs/views&quot;&gt;Views&lt;/a&gt;, which cover the happy paths for each view.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Structuring end-to-end tests in this way is inspired by &lt;a href=&quot;https://youtu.be/5XQOK0v_YRE&quot;&gt;this talk&lt;/a&gt; by &lt;a href=&quot;https://twitter.com/be_mann&quot;&gt;Brian Mann&lt;/a&gt; (the creator of Cypress), which covers organization as well as some other &lt;a href=&quot;https://docs.cypress.io/guides/references/best-practices.html&quot;&gt;best practices&lt;/a&gt; for testing with Cypress.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;test-suites&quot;&gt;&lt;a href=&quot;#test-suites&quot; aria-label=&quot;test suites permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Test Suites&lt;/h2&gt;
+&lt;p&gt;Tests can only provide confidence if they’re run regularly. Therefore, it’s a good practice to build test execution into your workflows.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;nota bene&lt;/em&gt;: This section also references scripts from the demo app.&lt;/p&gt;
+&lt;h3 id=&quot;precommit&quot;&gt;&lt;a href=&quot;#precommit&quot; aria-label=&quot;precommit permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Precommit&lt;/h3&gt;
+&lt;p&gt;The &lt;code class=&quot;language-text&quot;&gt;precommit&lt;/code&gt; script is run at the end of the development workflow (&lt;em&gt;i.e.&lt;/em&gt;, upon running &lt;code class=&quot;language-text&quot;&gt;git commit&lt;/code&gt;). It lints and format checks staged files in addition to running the unit and integration tests.&lt;/p&gt;
+&lt;h3 id=&quot;validate&quot;&gt;&lt;a href=&quot;#validate&quot; aria-label=&quot;validate permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Validate&lt;/h3&gt;
+&lt;p&gt;The &lt;code class=&quot;language-text&quot;&gt;validate&lt;/code&gt; script is run at the beginning of the build workflow (&lt;em&gt;i.e.&lt;/em&gt;, as part of a CI pipeline). It lints and format checks the entire codebase in addition to running the unit, integration and headless end-to-end tests.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;references&quot;&gt;&lt;a href=&quot;#references&quot; aria-label=&quot;references permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;References&lt;/h2&gt;
+&lt;p&gt;The following people have helped shape my thinking about software testing.&lt;/p&gt;
+&lt;h3 id=&quot;kent-beck&quot;&gt;&lt;a href=&quot;#kent-beck&quot; aria-label=&quot;kent beck permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Kent Beck&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/KentBeck&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://medium.com/@kentbeck_7670&quot;&gt;Blog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;martin-fowler&quot;&gt;&lt;a href=&quot;#martin-fowler&quot; aria-label=&quot;martin fowler permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Martin Fowler&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/martinfowler&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://martinfowler.com/tags/testing.html&quot;&gt;Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://youtu.be/z9quxZsLcfo&quot;&gt;This&lt;/a&gt; &lt;a href=&quot;https://youtu.be/JoTB2mcjU7w&quot;&gt;five&lt;/a&gt; &lt;a href=&quot;https://youtu.be/YNw4baDz6WA&quot;&gt;part&lt;/a&gt; &lt;a href=&quot;https://youtu.be/dGtasFJnUxI&quot;&gt;video&lt;/a&gt; &lt;a href=&quot;https://youtu.be/gWD6REVeKW4&quot;&gt;series&lt;/a&gt;, which is an ongoing conversation about testing with Kent Beck and David Heinemeier Hansson&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;david-heinemeier-hansson&quot;&gt;&lt;a href=&quot;#david-heinemeier-hansson&quot; aria-label=&quot;david heinemeier hansson permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;David Heinemeier Hansson&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/dhh&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://m.signalvnoise.com/&quot;&gt;Blog&lt;/a&gt; (&lt;a href=&quot;https://dhh.dk//2012/dependency-injection-is-not-a-virtue.html&quot;&gt;especially&lt;/a&gt; &lt;a href=&quot;https://dhh.dk//2014/tdd-is-dead-long-live-testing.html&quot;&gt;these&lt;/a&gt; &lt;a href=&quot;https://dhh.dk//2014/test-induced-design-damage.html&quot;&gt;four&lt;/a&gt; &lt;a href=&quot;https://dhh.dk//2014/slow-database-test-fallacy.html&quot;&gt;posts&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/channel/UCUkM9uMpWatT7gVWShgtKFw&quot;&gt;Videos&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;mattias-petter-johansson&quot;&gt;&lt;a href=&quot;#mattias-petter-johansson&quot; aria-label=&quot;mattias petter johansson permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Mattias Petter Johansson&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/mpjme&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q/search?query=test&quot;&gt;Videos&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;kent-c-dodds&quot;&gt;&lt;a href=&quot;#kent-c-dodds&quot; aria-label=&quot;kent c dodds permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Kent C. Dodds&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/kentcdodds&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.kentcdodds.com/search?q=test&quot;&gt;Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/user/kentdoddsfamily/search?query=test&quot;&gt;Videos&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://testingjavascript.com/&quot;&gt;testingjavascript.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;feedback&quot;&gt;&lt;a href=&quot;#feedback&quot; aria-label=&quot;feedback permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Feedback&lt;/h2&gt;
+&lt;p&gt;Have questions, comments or suggestions? Reach out to me on Twitter (&lt;a href=&quot;https://twitter.com/colinrcummings&quot;&gt;@colinrcummings&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;— Colin&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Buttercup Password Manager]]></title><description><![CDATA[My New Year’s resolution was to start using a  password manager . There are a lot of password managers out there, but I ultimately decided…]]></description><link>https://colinrcummings.github.io/blog//buttercup-password-manager/</link><guid isPermaLink="false">https://colinrcummings.github.io/blog//buttercup-password-manager/</guid><pubDate>Sat, 06 Jan 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;My New Year’s resolution was to start using a &lt;a href=&quot;https://www.youtube.com/watch?v=xHSnHj-zKF4&quot;&gt;password manager&lt;/a&gt;. There are a lot of password managers out there, but I ultimately decided on &lt;a href=&quot;https://buttercup.pw/&quot;&gt;Buttercup&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;buttercup&quot;&gt;&lt;a href=&quot;#buttercup&quot; aria-label=&quot;buttercup permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Buttercup&lt;/h2&gt;
+&lt;p&gt;Buttercup is a free, secure, cross-platform credentials manager. Your credentials are stored in an encrypted archive that resides on a file hosting service of your choice, which you can access from a desktop, browser and/or mobile device.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Desktop:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/6ba3cb57bafa566a7a5aaccaf93621da/1c8a0/desktop.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 68.40193704600485%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAYCBAX/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/2gAMAwEAAhADEAAAAc5kV2eLhANf/8QAGRABAAIDAAAAAAAAAAAAAAAAAQQ0AhAx/9oACAEBAAEFAjsavqJXcwf/xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAIAQMBAT8BZX//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAYEAACAwAAAAAAAAAAAAAAAAACEAARIf/aAAgBAQAGPwLYFMV//8QAHRAAAgEEAwAAAAAAAAAAAAAAAAEREDFBcSGRwf/aAAgBAQABPyFk25WwdBndFcedPpAHJ//aAAwDAQACAAMAAAAQP/8A/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAFBEf/aAAgBAwEBPxC6J0P/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAgBAgEBPxBX/8QAHBABAAMAAgMAAAAAAAAAAAAAAQARITFBUWGR/9oACAEBAAE/EEig4UvZXcpajHaW9gR49wRhor+oyJJ4J//Z&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Buttercup desktop&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/6ba3cb57bafa566a7a5aaccaf93621da/f8fb9/desktop.jpg&quot;
+        srcset=&quot;/blog/static/6ba3cb57bafa566a7a5aaccaf93621da/e8976/desktop.jpg 148w,
+/blog/static/6ba3cb57bafa566a7a5aaccaf93621da/63df2/desktop.jpg 295w,
+/blog/static/6ba3cb57bafa566a7a5aaccaf93621da/f8fb9/desktop.jpg 590w,
+/blog/static/6ba3cb57bafa566a7a5aaccaf93621da/1c8a0/desktop.jpg 826w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Browser:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/6eadbe953005474873a43ce689b6c8e8/1c8a0/browser.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 68.40193704600485%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAECBAX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAv/aAAwDAQACEAMQAAABa1Y1KLIf/8QAGhAAAwEAAwAAAAAAAAAAAAAAAAIDBAEUI//aAAgBAQABBQLTNZGb0p15jItBJpPk/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8Bh//EABYRAAMAAAAAAAAAAAAAAAAAAAABEf/aAAgBAgEBPwGsrP/EABwQAAICAgMAAAAAAAAAAAAAAAARAQIQEiFBUf/aAAgBAQAGPwKur5Fbw7I3hjrVTj//xAAaEAADAQEBAQAAAAAAAAAAAAAAARExIVFh/9oACAEBAAE/Ie4L19PRJViG50roYzpCXDS0/9oADAMBAAIAAwAAABDUH//EABcRAAMBAAAAAAAAAAAAAAAAAAABEVH/2gAIAQMBAT8Qgiw//8QAFxEBAAMAAAAAAAAAAAAAAAAAAAFRYf/aAAgBAgEBPxCbGz//xAAdEAEAAgICAwAAAAAAAAAAAAABETEAIUFRgbHR/9oACAEBAAE/EGhCJS8I+4RmlxBPBcbvHS2emD1jooWzU3UZOUCSJ15xurP/2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Buttercup browser&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/6eadbe953005474873a43ce689b6c8e8/f8fb9/browser.jpg&quot;
+        srcset=&quot;/blog/static/6eadbe953005474873a43ce689b6c8e8/e8976/browser.jpg 148w,
+/blog/static/6eadbe953005474873a43ce689b6c8e8/63df2/browser.jpg 295w,
+/blog/static/6eadbe953005474873a43ce689b6c8e8/f8fb9/browser.jpg 590w,
+/blog/static/6eadbe953005474873a43ce689b6c8e8/1c8a0/browser.jpg 826w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Mobile:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/91ddbe3cd25359dc5f1cae43210afe8c/d45ff/mobile.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 350px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 161.42857142857144%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAgABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAgABBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe2sQJRm5CjH/8QAFxABAQEBAAAAAAAAAAAAAAAAABEhIP/aAAgBAQABBQLWpeYiqr//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAWEAADAAAAAAAAAAAAAAAAAAAAMDH/2gAIAQEABj8CKv8A/8QAHhAAAgEDBQAAAAAAAAAAAAAAAAERECExIEFRcfH/2gAIAQEAAT8hSllkeA95sSwX5LkTiNA60//aAAwDAQACAAMAAAAQgAWO/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAIhAAAgECBQUAAAAAAAAAAAAAAREAMXEhQVFh8YGhscHw/9oACAEBAAE/EAGqbUhAM1oMTZ2w8QhYhdBhFwxNXsIAAIfNogCysInwEdv3G0RtBP/Z&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Buttercup mobile&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/91ddbe3cd25359dc5f1cae43210afe8c/d45ff/mobile.jpg&quot;
+        srcset=&quot;/blog/static/91ddbe3cd25359dc5f1cae43210afe8c/b16f2/mobile.jpg 148w,
+/blog/static/91ddbe3cd25359dc5f1cae43210afe8c/dc3a7/mobile.jpg 295w,
+/blog/static/91ddbe3cd25359dc5f1cae43210afe8c/d45ff/mobile.jpg 350w&quot;
+        sizes=&quot;(max-width: 350px) 100vw, 350px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;setup&quot;&gt;&lt;a href=&quot;#setup&quot; aria-label=&quot;setup permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Setup&lt;/h2&gt;
+&lt;p&gt;Setting up Buttercup was easy. In just a few minutes, I downloaded Buttercup for desktop, create a &lt;code class=&quot;language-text&quot;&gt;.bcup&lt;/code&gt; archive on Dropbox, connected Buttercup to Dropbox and created a master password for the archive. The hard part was updating my existing accounts with secure passwords (i.e. changing &lt;code class=&quot;language-text&quot;&gt;myP@ssw0rd_1&lt;/code&gt; to something like &lt;code class=&quot;language-text&quot;&gt;w7bsN5jcBdknz[&amp;lt;!VS:+mv.5t+Vrtt&lt;/code&gt;) and adding them to Buttercup. The Buttercup desktop application has a built-in password generator, which was very helpful. When I was done, I downloaded Buttercup for mobile, connected it to Dropbox, entered my archive master password and there were all of my credentials.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;usage&quot;&gt;&lt;a href=&quot;#usage&quot; aria-label=&quot;usage permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Usage&lt;/h2&gt;
+&lt;p&gt;I’ve been using Buttercup for a few weeks now, and I really like it. Having a password manager significantly decreases the cognitive load of remembering different credentials for dozens of accounts. Logging into an account is now as easy as opening Buttercup, copying my account credentials and pasting them into the login form (it’s even easier with the browser extension). Using Buttercup is also a real treat—it seamlessly keeps my credentials in synch and the UI/UX is really impeccable accross platforms. The thing I like most about using Buttercup, however, is that it’s &lt;a href=&quot;https://opensource.org/faq#osd&quot;&gt;open source&lt;/a&gt;. A couple things that I’m keeping an eye on:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Desktop:&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/buttercup/buttercup-desktop/issues/78&quot;&gt;Change archive’s password&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Browser:&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/buttercup/buttercup-browser-extension/issues/94&quot;&gt;Make auto-submit optional&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Mobile:&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/buttercup/buttercup-mobile/issues/22&quot;&gt;Touch to unlock&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/buttercup/buttercup-mobile/issues/23&quot;&gt;Password generator&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/buttercup/roadmap&quot;&gt;roadmap&lt;/a&gt; for more information.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;feedback&quot;&gt;&lt;a href=&quot;#feedback&quot; aria-label=&quot;feedback permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Feedback&lt;/h2&gt;
+&lt;p&gt;Have questions, comments or suggestions? Reach out to me on Twitter (&lt;a href=&quot;https://twitter.com/colinrcummings&quot;&gt;@colinrcummings&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;— Colin&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Managing environment workflows with gulp.js]]></title><description><![CDATA[Over the years, I’ve used a few different combinations of frameworks, libraries and tools, some of which come with environment workflows out…]]></description><link>https://colinrcummings.github.io/blog//managing-environment-workflows-with-gulp/</link><guid isPermaLink="false">https://colinrcummings.github.io/blog//managing-environment-workflows-with-gulp/</guid><pubDate>Tue, 03 Oct 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Over the years, I’ve used a few different combinations of frameworks, libraries and tools, some of which come with environment workflows out-of-the-box and others that do not. With the &lt;a href=&quot;https://trends.google.com/trends/explore?date=all&amp;#x26;q=%2Fm%2F0505cl,%2Fm%2F06y_qx,%2Fm%2F0bbxf89&quot;&gt;rising popularity of Node.js&lt;/a&gt;, the need to roll one’s own environment workflows is also on the rise, as is the number of resources with which to do so. I recently give a presentation about this topic at one of the software development Meetups I attend; below is an overview of the presentation, the lion’s share of which was a live demo.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://colinrcummings.github.io/meetup-gulp&quot;&gt;View Presentation&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;background&quot;&gt;&lt;a href=&quot;#background&quot; aria-label=&quot;background permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Background&lt;/h2&gt;
+&lt;p&gt;I like writing code; I don’t like performing repetitive tasks like manipulating files, migrating folders, running scripts, &lt;em&gt;et cetera&lt;/em&gt;. Accordingly, I make optimizing develop, build and deploy workflows across development, test and production environments a priority in every project. Inevitably, this is a tradeoff between &lt;a href=&quot;https://twitter.com/phillip_webb/status/705909774001377280?lang=en&quot;&gt;magic and boilerplate&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;When I was getting started with development, I used &lt;a href=&quot;http://rubyonrails.org/&quot;&gt;Ruby On Rails&lt;/a&gt;, which is preconfigured with pretty good, albeit magic-laden, develop and build workflows for development and production environments that are powered by its &lt;a href=&quot;http://guides.rubyonrails.org/asset_pipeline.html&quot;&gt;Asset Pipeline&lt;/a&gt;. Additionally, &lt;a href=&quot;https://www.heroku.com/&quot;&gt;Heroku&lt;/a&gt; offers a nice &lt;a href=&quot;https://devcenter.heroku.com/articles/getting-started-with-rails4#deploy-your-application-to-heroku&quot;&gt;Rails deploy workflow&lt;/a&gt; for test and production environments. If you’ve worked with Rails like this before, then you know that it’s great… until it isn’t.&lt;/p&gt;
+&lt;figure class=&quot;gatsbyRemarkImagesGrid&quot;&gt;&lt;div class=&quot;gatsbyRemarkImagesGrid-grid&quot; style=&quot;
+            grid-template-columns: repeat(auto-fill, minmax(31%, 1fr));
+          &quot;&gt;
+
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/34a6ea5f9e51aba67fadcb9f0fc842db/8a20f/asset_pipeline_good.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 66.83417085427136%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAUCAwT/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAABW6boi8ZCf//EABsQAQEAAQUAAAAAAAAAAAAAAAECAAMEEhMh/9oACAEBAAEFAuSNXWVIsaHjts6kz//EABURAQEAAAAAAAAAAAAAAAAAABBB/9oACAEDAQE/AYf/xAAVEQEBAAAAAAAAAAAAAAAAAAAQQf/aAAgBAgEBPwGn/8QAHBAAAgEFAQAAAAAAAAAAAAAAAAESESEiMTKh/9oACAEBAAY/AnEWRZHWzt7KT8P/xAAbEAEAAgMBAQAAAAAAAAAAAAABABEhMVFBgf/aAAgBAQABPyExrnbVwDQHbBiFVO3PlRyQqLRF5GvoCP/aAAwDAQACAAMAAAAQZP8A/8QAFxEBAQEBAAAAAAAAAAAAAAAAAREAQf/aAAgBAwEBPxAhHXQ3/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oACAECAQE/EKa//8QAHBABAQADAQADAAAAAAAAAAAAAREAIUExUWGB/9oACAEBAAE/EC4TAg4072dzeglV6fBMRPuIr30wwIvAFDWj7yIGoUSAvn5ho3EU6M//2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Welcome aboard. You&apos;re riding Ruby on Rails! (meme)&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/34a6ea5f9e51aba67fadcb9f0fc842db/f8fb9/asset_pipeline_good.jpg&quot;
+        srcset=&quot;/blog/static/34a6ea5f9e51aba67fadcb9f0fc842db/e8976/asset_pipeline_good.jpg 148w,
+/blog/static/34a6ea5f9e51aba67fadcb9f0fc842db/63df2/asset_pipeline_good.jpg 295w,
+/blog/static/34a6ea5f9e51aba67fadcb9f0fc842db/f8fb9/asset_pipeline_good.jpg 590w,
+/blog/static/34a6ea5f9e51aba67fadcb9f0fc842db/8a20f/asset_pipeline_good.jpg 597w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/aa48d20e363f701611360bc575b89d8f/9b0e7/asset_pipeline_bad.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 66.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAECAwQF/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQAC/9oADAMBAAIQAxAAAAHnN3ZcBMb/xAAaEAEAAgMBAAAAAAAAAAAAAAACAQMAERIE/9oACAEBAAEFAqlzbel2oUZ6CTdbvTMdf//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABsQAAICAwEAAAAAAAAAAAAAAAABAhEhMYFh/9oACAEBAAY/AqlrRi0kZd9H7kjcpPo6P//EABoQAAIDAQEAAAAAAAAAAAAAAAERACExUWH/2gAIAQEAAT8hvElkvIyHkAoZGwMENBujbBWxYngvqAZJ/9oADAMBAAIAAwAAABCM3//EABcRAAMBAAAAAAAAAAAAAAAAAAARIQH/2gAIAQMBAT8QbmlP/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAERQf/aAAgBAgEBPxCain//xAAcEAEAAgIDAQAAAAAAAAAAAAABESEAQTFRYZH/2gAIAQEAAT8QlZoBJHPWUJYZTlt8yAtlAKPv2smIpUAbAQ4xjwmhE3V4BSE8N6z/2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;I don&apos;t always deploy Rails to Heroku, but when I do, I break the Asset Pipeline. (meme)&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/aa48d20e363f701611360bc575b89d8f/f8fb9/asset_pipeline_bad.jpg&quot;
+        srcset=&quot;/blog/static/aa48d20e363f701611360bc575b89d8f/e8976/asset_pipeline_bad.jpg 148w,
+/blog/static/aa48d20e363f701611360bc575b89d8f/63df2/asset_pipeline_bad.jpg 295w,
+/blog/static/aa48d20e363f701611360bc575b89d8f/f8fb9/asset_pipeline_bad.jpg 590w,
+/blog/static/aa48d20e363f701611360bc575b89d8f/9b0e7/asset_pipeline_bad.jpg 600w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/248f23d809da11c653ab9c62a60ebe07/8a20f/asset_pipeline_ugly.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 66.83417085427136%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFAf/EABQBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAZbOMDIHQf/EABwQAAICAgMAAAAAAAAAAAAAAAEDAhEAEgQTIf/aAAgBAQABBQLjyAJdEZXqFx0612db/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAHRAAAgIBBQAAAAAAAAAAAAAAAAECETIDEiExof/aAAgBAQAGPwJpxUrONJdjNzVsx9MT/8QAHBAAAgIDAQEAAAAAAAAAAAAAAREAIUFRYXGh/9oACAEBAAE/ITaQAnhQ0Phb87CgNGBjnAtKMJnyLtJ//9oADAMBAAIAAwAAABC7L//EABcRAAMBAAAAAAAAAAAAAAAAAAEQESH/2gAIAQMBAT8QEmr/xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAgEBPxBn/8QAGxABAQADAAMAAAAAAAAAAAAAAREAITFBwfD/2gAIAQEAAT8QV2Ap6V6PdYWVkc2iZ8cM17aGPWZYKAc13K6kir0+8Aim/LXP/9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Asset Pipeline! (meme)&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/248f23d809da11c653ab9c62a60ebe07/f8fb9/asset_pipeline_ugly.jpg&quot;
+        srcset=&quot;/blog/static/248f23d809da11c653ab9c62a60ebe07/e8976/asset_pipeline_ugly.jpg 148w,
+/blog/static/248f23d809da11c653ab9c62a60ebe07/63df2/asset_pipeline_ugly.jpg 295w,
+/blog/static/248f23d809da11c653ab9c62a60ebe07/f8fb9/asset_pipeline_ugly.jpg 590w,
+/blog/static/248f23d809da11c653ab9c62a60ebe07/8a20f/asset_pipeline_ugly.jpg 597w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+&lt;/div&gt;&lt;figcaption class=&quot;gatsbyRemarkImagesGrid-figcaption&quot;&gt;The good • The bad • The ugly&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;While I still use Rails in some existing projects (including &lt;a href=&quot;https://www.peakbucket.com/&quot;&gt;PeakBucket&lt;/a&gt;), I’ve come to prefer &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt; when starting new ones. Node leaves configuration almost entirely up to the developer, but with freedom comes responsibility—and often boilerplate. Some tools, like &lt;a href=&quot;https://github.com/facebookincubator/create-react-app&quot;&gt;Create React App&lt;/a&gt;, provide preconfigured (&lt;em&gt;i.e.&lt;/em&gt; boilerplate-free) develop and build workflows for development and production environments with the option to “eject” and customize the configuration at any time. For more complex applications, however, you often need more control; for me, this is where &lt;a href=&quot;https://gulpjs.com/&quot;&gt;gulp.js&lt;/a&gt; comes into play.&lt;/p&gt;
+&lt;p&gt;With over 3 million downloads a month, gulp needs little introduction. While it’s not the only tool of its kind, nor is it as widely used as &lt;a href=&quot;https://webpack.github.io/&quot;&gt;webpack&lt;/a&gt; (with over 8 million downloads a month), its flexibility, strong ecosystem and interoperability with other tools (including webpack) make it my choice for managing environment workflows in more complex applications.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;example&quot;&gt;&lt;a href=&quot;#example&quot; aria-label=&quot;example permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Example&lt;/h2&gt;
+&lt;p&gt;At work, I maintain a Node project that’s an &lt;a href=&quot;https://expressjs.com/&quot;&gt;Express&lt;/a&gt; application comprised of multiple single-page &lt;a href=&quot;https://reactjs.org/&quot;&gt;React&lt;/a&gt; applications. Configured like this, Express handles database connections, view/web service routes and user authentication server-side, while React handles user interactions client-side. Here are the workflows I’ve configured for this application:&lt;/p&gt;
+&lt;h3 id=&quot;develop&quot;&gt;&lt;a href=&quot;#develop&quot; aria-label=&quot;develop permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Develop&lt;/h3&gt;
+&lt;p&gt;Optimized for developer experience, the develop workflow is tuned to minimize wait time and manual tasks in order to maximize code quality and output in the development environment. On startup, it copies static files, transpiles SASS files and compiles JS(X) files into the public directory. It uses &lt;a href=&quot;https://github.com/remy/nodemon&quot;&gt;nodemon&lt;/a&gt; for a runtime, which automatically restarts the server when watched files change, and uses individual database connections per web service request to avoid acquiring additional connections with each restart (the application uses database pools in other environments). Because webpack bundles the view scripts, it also takes advantage of &lt;a href=&quot;https://webpack.github.io/docs/hot-module-replacement.html&quot;&gt;Hot Module Replacement&lt;/a&gt; (including &lt;a href=&quot;https://gaearon.github.io/react-hot-loader/&quot;&gt;React Hot Loader&lt;/a&gt;) in addition to &lt;a href=&quot;https://github.com/webpack-contrib/webpack-bundle-analyzer&quot;&gt;Webpack Bundle Analyzer&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/2859e82b26becbeff3b2f0cce757d10c/e8aab/dev.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 92.78523489932886%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAATABQDASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAAAAMBAgX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHjSvImyLyDQH//xAAYEAADAQEAAAAAAAAAAAAAAAAAARARIf/aAAgBAQABBQLB1nI5/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAHBAAAgEFAQAAAAAAAAAAAAAAAAEQESExYXGR/9oACAEBAAE/IaWWTu2dPweJf//aAAwDAQACAAMAAAAQAMAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAHxAAAgICAQUAAAAAAAAAAAAAAREAITHBEEFhgZHw/9oACAEBAAE/ECABeNQHSHri0Flagh+NQMXwbladoIWBjpx//9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Develop workflow (console screenshot)&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/2859e82b26becbeff3b2f0cce757d10c/f8fb9/dev.jpg&quot;
+        srcset=&quot;/blog/static/2859e82b26becbeff3b2f0cce757d10c/e8976/dev.jpg 148w,
+/blog/static/2859e82b26becbeff3b2f0cce757d10c/63df2/dev.jpg 295w,
+/blog/static/2859e82b26becbeff3b2f0cce757d10c/f8fb9/dev.jpg 590w,
+/blog/static/2859e82b26becbeff3b2f0cce757d10c/e8aab/dev.jpg 596w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h3 id=&quot;build&quot;&gt;&lt;a href=&quot;#build&quot; aria-label=&quot;build permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Build&lt;/h3&gt;
+&lt;p&gt;One of 12 items on &lt;a href=&quot;https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/&quot;&gt;The Joel Test&lt;/a&gt;, making a build in one step, for use in either the test or production environment, is what this workflow is all about. Prior to making a build, it runs a unit test suite, which covers all aspects of the application (including database connections, web service calls, business logic and user authentication/interaction). In addition to copying/transpiling/compiling minified public assets, it also copies all of the other files required for running the application (models, views, controllers, routes, &lt;em&gt;et cetera&lt;/em&gt;) into a build directory.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/f632659a3ac1460dac5b329047e379cd/e8aab/build.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 148.65771812080538%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAeABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAEDAgX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHjSaMjC0rTJjD/xAAXEAADAQAAAAAAAAAAAAAAAAAAAREQ/9oACAEBAAEFAoPLsQ1tgz//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAUEAEAAAAAAAAAAAAAAAAAAAAw/9oACAEBAAY/Ak//xAAaEAADAQEBAQAAAAAAAAAAAAAAAREhEEFh/9oACAEBAAE/IYnVD0h8DTOJYR4o1Z//2gAMAwEAAgADAAAAEKDFDP/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8QH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8QH//EAB4QAQACAQQDAAAAAAAAAAAAAAEAESEQMUFxgZHw/9oACAEBAAE/EFxg2iBqjxorsnqBGWd5cZXxEK7OLiU5lYMWchEANxyzL0HU/9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Build workflow (console screenshot)&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/f632659a3ac1460dac5b329047e379cd/f8fb9/build.jpg&quot;
+        srcset=&quot;/blog/static/f632659a3ac1460dac5b329047e379cd/e8976/build.jpg 148w,
+/blog/static/f632659a3ac1460dac5b329047e379cd/63df2/build.jpg 295w,
+/blog/static/f632659a3ac1460dac5b329047e379cd/f8fb9/build.jpg 590w,
+/blog/static/f632659a3ac1460dac5b329047e379cd/e8aab/build.jpg 596w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h3 id=&quot;deploy&quot;&gt;&lt;a href=&quot;#deploy&quot; aria-label=&quot;deploy permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Deploy&lt;/h3&gt;
+&lt;p&gt;One additional piece of complexity with this application is that it’s deployed to a Windows Server hosted on a VPN. My goal in creating this workflow was to replicate the ease of &lt;code class=&quot;language-text&quot;&gt;$ git push heroku master&lt;/code&gt;, which I’ve enjoyed with other applications. It’s split into two commands: one run locally and another run on the server, which leaves the flexibility to deploy to multiple environments server-side.&lt;/p&gt;
+&lt;p&gt;Locally, the deploy workflow runs the build workflow, zips the build directory and coppies the zipped build directory to the server.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/06cc3f61af05a67b2e531d75c294ed7a/e8aab/deploy-local.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 183.72483221476512%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAlABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAMCAQX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHxZ7wZBadcknReQYB//8QAGRAAAwEBAQAAAAAAAAAAAAAAAAEQERIg/9oACAEBAAEFAsu3kfhmDn//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AV//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AV//xAAWEAADAAAAAAAAAAAAAAAAAAAgITD/2gAIAQEABj8Ckx//xAAbEAACAgMBAAAAAAAAAAAAAAAAAREhEDFBcf/aAAgBAQABPyHUdZuyD0STJFpFdWQmiD4Vx//aAAwDAQACAAMAAAAQgMI8cA//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EF//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EF//xAAeEAACAgICAwAAAAAAAAAAAAABEQAhEEExYVGRof/aAAgBAQABPxAuFtRaJesE9D7H0uNEIpIBQbW43mCS7ndiMQCQdIZmXXZgSB0lxAaavH//2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Deploy workflow locally (console screenshot)&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/06cc3f61af05a67b2e531d75c294ed7a/f8fb9/deploy-local.jpg&quot;
+        srcset=&quot;/blog/static/06cc3f61af05a67b2e531d75c294ed7a/e8976/deploy-local.jpg 148w,
+/blog/static/06cc3f61af05a67b2e531d75c294ed7a/63df2/deploy-local.jpg 295w,
+/blog/static/06cc3f61af05a67b2e531d75c294ed7a/f8fb9/deploy-local.jpg 590w,
+/blog/static/06cc3f61af05a67b2e531d75c294ed7a/e8aab/deploy-local.jpg 596w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;On the server, the build can be deployed to either the test or production environment:&lt;/p&gt;
+&lt;p&gt;In the test environment, the deploy workflow on the server unzips the zipped build directory, migrates build files and updates node modules. The test environment runtime is started manually as a process attached to the console (&lt;em&gt;i.e.&lt;/em&gt; &lt;code class=&quot;language-text&quot;&gt;$ npm start&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/21a22d7712df71df3280597096b57cd4/e8aab/deploy-server-test.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 41.946308724832214%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAIABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAEDBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAD/9oADAMBAAIQAxAAAAHLrLygH//EABUQAQEAAAAAAAAAAAAAAAAAABBB/9oACAEBAAEFAof/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAY/An//xAAXEAEAAwAAAAAAAAAAAAAAAAABABAx/9oACAEBAAE/IWHa/9oADAMBAAIAAwAAABDz7//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAECAQE/ECf/xAAaEAACAgMAAAAAAAAAAAAAAAABEQAxECFh/9oACAEBAAE/EAvttSwdx//Z&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Test deploy workflow on the server (console screenshot)&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/21a22d7712df71df3280597096b57cd4/f8fb9/deploy-server-test.jpg&quot;
+        srcset=&quot;/blog/static/21a22d7712df71df3280597096b57cd4/e8976/deploy-server-test.jpg 148w,
+/blog/static/21a22d7712df71df3280597096b57cd4/63df2/deploy-server-test.jpg 295w,
+/blog/static/21a22d7712df71df3280597096b57cd4/f8fb9/deploy-server-test.jpg 590w,
+/blog/static/21a22d7712df71df3280597096b57cd4/e8aab/deploy-server-test.jpg 596w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;In the production environment, the deploy workflow on the server unzips the zipped build directory, performs a database backup, stops the runtime daemon process, migrates build files, updates node modules and starts the runtime daemon process. The production environment runtime is a native Windows service courtesy of the &lt;a href=&quot;https://github.com/coreybutler/node-windows/&quot;&gt;node-windows&lt;/a&gt; module.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/9f16bae60443f98d918628117e70dd5d/e8aab/deploy-server-prod.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 87.41610738255034%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAARABQDASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAAAAMBAgX/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAwH/2gAMAwEAAhADEAAAAeZOk7S1GqzDAP/EABYQAQEBAAAAAAAAAAAAAAAAABBBAf/aAAgBAQABBQKaTSH/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAUEAEAAAAAAAAAAAAAAAAAAAAw/9oACAEBAAY/Ah//xAAYEAACAwAAAAAAAAAAAAAAAAABEAAxwf/aAAgBAQABPyFhZqG1/9oADAMBAAIAAwAAABBf7z7/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAgEBPxAhP//EABwQAAICAwEBAAAAAAAAAAAAAAERACEQMXGRsf/aAAgBAQABPxAiiF8gEEv4sMopOAGb8wdI39x//9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Production deploy workflow on the server (console screenshot)&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/9f16bae60443f98d918628117e70dd5d/f8fb9/deploy-server-prod.jpg&quot;
+        srcset=&quot;/blog/static/9f16bae60443f98d918628117e70dd5d/e8976/deploy-server-prod.jpg 148w,
+/blog/static/9f16bae60443f98d918628117e70dd5d/63df2/deploy-server-prod.jpg 295w,
+/blog/static/9f16bae60443f98d918628117e70dd5d/f8fb9/deploy-server-prod.jpg 590w,
+/blog/static/9f16bae60443f98d918628117e70dd5d/e8aab/deploy-server-prod.jpg 596w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;feedback&quot;&gt;&lt;a href=&quot;#feedback&quot; aria-label=&quot;feedback permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Feedback&lt;/h2&gt;
+&lt;p&gt;Have questions, comments or suggestions? Reach out to me on Twitter (&lt;a href=&quot;https://twitter.com/colinrcummings&quot;&gt;@colinrcummings&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;— Colin&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Introduction to React.js]]></title><description><![CDATA[I’ve been using  React  for a few years now. If you read my  previous post , then you know that it’s my go-to library for creating user…]]></description><link>https://colinrcummings.github.io/blog//introduction-to-react/</link><guid isPermaLink="false">https://colinrcummings.github.io/blog//introduction-to-react/</guid><pubDate>Thu, 18 May 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I’ve been using &lt;a href=&quot;https://facebook.github.io/react/&quot;&gt;React&lt;/a&gt; for a few years now. If you read my &lt;a href=&quot;/blog/a-wedding-website/&quot;&gt;previous post&lt;/a&gt;, then you know that it’s my go-to library for creating user interfaces (including &lt;a href=&quot;https://github.com/colinrcummings/blog&quot;&gt;this blog&lt;/a&gt;). I was recently asked to give a presentation on React at one of the software development Meetups I attend. I opted to introduce the library, walk through a couple of core concepts (with examples), do a few ad hoc demos and then leave the audience with some additional concepts, resources and tools. Below is an overview of &lt;a href=&quot;http://formidable.com/open-source/spectacle/&quot;&gt;Spectacle&lt;/a&gt;, the library I used to create the presentation.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://colinrcummings.github.io/meetup-react&quot;&gt;View Presentation&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;spectacle&quot;&gt;&lt;a href=&quot;#spectacle&quot; aria-label=&quot;spectacle permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Spectacle&lt;/h2&gt;
+&lt;p&gt;Spectacle bills itself as “A React.js based library for creating sleek presentations”. It’s &lt;em&gt;awesome&lt;/em&gt;. Being able to use components to compose a presentation about React felt right from the start. Out of the box, the library provides &lt;a href=&quot;https://github.com/FormidableLabs/spectacle#tag-api&quot;&gt;tags&lt;/a&gt; for core slideshow objects you’re probably already familiar with from another &lt;a href=&quot;https://www.youtube.com/watch?v=uNjxe8ShM-8&quot;&gt;presentation program&lt;/a&gt; that shall not be named. Two things really set Spectacle apart from &lt;a href=&quot;https://github.com/search?l=JavaScript&amp;#x26;o=desc&amp;#x26;q=presentation&amp;#x26;s=stars&amp;#x26;type=Repositories&amp;#x26;utf8=%E2%9C%93&quot;&gt;other web-based presentation tools&lt;/a&gt;:&lt;/p&gt;
+&lt;h3 id=&quot;code-slides&quot;&gt;&lt;a href=&quot;#code-slides&quot; aria-label=&quot;code slides permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Code Slides&lt;/h3&gt;
+&lt;p&gt;Embedding code in a presentation isn’t new, but with the &lt;a href=&quot;https://github.com/thejameskyle/spectacle-code-slide&quot;&gt;spectacle-code-slide&lt;/a&gt; extension I was able to step through my example code with syntax highlighting and contextual notes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/code_slide-583f6ca42b097a78efe16bb0803bfb5b.gif&quot; alt=&quot;Code slide&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;embedded-examples&quot;&gt;&lt;a href=&quot;#embedded-examples&quot; aria-label=&quot;embedded examples permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Embedded Examples&lt;/h3&gt;
+&lt;p&gt;Because the entire Spectacle presentation is a React component, I was able to embed my example components into my slides and interact with them live.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/interactive_example-7cb03da6cf63e216b136d45db3eba333.gif&quot; alt=&quot;Interactive example&quot;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;feedback&quot;&gt;&lt;a href=&quot;#feedback&quot; aria-label=&quot;feedback permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Feedback&lt;/h2&gt;
+&lt;p&gt;Have questions, comments or suggestions? Reach out to me on Twitter (&lt;a href=&quot;https://twitter.com/colinrcummings&quot;&gt;@colinrcummings&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;— Colin&lt;/p&gt;</content:encoded></item><item><title><![CDATA[A Wedding Website]]></title><description><![CDATA[My sister’s getting married. During a discussion about how to handle RSVPs for the big day, I floated the option of doing it online. This…]]></description><link>https://colinrcummings.github.io/blog//a-wedding-website/</link><guid isPermaLink="false">https://colinrcummings.github.io/blog//a-wedding-website/</guid><pubDate>Sun, 26 Feb 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;My sister’s getting married. During a discussion about how to handle RSVPs for the big day, I floated the option of doing it online. This was a welcome idea; however, it meant she needed a website. The question, then, was to buy or build.&lt;/p&gt;
+&lt;p&gt;While exploring available options, my suspicions were confirmed: wedding websites are a cottage industry. There’s a hodgepodge of do-it-yourself platforms out there promising a “customized look and feel”, but the enter fiancé name &lt;em&gt;here&lt;/em&gt;, and upload photo of you and partner &lt;em&gt;there&lt;/em&gt;, routine almost invariably results in a ready-made feel (to say nothing of typically poor user experience on smaller devices). Additionally, one-size-fits-all approaches to online RSVPs tend to entail configuration-heavy setups, busy admin interfaces and less-than-seamless form integration on the guest-facing page.&lt;/p&gt;
+&lt;p&gt;Ultimately, I opted for build. Below is an overview of what turned out to be a really fun project. I’ve included links to a few resources that I found particularly helpful along the way.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://brynne-and-don.herokuapp.com/&quot;&gt;Visit Website&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Now that the wedding has passed, the site’s on a free dyno, which may take a few seconds to spin up. (Fri May 5 2017)&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;technology&quot;&gt;&lt;a href=&quot;#technology&quot; aria-label=&quot;technology permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Technology&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;tl;dr:&lt;/strong&gt; I used the &lt;a href=&quot;https://medium.com/@jkchuynh829/the-nerp-stack-29402b6a4355&quot;&gt;NERP stack&lt;/a&gt; with a webpack build, including hot reloading in development, as well as Nodemailer and Bootsrap 4.&lt;/p&gt;
+&lt;h3 id=&quot;back-end&quot;&gt;&lt;a href=&quot;#back-end&quot; aria-label=&quot;back end permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Back End&lt;/h3&gt;
+&lt;p&gt;Node with Express is my go-to server setup these days. I’ve used a couple different build tool combinations in other Node-based projects (Grunt, gulp and/or webpack), but this was the first time I let webpack handle everything—JS(X), (S)CSS, HTML, &lt;a href=&quot;https://paradite.com/2016/10/25/font-awesome-angular-2-webpack/&quot;&gt;icons&lt;/a&gt;, &lt;a href=&quot;https://shellmonger.com/2016/01/22/working-with-fonts-with-webpack/&quot;&gt;fonts&lt;/a&gt; and &lt;a href=&quot;https://survivejs.com/webpack/loading-assets/loading-/images/&quot;&gt;images&lt;/a&gt;. It can capably and quickly do it all, and with &lt;a href=&quot;https://medium.com/@LopezTech/a-web-application-journey-part-3-webpack-dev-server-and-related-improvements-abd5060bd3fc&quot;&gt;a little extra configuration&lt;/a&gt; you get hot reloading for React components in development, which is &lt;em&gt;awesome&lt;/em&gt;. I spun up a Postgres database on Heroku to store RSVPs, which is also where the server runs, and used &lt;a href=&quot;http://mherman.org/blog/2016/03/13/designing-a-restful-api-with-node-and-postgres/#.WLHfR1UrLIV&quot;&gt;pg-promise&lt;/a&gt; to execute CRUD actions. I also used &lt;a href=&quot;http://javascript.tutorialhorizon.com/2015/07/02/send-email-node-js-express/&quot;&gt;Nodemailer&lt;/a&gt; to send guest confirmation and admin notification emails via Gmail, which took some extra configuration as it requires &lt;a href=&quot;http://masashi-k.blogspot.com/2013/06/sending-mail-with-gmail-using-xoauth2.html&quot;&gt;XOAuth2&lt;/a&gt;. Lastly, the admin RSVP management page and its associated API routes are protected using Passport local authentication.&lt;/p&gt;
+&lt;h3 id=&quot;front-end&quot;&gt;&lt;a href=&quot;#front-end&quot; aria-label=&quot;front end permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Front End&lt;/h3&gt;
+&lt;p&gt;In conjunction with React, I used an alpha release of &lt;a href=&quot;https://www.artembutusov.com/webpack-customizable-bootstrap-4-x-scss/&quot;&gt;Bootstrap 4&lt;/a&gt; for the framework. I’ve been using version 3 for a few years now, and the short lifecycle of this project gave me an opportunity to test drive some of the &lt;a href=&quot;https://v4-alpha.getbootstrap.com/migration/&quot;&gt;changes, additions and removals&lt;/a&gt; coming in version 4. I also made use of Animate, Moment, Underscore, D3 and Crossfilter in different places.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;guest-splash-page&quot;&gt;&lt;a href=&quot;#guest-splash-page&quot; aria-label=&quot;guest splash page permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Guest Splash Page&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;tl;dr:&lt;/strong&gt; The guest-facing splash page is comprised of 6 sections containing React components; how some components render depends on the current date.&lt;/p&gt;
+&lt;h3 id=&quot;intro&quot;&gt;&lt;a href=&quot;#intro&quot; aria-label=&quot;intro permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Intro&lt;/h3&gt;
+&lt;p&gt;This component renders a responsive full screen background image with animated &lt;a href=&quot;https://css-tricks.com/design-considerations-text-/images/&quot;&gt;overlay text&lt;/a&gt;, a bouncing chevron icon that triggers some &lt;a href=&quot;https://gist.github.com/joshcanhelp/a3a669df80898d4097a1e2c01dea52c1&quot;&gt;jQuery-free scroll animation&lt;/a&gt; and parallax scrolling on larger devices.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/707dd12121e36d078fb234f82a43d985/a0e60/intro.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMFAQT/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/2gAMAwEAAhADEAAAAZjenMM0eR//xAAZEAADAQEBAAAAAAAAAAAAAAAAAQIDESH/2gAIAQEAAQUCiHQ8/DPhMuU1w//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABgQAAIDAAAAAAAAAAAAAAAAAAAhAhAR/9oACAEBAAY/AkKW5SJV/8QAGRABAQEAAwAAAAAAAAAAAAAAAREAIVGx/9oACAEBAAE/IV/WVb2GmAGNcJyTUSXf/9oADAMBAAIAAwAAABCr7//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAEDAQE/EIj/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAaEAEAAwEBAQAAAAAAAAAAAAABABFBITFR/9oACAEBAAE/EBIKL7glP74fI95LQTlW7ApCsJjrAs8tGrn/2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Intro component&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/707dd12121e36d078fb234f82a43d985/f8fb9/intro.jpg&quot;
+        srcset=&quot;/blog/static/707dd12121e36d078fb234f82a43d985/e8976/intro.jpg 148w,
+/blog/static/707dd12121e36d078fb234f82a43d985/63df2/intro.jpg 295w,
+/blog/static/707dd12121e36d078fb234f82a43d985/f8fb9/intro.jpg 590w,
+/blog/static/707dd12121e36d078fb234f82a43d985/a0e60/intro.jpg 800w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h3 id=&quot;actions--thank-you&quot;&gt;&lt;a href=&quot;#actions--thank-you&quot; aria-label=&quot;actions  thank you permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Actions / Thank You&lt;/h3&gt;
+&lt;p&gt;One of the biggest benefits of building user interfaces with React is that it makes conditional rendering really easy. This section renders components differently based on the current date’s relationship to the wedding and RSVP dates.&lt;/p&gt;
+&lt;p&gt;Before the wedding date, this section renders a component with two action buttons: a hook for RSVPs and a link to the Registry.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/9840f24724cce2d61ed39b2640babee2/a0e60/actions.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 33.125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB3wUH/8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQABBQJ//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQAGPwJ//8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQABPyF//9oADAMBAAIAAwAAABCAD//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABkQAQACAwAAAAAAAAAAAAAAAAEAEBEh4f/aAAgBAQABPxBMkDfa/9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Actions component&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/9840f24724cce2d61ed39b2640babee2/f8fb9/actions.jpg&quot;
+        srcset=&quot;/blog/static/9840f24724cce2d61ed39b2640babee2/e8976/actions.jpg 148w,
+/blog/static/9840f24724cce2d61ed39b2640babee2/63df2/actions.jpg 295w,
+/blog/static/9840f24724cce2d61ed39b2640babee2/f8fb9/actions.jpg 590w,
+/blog/static/9840f24724cce2d61ed39b2640babee2/a0e60/actions.jpg 800w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;As the RSVP date approaches/passes, the RSVP action button renders accordingly.&lt;/p&gt;
+&lt;figure class=&quot;gatsbyRemarkImagesGrid&quot;&gt;&lt;div class=&quot;gatsbyRemarkImagesGrid-grid&quot; style=&quot;
+            grid-template-columns: repeat(auto-fill, minmax(31%, 1fr));
+          &quot;&gt;
+
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/e33708bbb9e5ebe451477e24e1f918f5/0192c/rsvps_open.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 290px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 45.17241379310345%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe80Io//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAEFAl//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAWEAADAAAAAAAAAAAAAAAAAAAAIIH/2gAIAQEAAT8hKv8A/9oADAMBAAIAAwAAABCAD//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABgQAQEBAQEAAAAAAAAAAAAAAAERADEg/9oACAEBAAE/EG3sMtkGBnfH/9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;RSVPs open&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/e33708bbb9e5ebe451477e24e1f918f5/0192c/rsvps_open.jpg&quot;
+        srcset=&quot;/blog/static/e33708bbb9e5ebe451477e24e1f918f5/fab9c/rsvps_open.jpg 148w,
+/blog/static/e33708bbb9e5ebe451477e24e1f918f5/0192c/rsvps_open.jpg 290w&quot;
+        sizes=&quot;(max-width: 290px) 100vw, 290px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/f69255f1dd3a92e9e81ff6772edbd2dd/2af49/rsvps_closing.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 278px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 49.280575539568346%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHvTSIqv//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEAAQUCX//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CX//EABoQAAICAwAAAAAAAAAAAAAAAAARECEBQWH/2gAIAQEAAT8hzW0PpcKP/9oADAMBAAIAAwAAABB7z//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABURAQEAAAAAAAAAAAAAAAAAABAh/9oACAECAQE/EKf/xAAbEAEAAgIDAAAAAAAAAAAAAAABABEQUSExQf/aAAgBAQABPxBWLgnwnO5UIPZKaMf/2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;RSVPs closing soon&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/f69255f1dd3a92e9e81ff6772edbd2dd/2af49/rsvps_closing.jpg&quot;
+        srcset=&quot;/blog/static/f69255f1dd3a92e9e81ff6772edbd2dd/9ea0f/rsvps_closing.jpg 148w,
+/blog/static/f69255f1dd3a92e9e81ff6772edbd2dd/2af49/rsvps_closing.jpg 278w&quot;
+        sizes=&quot;(max-width: 278px) 100vw, 278px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/7c43a69e30ce9dff9ccc1959265bfa51/716dd/rsvps_closed.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 283px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 49.46996466431096%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB3pQB/8QAFxAAAwEAAAAAAAAAAAAAAAAAABARAf/aAAgBAQABBQIqhMX/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAWEAADAAAAAAAAAAAAAAAAAAAAIDH/2gAIAQEABj8CKv8A/8QAGBAAAwEBAAAAAAAAAAAAAAAAAAERUWH/2gAIAQEAAT8hq0jBekYjgiLD/9oADAMBAAIAAwAAABBEz//EABURAQEAAAAAAAAAAAAAAAAAABAh/9oACAEDAQE/EIf/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAdEAEAAgICAwAAAAAAAAAAAAABABEhcTFBYZHx/9oACAEBAAE/EG6qlclx6PZCxgOmKqtz4nwoAYBon//Z&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;RSVPs closed&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/7c43a69e30ce9dff9ccc1959265bfa51/716dd/rsvps_closed.jpg&quot;
+        srcset=&quot;/blog/static/7c43a69e30ce9dff9ccc1959265bfa51/5d4f6/rsvps_closed.jpg 148w,
+/blog/static/7c43a69e30ce9dff9ccc1959265bfa51/716dd/rsvps_closed.jpg 283w&quot;
+        sizes=&quot;(max-width: 283px) 100vw, 283px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+&lt;/div&gt;&lt;figcaption class=&quot;gatsbyRemarkImagesGrid-figcaption&quot;&gt;Open • Closing Soon • Closed&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;RSVPs are submitted through a series of modal screens launched from the RSVP action button.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Search&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/1632a321405b092da42ecd24c512794c/92043/search.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 44.205298013245034%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAECAwX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB76Rkuk//xAAWEAADAAAAAAAAAAAAAAAAAAAQICL/2gAIAQEAAQUCFJ//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAXEAADAQAAAAAAAAAAAAAAAAABECAx/9oACAEBAAY/Algj/8QAGBAAAgMAAAAAAAAAAAAAAAAAAREQILH/2gAIAQEAAT8hhudKf//aAAwDAQACAAMAAAAQA/8A/8QAFhEBAQEAAAAAAAAAAAAAAAAAABFh/9oACAEDAQE/EE1//8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQIBAT8QR//EAB4QAAEDBAMAAAAAAAAAAAAAAAEAESEQMUGBUXGR/9oACAEBAAE/EHPCG9oxDLxO3lcntf/Z&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;RSVP search&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/1632a321405b092da42ecd24c512794c/f8fb9/search.jpg&quot;
+        srcset=&quot;/blog/static/1632a321405b092da42ecd24c512794c/e8976/search.jpg 148w,
+/blog/static/1632a321405b092da42ecd24c512794c/63df2/search.jpg 295w,
+/blog/static/1632a321405b092da42ecd24c512794c/f8fb9/search.jpg 590w,
+/blog/static/1632a321405b092da42ecd24c512794c/92043/search.jpg 604w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Form&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/05562e755195d4fca6d4698209c5050b/02110/form.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 66.996699669967%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAEEBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHvkKypn//EABcQAAMBAAAAAAAAAAAAAAAAAAEREyD/2gAIAQEAAQUCzUv/xAAWEQEBAQAAAAAAAAAAAAAAAAAAARL/2gAIAQMBAT8Baj//xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAIAQIBAT8BbH//xAAWEAADAAAAAAAAAAAAAAAAAAAAIDH/2gAIAQEABj8CWH//xAAYEAADAQEAAAAAAAAAAAAAAAAAAREQIf/aAAgBAQABPyG7BjoUcZ//2gAMAwEAAgADAAAAEBMv/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxAP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxAv/8QAGRAAAwEBAQAAAAAAAAAAAAAAAAERMRBB/9oACAEBAAE/ENQW7yLRoxDUi9P/2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;RSVP form&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/05562e755195d4fca6d4698209c5050b/f8fb9/form.jpg&quot;
+        srcset=&quot;/blog/static/05562e755195d4fca6d4698209c5050b/e8976/form.jpg 148w,
+/blog/static/05562e755195d4fca6d4698209c5050b/63df2/form.jpg 295w,
+/blog/static/05562e755195d4fca6d4698209c5050b/f8fb9/form.jpg 590w,
+/blog/static/05562e755195d4fca6d4698209c5050b/02110/form.jpg 606w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Result&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/37489f61d6332f5672468e388e37b718/76e49/result.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 42.97520661157024%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe/NCIP/xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAEFAl//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAWEAADAAAAAAAAAAAAAAAAAAAAICH/2gAIAQEAAT8hKv8A/9oADAMBAAIAAwAAABBDz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABwQAAIBBQEAAAAAAAAAAAAAAAABQRARIVFxof/aAAgBAQABPxBtwhWR6Y3WX0//2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;RSVP result&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/37489f61d6332f5672468e388e37b718/f8fb9/result.jpg&quot;
+        srcset=&quot;/blog/static/37489f61d6332f5672468e388e37b718/e8976/result.jpg 148w,
+/blog/static/37489f61d6332f5672468e388e37b718/63df2/result.jpg 295w,
+/blog/static/37489f61d6332f5672468e388e37b718/f8fb9/result.jpg 590w,
+/blog/static/37489f61d6332f5672468e388e37b718/76e49/result.jpg 605w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;If the guest provides an email address in the RSVP form, then they receive a confirmation email.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/76937d8afa63a8e5aa44a49eff349436/94d19/guest_confirmation.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 29.40516273849607%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAGABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB3aFB/8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQABBQJ//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQAGPwJ//8QAFxABAAMAAAAAAAAAAAAAAAAAAAERQf/aAAgBAQABPyHUKf/aAAwDAQACAAMAAAAQcA//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAaEAEAAwEBAQAAAAAAAAAAAAABABExIVFx/9oACAEBAAE/EEBZvksnEr5KO9n/2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;RSVPs open&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/76937d8afa63a8e5aa44a49eff349436/f8fb9/guest_confirmation.jpg&quot;
+        srcset=&quot;/blog/static/76937d8afa63a8e5aa44a49eff349436/e8976/guest_confirmation.jpg 148w,
+/blog/static/76937d8afa63a8e5aa44a49eff349436/63df2/guest_confirmation.jpg 295w,
+/blog/static/76937d8afa63a8e5aa44a49eff349436/f8fb9/guest_confirmation.jpg 590w,
+/blog/static/76937d8afa63a8e5aa44a49eff349436/85e3d/guest_confirmation.jpg 885w,
+/blog/static/76937d8afa63a8e5aa44a49eff349436/94d19/guest_confirmation.jpg 891w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;The admin receives a notification email each time an RSVP is submitted.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/9990e93ac74c623db8c7b5f36bc03a55/94d19/admin_notification.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 35.80246913580247%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAIF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB3LAD/8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQABBQJ//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQAGPwJ//8QAFxABAQEBAAAAAAAAAAAAAAAAABEBQf/aAAgBAQABPyHu1Uf/2gAMAwEAAgADAAAAEIAP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGBABAQEBAQAAAAAAAAAAAAAAAREAITH/2gAIAQEAAT8QCSEvJgJw0Pu//9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;RSVPs closing soon&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/9990e93ac74c623db8c7b5f36bc03a55/f8fb9/admin_notification.jpg&quot;
+        srcset=&quot;/blog/static/9990e93ac74c623db8c7b5f36bc03a55/e8976/admin_notification.jpg 148w,
+/blog/static/9990e93ac74c623db8c7b5f36bc03a55/63df2/admin_notification.jpg 295w,
+/blog/static/9990e93ac74c623db8c7b5f36bc03a55/f8fb9/admin_notification.jpg 590w,
+/blog/static/9990e93ac74c623db8c7b5f36bc03a55/85e3d/admin_notification.jpg 885w,
+/blog/static/9990e93ac74c623db8c7b5f36bc03a55/94d19/admin_notification.jpg 891w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;After the wedding date, this section renders a component with a thank you note so the page isn’t anachronistic.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/dc0f1befdf85def29d3cf2597863ec11/a0e60/thank_you.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 42.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAIABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB34FB/8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQABBQJ//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQAGPwJ//8QAFxABAAMAAAAAAAAAAAAAAAAAAQAQUf/aAAgBAQABPyGA7X//2gAMAwEAAgADAAAAEAPP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGhABAAEFAAAAAAAAAAAAAAAAAQAQETFRkf/aAAgBAQABPxBFw2mw5T//2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Thank You component&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/dc0f1befdf85def29d3cf2597863ec11/f8fb9/thank_you.jpg&quot;
+        srcset=&quot;/blog/static/dc0f1befdf85def29d3cf2597863ec11/e8976/thank_you.jpg 148w,
+/blog/static/dc0f1befdf85def29d3cf2597863ec11/63df2/thank_you.jpg 295w,
+/blog/static/dc0f1befdf85def29d3cf2597863ec11/f8fb9/thank_you.jpg 590w,
+/blog/static/dc0f1befdf85def29d3cf2597863ec11/a0e60/thank_you.jpg 800w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h3 id=&quot;bios&quot;&gt;&lt;a href=&quot;#bios&quot; aria-label=&quot;bios permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Bios&lt;/h3&gt;
+&lt;p&gt;This component renders bride and groom bios using Bootstrap 4’s new &lt;a href=&quot;https://v4-alpha.getbootstrap.com/components/card/&quot;&gt;Card component&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/aceec020de03b92f9c345719e3f19a33/a0e60/bios.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 58.50000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAdmrAV//xAAYEAACAwAAAAAAAAAAAAAAAAAQEQECIf/aAAgBAQABBQKW7YWP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGBABAQADAAAAAAAAAAAAAAAAEQEAIEH/2gAIAQEABj8CgHchr//EABsQAAICAwEAAAAAAAAAAAAAAAEhABEQMUGh/9oACAEBAAE/IfbAyyILdnkO8i5//9oADAMBAAIAAwAAABA4D//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABsQAQEBAAIDAAAAAAAAAAAAAAERADFRIUGB/9oACAEBAAE/EETFeaU6m9o0Xk7GIQcZalDxlPIPzKq7/9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Bios component&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/aceec020de03b92f9c345719e3f19a33/f8fb9/bios.jpg&quot;
+        srcset=&quot;/blog/static/aceec020de03b92f9c345719e3f19a33/e8976/bios.jpg 148w,
+/blog/static/aceec020de03b92f9c345719e3f19a33/63df2/bios.jpg 295w,
+/blog/static/aceec020de03b92f9c345719e3f19a33/f8fb9/bios.jpg 590w,
+/blog/static/aceec020de03b92f9c345719e3f19a33/a0e60/bios.jpg 800w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h3 id=&quot;events&quot;&gt;&lt;a href=&quot;#events&quot; aria-label=&quot;events permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Events&lt;/h3&gt;
+&lt;p&gt;This component is based on a &lt;a href=&quot;https://codyhouse.co/gem/vertical-timeline/&quot;&gt;responsive vertical timeline template&lt;/a&gt;. I added rotating &lt;a href=&quot;http://www.flaticon.com/packs/wedding-and-love&quot;&gt;icons&lt;/a&gt;, a happening now indicator and directions (in a modal) using the &lt;a href=&quot;https://developers.google.com/maps/documentation/embed/guide&quot;&gt;Google Maps Embedded API&lt;/a&gt; (with &lt;a href=&quot;https://developers.google.com/maps/documentation/javascript/geolocation&quot;&gt;geolocation&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Timeline&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/ef802143ca4ed2fc3f3d66bb8e4b2f15/a0e60/events.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 94.24999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAATABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHuWajClgID/8QAFRABAQAAAAAAAAAAAAAAAAAAIAH/2gAIAQEAAQUCNH//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAUEAEAAAAAAAAAAAAAAAAAAAAw/9oACAEBAAY/Ah//xAAcEAACAgIDAAAAAAAAAAAAAAAAARExECFRYfD/2gAIAQEAAT8hSIXZp0I9RYkl84//2gAMAwEAAgADAAAAEA8PPP/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8QH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8QH//EAB0QAQACAQUBAAAAAAAAAAAAAAEAESExUWFxkbH/2gAIAQEAAT8QsMi9Q2vRL1NkqY+EvlhXYzBGik5nsADBXU//2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Events component&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/ef802143ca4ed2fc3f3d66bb8e4b2f15/f8fb9/events.jpg&quot;
+        srcset=&quot;/blog/static/ef802143ca4ed2fc3f3d66bb8e4b2f15/e8976/events.jpg 148w,
+/blog/static/ef802143ca4ed2fc3f3d66bb8e4b2f15/63df2/events.jpg 295w,
+/blog/static/ef802143ca4ed2fc3f3d66bb8e4b2f15/f8fb9/events.jpg 590w,
+/blog/static/ef802143ca4ed2fc3f3d66bb8e4b2f15/a0e60/events.jpg 800w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Directions&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/395cb00d1f03276dc401254591694cf8/ec410/directions.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 94.2339373970346%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAATABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAIBAwX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB93JmLB0FYD//xAAYEAEBAAMAAAAAAAAAAAAAAAAAEQEgMf/aAAgBAQABBQKqrrOv/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAGhAAAwADAQAAAAAAAAAAAAAAAAERIDFBUf/aAAgBAQABPyEOel+ItOcc0ILD/9oADAMBAAIAAwAAABCL7wD/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAeEAEAAwACAgMAAAAAAAAAAAABABEhMXFBUYGRsf/aAAgBAQABPxBVpn3APB+Y3v6MDZuiumncuLNbvJwxlSj1PL3P/9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Directions modal&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/395cb00d1f03276dc401254591694cf8/f8fb9/directions.jpg&quot;
+        srcset=&quot;/blog/static/395cb00d1f03276dc401254591694cf8/e8976/directions.jpg 148w,
+/blog/static/395cb00d1f03276dc401254591694cf8/63df2/directions.jpg 295w,
+/blog/static/395cb00d1f03276dc401254591694cf8/f8fb9/directions.jpg 590w,
+/blog/static/395cb00d1f03276dc401254591694cf8/ec410/directions.jpg 607w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h3 id=&quot;photos&quot;&gt;&lt;a href=&quot;#photos&quot; aria-label=&quot;photos permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Photos&lt;/h3&gt;
+&lt;p&gt;This component renders a Bootstrap 4 &lt;a href=&quot;https://v4-alpha.getbootstrap.com/components/carousel/&quot;&gt;Carousel component&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/6e2eadd731d85d8ebe5d1e9763fcf868/a0e60/photos.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 62%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQBAwUG/8QAFAEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAABazegrFkkT//EABsQAAIDAAMAAAAAAAAAAAAAAAIDAAEEFCEx/9oACAEBAAEFAtbiWXKbVj2LEgyyzKKeT//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABsQAAMBAAMBAAAAAAAAAAAAAAECEQADECGh/9oACAEBAAY/AlCtKMbyfMMC4s3qdf/EABoQAQADAQEBAAAAAAAAAAAAAAEAETEhYYH/2gAIAQEAAT8hr6U7RN414isOpLerHYfRfOQKAYT/2gAMAwEAAgADAAAAEIPP/8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQMBAT8QEn//xAAWEQEBAQAAAAAAAAAAAAAAAAABEBH/2gAIAQIBAT8QR2f/xAAcEAEBAAEFAQAAAAAAAAAAAAABEQAhMVFxkWH/2gAIAQEAAT8Qs5pCaicmRjTdAxe5tjrqFfMh56WgL8ynA5SvTDFQAOs//9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Photos component&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/6e2eadd731d85d8ebe5d1e9763fcf868/f8fb9/photos.jpg&quot;
+        srcset=&quot;/blog/static/6e2eadd731d85d8ebe5d1e9763fcf868/e8976/photos.jpg 148w,
+/blog/static/6e2eadd731d85d8ebe5d1e9763fcf868/63df2/photos.jpg 295w,
+/blog/static/6e2eadd731d85d8ebe5d1e9763fcf868/f8fb9/photos.jpg 590w,
+/blog/static/6e2eadd731d85d8ebe5d1e9763fcf868/a0e60/photos.jpg 800w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h3 id=&quot;outro&quot;&gt;&lt;a href=&quot;#outro&quot; aria-label=&quot;outro permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Outro&lt;/h3&gt;
+&lt;p&gt;Before the wedding date, this component renders a count down over a responsive full screen background image with parallax scrolling on larger devices. After the wedding date, the count down becomes a count up.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Count Down&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/9e76a967e277a985230814586aaa56be/229c1/outro_count_down.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 76.72634271099746%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAQD/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIQAxAAAAGXXBhUkL//xAAbEAACAwADAAAAAAAAAAAAAAAAAgEDERITI//aAAgBAQABBQKjEL27FrjzUw5Sf//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAEDAQE/AVf/xAAVEQEBAAAAAAAAAAAAAAAAAAAQEf/aAAgBAgEBPwGn/8QAGhAAAgIDAAAAAAAAAAAAAAAAAAECERASMf/aAAgBAQAGPwKSYtbFizp//8QAGhAAAwADAQAAAAAAAAAAAAAAAAERITFRcf/aAAgBAQABPyFqTjEIUr1CXiNvrMG62RwmP//aAAwDAQACAAMAAAAQf8//xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAwEBPxBY/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oACAECAQE/EK6//8QAGhABAQADAQEAAAAAAAAAAAAAAREAITFBsf/aAAgBAQABPxAq3Ik6+/cSaAI4exwQCptZkVManJ3CGenJozlM8Bz/2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Outro count down&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/9e76a967e277a985230814586aaa56be/f8fb9/outro_count_down.jpg&quot;
+        srcset=&quot;/blog/static/9e76a967e277a985230814586aaa56be/e8976/outro_count_down.jpg 148w,
+/blog/static/9e76a967e277a985230814586aaa56be/63df2/outro_count_down.jpg 295w,
+/blog/static/9e76a967e277a985230814586aaa56be/f8fb9/outro_count_down.jpg 590w,
+/blog/static/9e76a967e277a985230814586aaa56be/229c1/outro_count_down.jpg 782w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Count Up&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/1b7367ed97fa421898e137471eb53d1c/229c1/outro_count_up.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 76.72634271099746%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAQD/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIQAxAAAAGXXBhUkL//xAAbEAACAwADAAAAAAAAAAAAAAAAAgEDERITI//aAAgBAQABBQKjEL27FrjzUw5Sf//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAEDAQE/AVf/xAAVEQEBAAAAAAAAAAAAAAAAAAAQEf/aAAgBAgEBPwGn/8QAGhAAAgIDAAAAAAAAAAAAAAAAAAECERASMf/aAAgBAQAGPwKSYtbFizp//8QAGhAAAwADAQAAAAAAAAAAAAAAAAERITFRcf/aAAgBAQABPyFqTjEIUr1CXiNvrMG62RwmP//aAAwDAQACAAMAAAAQf8//xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAwEBPxBY/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oACAECAQE/EK6//8QAGhABAQADAQEAAAAAAAAAAAAAAREAITFBkf/aAAgBAQABPxAq3Ik2vvy4k0ARw9jggFTazIqY1OTuEM9OTRnKZ4Dn/9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Outro count up&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/1b7367ed97fa421898e137471eb53d1c/f8fb9/outro_count_up.jpg&quot;
+        srcset=&quot;/blog/static/1b7367ed97fa421898e137471eb53d1c/e8976/outro_count_up.jpg 148w,
+/blog/static/1b7367ed97fa421898e137471eb53d1c/63df2/outro_count_up.jpg 295w,
+/blog/static/1b7367ed97fa421898e137471eb53d1c/f8fb9/outro_count_up.jpg 590w,
+/blog/static/1b7367ed97fa421898e137471eb53d1c/229c1/outro_count_up.jpg 782w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;admin-rsvp-management-page&quot;&gt;&lt;a href=&quot;#admin-rsvp-management-page&quot; aria-label=&quot;admin rsvp management page permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Admin RSVP Management Page&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;tl;dr:&lt;/strong&gt; The admin-facing RSVP management page has a header with add, search and filter icons, in addition to two tabs: one to review RSVPs at a high level and another to review, edit and delete individual RSVPs.&lt;/p&gt;
+&lt;h3 id=&quot;header&quot;&gt;&lt;a href=&quot;#header&quot; aria-label=&quot;header permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Header&lt;/h3&gt;
+&lt;p&gt;The header has icons for adding a new RSVP (in a modal), searching RSVPs by name (using &lt;a href=&quot;https://github.com/ericgio/react-bootstrap-typeahead&quot;&gt;react-bootstrap-typeahead&lt;/a&gt;) and filtering RSVPs by status.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Add&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/981a45ad4ac6af2bb71e00a79c61e7d5/facd7/add.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 64.8424543946932%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAIBAwX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB3iUHKCT/xAAYEAACAwAAAAAAAAAAAAAAAAABAhESIP/aAAgBAQABBQLDmqh5H//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAECAQE/AVf/xAAWEAEBAQAAAAAAAAAAAAAAAAABECD/2gAIAQEABj8Cws//xAAaEAACAgMAAAAAAAAAAAAAAAAAARARIUFR/9oACAEBAAE/IbFjs0poeh0j/9oADAMBAAIAAwAAABD3H//EABYRAQEBAAAAAAAAAAAAAAAAAAERAP/aAAgBAwEBPxAKwygzf//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAECAQE/EEP/xAAcEAEAAgEFAAAAAAAAAAAAAAABABEQQWFxgZH/2gAIAQEAAT8QCtXbtBoOzeK59iAhTYMfpKT/2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Add RSVP&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/981a45ad4ac6af2bb71e00a79c61e7d5/f8fb9/add.jpg&quot;
+        srcset=&quot;/blog/static/981a45ad4ac6af2bb71e00a79c61e7d5/e8976/add.jpg 148w,
+/blog/static/981a45ad4ac6af2bb71e00a79c61e7d5/63df2/add.jpg 295w,
+/blog/static/981a45ad4ac6af2bb71e00a79c61e7d5/f8fb9/add.jpg 590w,
+/blog/static/981a45ad4ac6af2bb71e00a79c61e7d5/facd7/add.jpg 603w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Search&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/2c084f7f7c73e2e9383f70cb965a1f07/9997b/search.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 390px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 35.64102564102564%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB34FB/8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQABBQJ//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQAGPwJ//8QAFhAAAwAAAAAAAAAAAAAAAAAAAAEQ/9oACAEBAAE/IRT/2gAMAwEAAgADAAAAEPPP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGBAAAgMAAAAAAAAAAAAAAAAAAAEQEdH/2gAIAQEAAT8QFpvY/9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Search RSVPs&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/2c084f7f7c73e2e9383f70cb965a1f07/9997b/search.jpg&quot;
+        srcset=&quot;/blog/static/2c084f7f7c73e2e9383f70cb965a1f07/5d15a/search.jpg 148w,
+/blog/static/2c084f7f7c73e2e9383f70cb965a1f07/71bb8/search.jpg 295w,
+/blog/static/2c084f7f7c73e2e9383f70cb965a1f07/9997b/search.jpg 390w&quot;
+        sizes=&quot;(max-width: 390px) 100vw, 390px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Filter&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/68644806a92fac38517efff1bb6fe680/d868e/filter.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 373px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 35.656836461126005%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB34FB/8QAFhAAAwAAAAAAAAAAAAAAAAAAAAEQ/9oACAEBAAEFAhT/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAY/An//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAE/IV//2gAMAwEAAgADAAAAEIPP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGRAAAgMBAAAAAAAAAAAAAAAAASEAETFR/9oACAEBAAE/EDdLYlji0mOf/9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Filter RSVPs&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/68644806a92fac38517efff1bb6fe680/d868e/filter.jpg&quot;
+        srcset=&quot;/blog/static/68644806a92fac38517efff1bb6fe680/0c7a7/filter.jpg 148w,
+/blog/static/68644806a92fac38517efff1bb6fe680/17978/filter.jpg 295w,
+/blog/static/68644806a92fac38517efff1bb6fe680/d868e/filter.jpg 373w&quot;
+        sizes=&quot;(max-width: 373px) 100vw, 373px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h3 id=&quot;summary-tab&quot;&gt;&lt;a href=&quot;#summary-tab&quot; aria-label=&quot;summary tab permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Summary Tab&lt;/h3&gt;
+&lt;p&gt;The summary tab renders two donut charts: one summarizing RSVPs and another summarizing attendance.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/28aa4161cce4eab66c5125495c59c627/a2571/summary.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 47.3293768545994%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAd5UFV//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAEFAl//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAaEAEAAQUAAAAAAAAAAAAAAAABABEgITFB/9oACAEBAAE/IWvCONFv/9oADAMBAAIAAwAAABC7D//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABkQAQACAwAAAAAAAAAAAAAAAAERIQAgMf/aAAgBAQABPxBiLJbwJ7K3r//Z&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;RSVP summary&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/28aa4161cce4eab66c5125495c59c627/f8fb9/summary.jpg&quot;
+        srcset=&quot;/blog/static/28aa4161cce4eab66c5125495c59c627/e8976/summary.jpg 148w,
+/blog/static/28aa4161cce4eab66c5125495c59c627/63df2/summary.jpg 295w,
+/blog/static/28aa4161cce4eab66c5125495c59c627/f8fb9/summary.jpg 590w,
+/blog/static/28aa4161cce4eab66c5125495c59c627/85e3d/summary.jpg 885w,
+/blog/static/28aa4161cce4eab66c5125495c59c627/d1924/summary.jpg 1180w,
+/blog/static/28aa4161cce4eab66c5125495c59c627/a2571/summary.jpg 1348w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h3 id=&quot;details-tab&quot;&gt;&lt;a href=&quot;#details-tab&quot; aria-label=&quot;details tab permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Details Tab&lt;/h3&gt;
+&lt;p&gt;The details tab renders a sortable table with a sticky header and export to Excel functionality. Each RSVP row has an edit and delete icon.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/6ca9580feea7cd079aeda4ed2fe715cd/e1fc8/details.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 47.294292068198665%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe/NCKP/xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAEFAl//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAXEAADAQAAAAAAAAAAAAAAAAAAASAh/9oACAEBAAE/IRZP/9oADAMBAAIAAwAAABDDD//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABoQAQACAwEAAAAAAAAAAAAAAAEAIREgUWH/2gAIAQEAAT8QvkDlRbD00//Z&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;RSVP details&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/6ca9580feea7cd079aeda4ed2fe715cd/f8fb9/details.jpg&quot;
+        srcset=&quot;/blog/static/6ca9580feea7cd079aeda4ed2fe715cd/e8976/details.jpg 148w,
+/blog/static/6ca9580feea7cd079aeda4ed2fe715cd/63df2/details.jpg 295w,
+/blog/static/6ca9580feea7cd079aeda4ed2fe715cd/f8fb9/details.jpg 590w,
+/blog/static/6ca9580feea7cd079aeda4ed2fe715cd/85e3d/details.jpg 885w,
+/blog/static/6ca9580feea7cd079aeda4ed2fe715cd/d1924/details.jpg 1180w,
+/blog/static/6ca9580feea7cd079aeda4ed2fe715cd/e1fc8/details.jpg 1349w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;RSVPs are edited inline with validations for each attribute.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/e50f82e6c620eaa71e47e64713ef64f9/6b1a4/edit.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 17.837837837837835%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAEABQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAG4AD//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAEFAn//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAY/An//xAAYEAACAwAAAAAAAAAAAAAAAAABEQAQQf/aAAgBAQABPyEmk9M//9oADAMBAAIAAwAAABDzz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABoQAAICAwAAAAAAAAAAAAAAAAABESExQWH/2gAIAQEAAT8QZV7MDdpj4mf/2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;RSVP edit&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/e50f82e6c620eaa71e47e64713ef64f9/f8fb9/edit.jpg&quot;
+        srcset=&quot;/blog/static/e50f82e6c620eaa71e47e64713ef64f9/e8976/edit.jpg 148w,
+/blog/static/e50f82e6c620eaa71e47e64713ef64f9/63df2/edit.jpg 295w,
+/blog/static/e50f82e6c620eaa71e47e64713ef64f9/f8fb9/edit.jpg 590w,
+/blog/static/e50f82e6c620eaa71e47e64713ef64f9/85e3d/edit.jpg 885w,
+/blog/static/e50f82e6c620eaa71e47e64713ef64f9/6b1a4/edit.jpg 1110w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;RSVPs are deleted by way of modal confirmation.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/365e2fd815680bcc5aacb3ad153bc3b6/76e49/delete.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 34.710743801652896%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHfgKCb/8QAFhAAAwAAAAAAAAAAAAAAAAAAABAS/9oACAEBAAEFAlZ//8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oACAEDAQE/AWR//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQAGPwJ//8QAFxAAAwEAAAAAAAAAAAAAAAAAAAERIf/aAAgBAQABPyEkEjuPHD//2gAMAwEAAgADAAAAEPA//8QAFREBAQAAAAAAAAAAAAAAAAAAAAH/2gAIAQMBAT8QVf/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAgBAgEBPxBtf//EABgQAQEBAQEAAAAAAAAAAAAAAAEAMUHR/9oACAEBAAE/EEXsaDLDcWe3/9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;RSVP delete&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/365e2fd815680bcc5aacb3ad153bc3b6/f8fb9/delete.jpg&quot;
+        srcset=&quot;/blog/static/365e2fd815680bcc5aacb3ad153bc3b6/e8976/delete.jpg 148w,
+/blog/static/365e2fd815680bcc5aacb3ad153bc3b6/63df2/delete.jpg 295w,
+/blog/static/365e2fd815680bcc5aacb3ad153bc3b6/f8fb9/delete.jpg 590w,
+/blog/static/365e2fd815680bcc5aacb3ad153bc3b6/76e49/delete.jpg 605w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;performance&quot;&gt;&lt;a href=&quot;#performance&quot; aria-label=&quot;performance permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Performance&lt;/h2&gt;
+&lt;p&gt;From Google’s &lt;a href=&quot;https://testmysite.thinkwithgoogle.com/&quot;&gt;PageSpeed Insights&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/59e570855bd03e2d684aa91eac1281bc/9fd22/page_speed.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 58.04375804375804%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAQAF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB2URiP//EABcQAQEBAQAAAAAAAAAAAAAAABEAARD/2gAIAQEAAQUCdnZnv//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABUQAQEAAAAAAAAAAAAAAAAAACAx/9oACAEBAAY/Aov/xAAZEAEBAAMBAAAAAAAAAAAAAAAAEQEhUYH/2gAIAQEAAT8hLHBTwuotf//aAAwDAQACAAMAAAAQU8//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAbEAEAAwADAQAAAAAAAAAAAAABABEhQVGRof/aAAgBAQABPxDXF7GlqPsp5gxaBbuRtgV1UVpn/9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;PageSpeed Insights&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/59e570855bd03e2d684aa91eac1281bc/f8fb9/page_speed.jpg&quot;
+        srcset=&quot;/blog/static/59e570855bd03e2d684aa91eac1281bc/e8976/page_speed.jpg 148w,
+/blog/static/59e570855bd03e2d684aa91eac1281bc/63df2/page_speed.jpg 295w,
+/blog/static/59e570855bd03e2d684aa91eac1281bc/f8fb9/page_speed.jpg 590w,
+/blog/static/59e570855bd03e2d684aa91eac1281bc/9fd22/page_speed.jpg 777w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;feedback&quot;&gt;&lt;a href=&quot;#feedback&quot; aria-label=&quot;feedback permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Feedback&lt;/h2&gt;
+&lt;p&gt;Have questions, comments or suggestions? Reach out to me on Twitter (&lt;a href=&quot;https://twitter.com/colinrcummings&quot;&gt;@colinrcummings&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;— Colin&lt;/p&gt;</content:encoded></item></channel></rss>
