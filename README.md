@@ -1,4 +1,4 @@
-# [`<Blog />`](https://colinrcummings.github.io/blog/)
+# [`<Blog />`](https://colinrobertbrooks.github.io/blog/)
 
 My personal blog. Forked from [Gatsby blog starter](https://github.com/gatsbyjs/gatsby-starter-blog).
 

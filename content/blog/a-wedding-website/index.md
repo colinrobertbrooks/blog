@@ -171,6 +171,6 @@ From Google's [PageSpeed Insights](https://testmysite.thinkwithgoogle.com/):
 
 ## Feedback
 
-Have questions, comments or suggestions? Reach out to me on Twitter ([@colinrcummings](https://twitter.com/colinrcummings)).
+Have questions, comments or suggestions? Reach out to me on Twitter ([@colinrbrooks](https://twitter.com/colinrbrooks)).
 
 — Colin

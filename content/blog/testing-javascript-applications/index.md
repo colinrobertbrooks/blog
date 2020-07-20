@@ -17,7 +17,7 @@ Code was being tested, but not necessarily _well_ tested. [Integration tests](ht
 ![Unit Tests Passing (meme)](./images/unit_tests_passing_meme_2.jpg)
 ```
 
-Below is an overview of my evolved approach to testing JavaScript applications. Also take a look at the [demo app](https://github.com/colinrcummings/testing-javascript-applications-demo) on GitHub, which puts it into practice.
+Below is an overview of my evolved approach to testing JavaScript applications. Also take a look at the [demo app](https://github.com/colinrobertbrooks/testing-javascript-applications-demo) on GitHub, which puts it into practice.
 
 _nota bene_: Testing is an immense topic; what follows is intended to be a modest contribution. It's written standing on the shoulders of giants (see references below). It contains opinions and suggestions; testing lacks hard and fast rules. The JavaScript ecosystem also marches on; tools come and go, and testing is no exception.
 
@@ -169,7 +169,7 @@ _Write tests for the sake of added confidence, not added coverage._
 
 My approach to writing tests for an application depends on the portion being tested, which in turn directs the type of test that's used.
 
-_nota bene_: This section references the demo app. Scripts can be found in the [`package.json`](https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/package.json#L7) file. Organizing and naming tests is largely a matter of preference. For organizational purposes, I've co-located everything related to testing in a top-level [test](https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test) directory. For nomenclature purposes, I've included the type of test in each test's file name (_i.e._, `*.unit.spec.js`, `*.integration.spec.js` and `*.e2e.spec.js`).
+_nota bene_: This section references the demo app. Scripts can be found in the [`package.json`](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/blob/master/package.json#L7) file. Organizing and naming tests is largely a matter of preference. For organizational purposes, I've co-located everything related to testing in a top-level [test](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/tree/master/test) directory. For nomenclature purposes, I've included the type of test in each test's file name (_i.e._, `*.unit.spec.js`, `*.integration.spec.js` and `*.e2e.spec.js`).
 
 ### Static
 
@@ -185,21 +185,21 @@ For backend code, I primarily write unit tests. My goal in these tests is to val
 
 For example:
 
-- A [unit test](https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/controllers/views/feature_1.unit.spec.js) for a view controller ([source](https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/app/controllers/views/feature_1.js)) covering all likely user authentication/authorization scenarios.
+- A [unit test](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/blob/master/test/jest/specs/app/controllers/views/feature_1.unit.spec.js) for a view controller ([source](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/blob/master/app/controllers/views/feature_1.js)) covering all likely user authentication/authorization scenarios.
 
-- A [unit test](https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/controllers/api/access.unit.spec.js) for an API endpoint controller ([source](https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/app/controllers/api/access.js)) covering all likely user authentication/authorization scenarios and an unlikely model error scenario.
+- A [unit test](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/blob/master/test/jest/specs/app/controllers/api/access.unit.spec.js) for an API endpoint controller ([source](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/blob/master/app/controllers/api/access.js)) covering all likely user authentication/authorization scenarios and an unlikely model error scenario.
 
-- A [unit test](https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/helpers/authentication/password.unit.spec.js) for a password helper ([source](https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/app/helpers/authentication/password.js)) covering all likely validation scenarios.
+- A [unit test](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/blob/master/test/jest/specs/app/helpers/authentication/password.unit.spec.js) for a password helper ([source](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/blob/master/app/helpers/authentication/password.js)) covering all likely validation scenarios.
 
 I find `describe` blocks useful for organizing logical branches, and the arrange/act/assert pattern useful for structuring individual test blocks.
 
-_nota bene_: Both controller unit tests utilize helpers to reduce repetition across similar tests, which can be found in the [controller-test-helpers](https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test/jest/helpers/controller-test-helpers) directory.
+_nota bene_: Both controller unit tests utilize helpers to reduce repetition across similar tests, which can be found in the [controller-test-helpers](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/tree/master/test/jest/helpers/controller-test-helpers) directory.
 
 #### Frontend
 
 For frontend code, I primarily write integration tests. My goal in these tests is to validate DOM output resulting from a combination of likely API response and user interaction scenarios.
 
-Take the Manage Users view ([source](https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/app/assets/javascripts/client/manage_users/manage_users.js)) as an example, which renders a list of users in addition to providing a means of creating, updating and deleting users. To test the UI for this view, I start with an [integration test](https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/assets/javascripts/client/manage_users/components/Root.integration.spec.js) that mounts the `<Root/>` component via a custom renderer exposing react-testing-library's utilities as well as some additional helpers for common actions and assertions. The test cases, which are written in the same way a manual tester would perform them, cover the following scenarios:
+Take the Manage Users view ([source](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/blob/master/app/assets/javascripts/client/manage_users/manage_users.js)) as an example, which renders a list of users in addition to providing a means of creating, updating and deleting users. To test the UI for this view, I start with an [integration test](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/blob/master/test/jest/specs/app/assets/javascripts/client/manage_users/components/Root.integration.spec.js) that mounts the `<Root/>` component via a custom renderer exposing react-testing-library's utilities as well as some additional helpers for common actions and assertions. The test cases, which are written in the same way a manual tester would perform them, cover the following scenarios:
 
 - Initial list of users
 
@@ -227,9 +227,9 @@ Take the Manage Users view ([source](https://github.com/colinrcummings/testing-j
 
 Collectively, these scenarios exercise the majority of the UI's functionality, in addition to simulating all of the errors that the API can return. Integration testing the entire component tree in this way not only covers a lot of code, it also gives me more confidence that everything is working together properly than testing each component in isolation would. That being said, it doesn't cover everything, so I augment the integration test with a few unit tests covering:
 
-- Validation on the create user form ([unit test](https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/assets/javascripts/client/manage_users/components/container/UserCreateFormContainer.unit.spec.js))
-- Validation and optional password on the update user form ([unit test](https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/assets/javascripts/client/manage_users/components/container/UserUpdateFormContainer.unit.spec.js))
-- Admin users cannot be deleted ([unit test](https://github.com/colinrcummings/testing-javascript-applications-demo/blob/master/test/jest/specs/app/assets/javascripts/client/manage_users/components/presentational/UserDeleteModalToggle.unit.spec.js))
+- Validation on the create user form ([unit test](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/blob/master/test/jest/specs/app/assets/javascripts/client/manage_users/components/container/UserCreateFormContainer.unit.spec.js))
+- Validation and optional password on the update user form ([unit test](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/blob/master/test/jest/specs/app/assets/javascripts/client/manage_users/components/container/UserUpdateFormContainer.unit.spec.js))
+- Admin users cannot be deleted ([unit test](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/blob/master/test/jest/specs/app/assets/javascripts/client/manage_users/components/presentational/UserDeleteModalToggle.unit.spec.js))
 
 ### End-to-end
 
@@ -237,13 +237,13 @@ While end-to-end tests are the slowest type of test because they must be run ser
 
 End-to-end tests can be run in headless mode with the `test:e2e` command or in interactive mode with the `test:e2e:interactive` command. Organizationally, I like to structure them as follows:
 
-- [Authentication](https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test/cypress/specs/authentication), which cover the entire login and logout flows as well as access to views requiring user authentication.
+- [Authentication](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/tree/master/test/cypress/specs/authentication), which cover the entire login and logout flows as well as access to views requiring user authentication.
 
-- [Authorization](https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test/cypress/specs/authorization), which cover access to views requiring user authorization.
+- [Authorization](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/tree/master/test/cypress/specs/authorization), which cover access to views requiring user authorization.
 
-- [Shared](https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test/cypress/specs/shared), which cover elements that are present on all of the views (_e.g._, the navbar and footer).
+- [Shared](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/tree/master/test/cypress/specs/shared), which cover elements that are present on all of the views (_e.g._, the navbar and footer).
 
-- [Views](https://github.com/colinrcummings/testing-javascript-applications-demo/tree/master/test/cypress/specs/views), which cover the happy paths for each view.
+- [Views](https://github.com/colinrobertbrooks/testing-javascript-applications-demo/tree/master/test/cypress/specs/views), which cover the happy paths for each view.
 
 Structuring end-to-end tests in this way is inspired by [this talk](https://youtu.be/5XQOK0v_YRE) by [Brian Mann](https://twitter.com/be_mann) (the creator of Cypress), which covers organization as well as some other [best practices](https://docs.cypress.io/guides/references/best-practices.html) for testing with Cypress.
 
@@ -302,6 +302,6 @@ The following people have helped shape my thinking about software testing.
 
 ## Feedback
 
-Have questions, comments or suggestions? Reach out to me on Twitter ([@colinrcummings](https://twitter.com/colinrcummings)).
+Have questions, comments or suggestions? Reach out to me on Twitter ([@colinrbrooks](https://twitter.com/colinrbrooks)).
 
 — Colin

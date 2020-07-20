@@ -54,6 +54,6 @@ Check out the [roadmap](https://github.com/buttercup/roadmap) for more informati
 
 ## Feedback
 
-Have questions, comments or suggestions? Reach out to me on Twitter ([@colinrcummings](https://twitter.com/colinrcummings)).
+Have questions, comments or suggestions? Reach out to me on Twitter ([@colinrbrooks](https://twitter.com/colinrbrooks)).
 
 — Colin

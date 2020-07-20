@@ -3,9 +3,9 @@ title: Introduction to React.js
 date: '2017-05-18'
 ---
 
-I've been using [React](https://facebook.github.io/react/) for a few years now. If you read my [previous post](/a-wedding-website/), then you know that it's my go-to library for creating user interfaces (including [this blog](https://github.com/colinrcummings/blog)). I was recently asked to give a presentation on React at one of the software development Meetups I attend. I opted to introduce the library, walk through a couple of core concepts (with examples), do a few ad hoc demos and then leave the audience with some additional concepts, resources and tools. Below is an overview of [Spectacle](http://formidable.com/open-source/spectacle/), the library I used to create the presentation.
+I've been using [React](https://facebook.github.io/react/) for a few years now. If you read my [previous post](/a-wedding-website/), then you know that it's my go-to library for creating user interfaces (including [this blog](https://github.com/colinrobertbrooks/blog)). I was recently asked to give a presentation on React at one of the software development Meetups I attend. I opted to introduce the library, walk through a couple of core concepts (with examples), do a few ad hoc demos and then leave the audience with some additional concepts, resources and tools. Below is an overview of [Spectacle](http://formidable.com/open-source/spectacle/), the library I used to create the presentation.
 
-[View Presentation](http://colinrcummings.github.io/meetup-react)
+[View Presentation](https://colinrobertbrooks.github.io/meetup-react)
 
 ---
 
@@ -29,6 +29,6 @@ Because the entire Spectacle presentation is a React component, I was able to em
 
 ## Feedback
 
-Have questions, comments or suggestions? Reach out to me on Twitter ([@colinrcummings](https://twitter.com/colinrcummings)).
+Have questions, comments or suggestions? Reach out to me on Twitter ([@colinrbrooks](https://twitter.com/colinrbrooks)).
 
 — Colin

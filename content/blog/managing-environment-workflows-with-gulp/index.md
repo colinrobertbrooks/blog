@@ -5,7 +5,7 @@ date: '2017-10-03'
 
 Over the years, I've used a few different combinations of frameworks, libraries and tools, some of which come with environment workflows out-of-the-box and others that do not. With the [rising popularity of Node.js](https://trends.google.com/trends/explore?date=all&q=%2Fm%2F0505cl,%2Fm%2F06y_qx,%2Fm%2F0bbxf89), the need to roll one's own environment workflows is also on the rise, as is the number of resources with which to do so. I recently give a presentation about this topic at one of the software development Meetups I attend; below is an overview of the presentation, the lion's share of which was a live demo.
 
-[View Presentation](http://colinrcummings.github.io/meetup-gulp)
+[View Presentation](https://colinrobertbrooks.github.io/meetup-gulp)
 
 ---
 
@@ -65,6 +65,6 @@ In the production environment, the deploy workflow on the server unzips the zipp
 
 ## Feedback
 
-Have questions, comments or suggestions? Reach out to me on Twitter ([@colinrcummings](https://twitter.com/colinrcummings)).
+Have questions, comments or suggestions? Reach out to me on Twitter ([@colinrbrooks](https://twitter.com/colinrbrooks)).
 
 — Colin

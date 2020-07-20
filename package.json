@@ -1,8 +1,8 @@
 {
   "name": "blog",
-  "author": "Colin Cummings <colinrcummings@gmail.com>",
+  "author": "Colin Brooks <colinrcummings@gmail.com>",
   "version": "3.0.0",
-  "repository": "https://github.com/colinrcummings/blog",
+  "repository": "https://github.com/colinrobertbrooks/blog",
   "private": true,
   "scripts": {
     "clean": "rm -rf ./.cache/*",
