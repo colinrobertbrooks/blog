@@ -17,7 +17,7 @@ yarn start
 ## Build for production
 
 ```sh
-yarn run build
+yarn build
 ```
 
 ## Serve production build locally
@@ -29,5 +29,5 @@ serve -s public
 ## Deploy to GitHub Pages
 
 ```sh
-yarn run deploy
+yarn deploy
 ```
